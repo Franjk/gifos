@@ -1,0 +1,113 @@
+.section-gallery {
+    padding-top: 100px;
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    .divider {
+        width: 157px;
+        border: 1px solid $color-light;
+        opacity: 0.5;
+        margin-bottom: 38px;
+
+        // Como la clase .section-gallery se reutiliza en varios componentes utiliza el padding-top 100
+        // pero en este caso lo necesito sacar
+        margin-top: -100px;
+    }
+
+    .title-icon {
+        padding-top: 5px;
+        width: 28px;
+        height: 21px;
+    }
+
+    .title {
+        padding-top: 7px;
+
+        font-family: $font-secondary;
+        font-size: 20px;
+        line-height: 30px;
+        color: $color-primary;
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 25px;
+        column-gap: 21px;
+
+        padding-top: 46px;    
+        padding-left: 21px;
+        padding-right: 21px;
+    }
+
+    .sample-gif {
+        width: 156px;
+        height: 120px;
+        background-color: orange;
+        border: 1px solid purple;
+    }
+
+    .button {
+        margin-top: 78px;
+        margin-bottom: 78px;
+
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-left: 38px;
+        padding-right: 38px;
+
+        border: 1px solid $color-primary;
+        border-radius: 25px;
+        background-color: $color-white;
+
+        font-family: $font-secondary;
+        font-size: 13px;
+        color: $color-primary;
+        font-weight: 700;
+
+        &:hover {
+            background-color: $color-primary;
+            color: $color-white;
+        }
+    }
+
+    .no-content {
+        padding-top: 46px;
+        padding-left: 21px;
+        padding-right: 21px;
+        margin-bottom: 78px;
+    }
+
+    .no-content-logo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .no-content-text {
+        margin-top: 24px;
+
+        font-family: $font-secondary;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 33px;
+        color: $color-secondary;
+    }
+
+}
+
+@media (min-width: $desktop-min-width) {
+    .section-gallery {
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            row-gap: 29px;
+            column-gap: 29px;
+    
+            padding-top: 60px;    
+            padding-left: 21px;
+            padding-right: 21px;
+        }
+    }
+}

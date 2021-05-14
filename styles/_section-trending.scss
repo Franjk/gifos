@@ -1,0 +1,61 @@
+.section-trending {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $color-background-light-2;
+    text-align: center;
+
+    .title {
+        padding-top: 46px;
+        
+        font-family: $font-secondary;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 30px;
+        color: $color-primary;
+    }
+
+    .subtitle {
+        padding-top: 7px;
+
+        margin-left: 21px;
+        margin-right: 21px;
+        
+
+        color: $color-black;
+        font-family: $font-primary;
+        font-size: 16px;
+        font-weight: 400;        
+        line-height: 23px;        
+        
+    }
+
+    .gallery {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 22px;
+        overflow: auto;
+        width: 100%;
+
+        padding-top: 32px;
+        padding-bottom: 82px;
+        padding-left: 22px;
+
+        // borrar
+        .placeholder-img {
+            border: 1px solid purple;
+            background-color: red;
+            // width: 243px;
+            height: 187px;
+            flex: 0 0 243px;
+            
+        }
+
+        .trending-gifo {
+            height: 187px;
+            flex: 0 0 243px;
+        }
+    }
+}

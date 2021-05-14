@@ -1,0 +1,26 @@
+// text
+
+.text-primary {
+    color: $color-primary;
+}
+
+.text-secondary {
+    color: $color-secondary;
+}
+
+.text-dark {
+    color: $color-dark;
+}
+
+
+.button-pill {
+    border-radius: 25px;
+    background-color: $color-white;
+
+
+    font-weight: 700;
+}
+
+.display-none {
+    display: none;
+}

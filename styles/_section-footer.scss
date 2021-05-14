@@ -1,0 +1,78 @@
+.section-footer {
+    text-align: center;
+    color: $color-dark;
+
+    .share-text {
+        padding-top: 47px;
+
+        font-family: $font-primary;
+        font-size: 15px;
+        line-height: 18px;
+        color: $color-dark;
+    }
+
+    .share-icon-group {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+
+        padding-top: 24px;
+    }
+    
+    
+    .icon {
+        width: 20px;
+        height: 20px;
+        margin-left: 20px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:hover .icon-fill {
+            fill: $color-primary;
+        }
+    }
+
+    .copyright {
+        padding-top: 47.8px;
+        padding-bottom: 23px;
+        font-family: $font-primary;
+        font-size: 14px;
+        line-height: 20px;
+        color: $color-dark;
+    }
+
+
+}
+
+@media (min-width: $desktop-min-width) {
+    .section-footer {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        padding-left: 156px;
+        padding-right: 158px;
+        height: 116px;
+
+        .share-group {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .share-text, .share-icon-group, .copyright {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .icon:first-child {
+            margin-left: 20px;
+        }
+        
+    }
+}

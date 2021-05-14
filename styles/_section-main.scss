@@ -1,0 +1,149 @@
+.section-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    padding-top: 100px;
+
+    text-align: center;
+
+    h1 {
+        padding-top: 7px;
+        padding-left: 45px;
+        padding-right: 44px;
+
+        font-family: $font-secondary;
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 33px;
+        color: $color-primary;
+    }
+
+    .searchblock {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+
+        width: 100%;
+        padding-top: 31px;
+
+        &-img {
+            width: 273px;
+            height: 130px;
+            margin-bottom: 0;
+        }
+
+
+        &-searchbar {
+           
+            width: 334px;
+            height: 50px;
+
+            padding-top: 15px;
+            padding-left: 55px;
+            padding-right: 20px;
+
+            background-color: $color-white;
+            border: 1px solid $color-primary;
+            border-radius: 27px;
+
+            &-form {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+    
+
+            &-input {
+                border: none;
+                outline: none;
+             
+                font-family: $font-primary;
+                font-size: 16px;
+                line-height: 19px;
+                color: $color-dark;
+            }
+
+            &-button {
+                border: none;
+                background-color: transparent;
+            }
+
+            &-divisor {
+                width: 505px;
+                height: 3px;
+                background-color: $color-light;
+            }
+
+            &-results {
+
+            }
+        }
+
+        .searchbar-expanded {
+            height: 200px;
+        }
+
+    }
+
+
+    .trending {
+        padding-top: 31px;
+        padding-left: 75px;
+        padding-right: 75px;
+        padding-bottom: 45px;
+
+        &-title {
+            font-family: $font-secondary;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 25px;
+            color: $color-primary;
+        }
+
+        &-topics {
+            font-family: $font-secondary;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 25px;
+            color: $color-primary;
+            
+        }
+    }
+}
+
+@media (min-width: $desktop-min-width) {
+    .section-main {
+
+        h1 {
+            padding-left: 253px;
+            padding-right: 253px;
+
+            max-width: 934px;
+        }
+
+        .searchblock {
+            padding-top: 24px;
+    
+            &-img {
+                width: 399px;
+                height: 190px;
+            }
+    
+            &-searchbar {
+                width: 551px;
+                height: 50px;
+    
+                padding-left: 55px;
+                padding-right: 20px;
+    
+                background-color: $color-white;
+                border: 1px solid $color-primary;
+                border-radius: 27px;
+
+            }
+        }
+    }
+
+
+}
