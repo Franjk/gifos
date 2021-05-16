@@ -33,6 +33,7 @@ export default class Giphy {
   /**
    *
    * @param {String} partialSearchTerm
+   * @return {Promise<Array<string>>} Completed search terms
    */
   autocompleteSearch(partialSearchTerm) {
     const url = `https://${Giphy.ENDPOINTS.AUTOCOMPLETE}?api_key=${this.apiKey}&q=${partialSearchTerm}`;
@@ -41,7 +42,6 @@ export default class Giphy {
       fetch(url)
         .then((response) => response.json())
         .then(({ data, pagination, meta }) => {
-          console.log(data, pagination, meta);
           if (meta.status !== 200) throw new Error(meta.msg);
           const completedSearchTerms = data.map((el) => el.name);
 
@@ -66,7 +66,6 @@ export default class Giphy {
       fetch(url)
         .then((response) => response.json())
         .then(({ data, pagination, meta }) => {
-          console.log(data, pagination, meta);
           if (meta.status !== 200) throw new Error(meta.msg);
           const trendingSearchTerms = data.slice(0, limit);
 
@@ -97,9 +96,6 @@ export default class Giphy {
       fetch(url)
         .then((response) => response.json())
         .then(({ data, pagination, meta }) => {
-          // console.log(data);
-          // console.log(pagination);
-          // console.log(meta);
           if (meta.status !== 200) throw new Error(meta.msg);
 
           const gifosArray = data.map((gifo) => {
@@ -140,21 +136,16 @@ export default class Giphy {
   ) {
     const url = `https://${Giphy.ENDPOINTS.SEARCH}?api_key=${this.apiKey}&q=${query}&limit=${limit}&offset=${offset}&rating=${rating}&lang=${lang}`;
 
-    console.log(this.searchMetadata);
-
     return new Promise((resolve, reject) => {
       fetch(url)
         .then((response) => response.json())
         .then(({ data, pagination, meta }) => {
-          // console.log(data);
-          // console.log(pagination);
-          // console.log(meta);
           if (meta.status !== 200) throw new Error(meta.msg);
 
           this.searchMetadata = {
             query,
             limit,
-            offset: this.searchMetadata.offset + limit,
+            offset: limit,
             rating,
             lang,
             totalCount: pagination.total_count,
@@ -188,9 +179,6 @@ export default class Giphy {
       fetch(url)
         .then((response) => response.json())
         .then(({ data, pagination, meta }) => {
-          console.log(data);
-          console.log(pagination);
-          // console.log(meta);
           if (meta.status !== 200) throw new Error(meta.msg);
 
           this.searchMetadata.offset = offset + limit;
@@ -228,5 +216,9 @@ export default class Giphy {
       lang: Giphy.DEFAULT_LANG,
       totalCount: 0,
     };
+  }
+
+  hasMoreResults() {
+    return this.searchMetadata.offset < this.searchMetadata.totalCount;
   }
 }

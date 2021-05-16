@@ -1,5 +1,6 @@
 .section-gallery {
     padding-top: 100px;
+    padding-bottom: 78px;
     text-align: center;
     display: flex;
     flex-flow: column nowrap;
@@ -49,9 +50,13 @@
         border: 1px solid purple;
     }
 
+    .searched-gifo {
+        width: 156px;
+        height: 120px;
+    }
+
     .button {
         margin-top: 78px;
-        margin-bottom: 78px;
 
         padding-top: 16px;
         padding-bottom: 16px;

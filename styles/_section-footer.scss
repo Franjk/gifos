@@ -20,6 +20,16 @@
         padding-top: 24px;
     }
     
+    .icon-link {
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin-left: 20px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
     
     .icon {
         width: 20px;

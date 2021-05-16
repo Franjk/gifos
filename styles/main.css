@@ -18,7 +18,7 @@
 }
 
 .display-none {
-  display: none;
+  display: none !important;
 }
 
 header {
@@ -303,18 +303,16 @@ nav .logo {
   margin-bottom: 0;
 }
 
-.section-main .searchblock-searchbar {
+.section-main .searchbar {
   width: 334px;
-  height: 50px;
   padding-top: 15px;
-  padding-left: 55px;
-  padding-right: 20px;
+  padding-bottom: 13px;
   background-color: #fff;
   border: 1px solid #572ee5;
   border-radius: 27px;
 }
 
-.section-main .searchblock-searchbar-form {
+.section-main .searchbar-form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -324,9 +322,29 @@ nav .logo {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  margin-left: 19px;
+  margin-right: 20px;
 }
 
-.section-main .searchblock-searchbar-input {
+.section-main .searchbar-input-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 22px;
+}
+
+.section-main .searchbar-input {
+  margin-left: 14px;
   border: none;
   outline: none;
   font-family: "Roboto", sans-serif;
@@ -335,19 +353,81 @@ nav .logo {
   color: #000;
 }
 
-.section-main .searchblock-searchbar-button {
+.section-main .searchbar-button {
   border: none;
   background-color: transparent;
 }
 
-.section-main .searchblock-searchbar-divisor {
-  width: 505px;
-  height: 3px;
-  background-color: #9cafc3;
+.section-main .searchbar-expanded {
+  margin-bottom: 55px;
 }
 
-.section-main .searchblock .searchbar-expanded {
-  height: 200px;
+.section-main .searchbar-divisor {
+  width: 90%;
+  height: 1px;
+  background-color: #9cafc3;
+  margin: 5px auto;
+}
+
+.section-main .searchbar-result-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding-top: 12px;
+  padding-bottom: 18px;
+  width: 100%;
+}
+
+.section-main .searchbar-result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 23.6px;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.section-main .searchbar-result-text {
+  margin-left: 14.6px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  color: #9cafc3;
+}
+
+.section-main .button-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.section-main .icon-search-result {
+  width: 15.8px;
+  height: 15.8px;
+}
+
+.section-main .icon-search-result .svg-fill {
+  fill: #9cafc3;
 }
 
 .section-main .trending {
@@ -373,6 +453,11 @@ nav .logo {
   color: #572ee5;
 }
 
+.section-main .trending-topic:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
   .section-main h1 {
     padding-left: 253px;
@@ -386,7 +471,7 @@ nav .logo {
     width: 399px;
     height: 190px;
   }
-  .section-main .searchblock-searchbar {
+  .section-main .searchbar {
     width: 551px;
     height: 50px;
     padding-left: 55px;
@@ -394,6 +479,9 @@ nav .logo {
     background-color: #fff;
     border: 1px solid #572ee5;
     border-radius: 27px;
+  }
+  .section-main .searchbar-expanded {
+    height: 200px;
   }
 }
 
@@ -497,6 +585,17 @@ nav .logo {
   padding-top: 24px;
 }
 
+.section-footer .icon-link {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+}
+
+.section-footer .icon-link:first-child {
+  margin-left: 0;
+}
+
 .section-footer .icon {
   width: 20px;
   height: 20px;
@@ -565,6 +664,7 @@ nav .logo {
 
 .section-gallery {
   padding-top: 100px;
+  padding-bottom: 78px;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -620,9 +720,13 @@ nav .logo {
   border: 1px solid purple;
 }
 
+.section-gallery .searched-gifo {
+  width: 156px;
+  height: 120px;
+}
+
 .section-gallery .button {
   margin-top: 78px;
-  margin-bottom: 78px;
   padding-top: 16px;
   padding-bottom: 16px;
   padding-left: 38px;
@@ -682,7 +786,6 @@ nav .logo {
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  color: #572ee5;
   font-family: "Roboto", sans-serif;
 }
 
@@ -694,5 +797,9 @@ nav .logo {
 
 .top-bar {
   position: fixed;
+}
+
+.section-test {
+  padding-top: 150px;
 }
 /*# sourceMappingURL=main.css.map */

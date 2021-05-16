@@ -15,7 +15,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: $color-primary;
   font-family: $font-primary;
 }
 
@@ -28,4 +27,9 @@
 
 .top-bar {
   position: fixed;
+}
+
+.section-test {
+  padding-top: 150px;
+  
 }
