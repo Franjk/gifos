@@ -21,7 +21,7 @@
   display: none !important;
 }
 
-header {
+.section-header {
   position: fixed;
   z-index: 1;
   width: 100vw;
@@ -216,8 +216,8 @@ nav .logo {
     padding-right: 100px;
   }
   nav .logo {
-    height: 36px;
-    width: 36px;
+    width: 59.1px;
+    height: 59.1px;
   }
   .menu-desktop {
     display: -webkit-box;
@@ -473,15 +473,11 @@ nav .logo {
   }
   .section-main .searchbar {
     width: 551px;
-    height: 50px;
-    padding-left: 55px;
-    padding-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 13px;
     background-color: #fff;
     border: 1px solid #572ee5;
     border-radius: 27px;
-  }
-  .section-main .searchbar-expanded {
-    height: 200px;
   }
 }
 
@@ -779,6 +775,10 @@ nav .logo {
     padding-left: 21px;
     padding-right: 21px;
   }
+  .section-gallery .searched-gifo {
+    width: 260px;
+    height: 200px;
+  }
 }
 
 * {
@@ -801,5 +801,112 @@ nav .logo {
 
 .section-test {
   padding-top: 150px;
+}
+
+.gifo {
+  display: inline-block;
+  position: relative;
+}
+
+.gifo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #572ee5;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+
+.gifo video {
+  width: 156px;
+  height: 120px;
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+
+.gifo:hover .gifo-overlay {
+  opacity: 0.6;
+}
+
+.gifo:hover .gifo-button {
+  opacity: 0.6;
+}
+
+.gifo:hover .gifo-description {
+  opacity: 1;
+}
+
+.gifo-button-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 117px;
+}
+
+.gifo .gifo-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+
+.gifo .gifo-button svg {
+  width: 100%;
+  height: 100%;
+}
+
+.gifo .gifo-button:hover {
+  opacity: 1;
+}
+
+.gifo .gifo-button:active {
+  border: 1px solid #572ee5;
+}
+
+.gifo .button-fav-active {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.gifo-description {
+  position: absolute;
+  top: 132px;
+  left: 13px;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  text-align: left;
+}
+
+.gifo-user {
+  margin-bottom: 6px;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  line-height: 18px;
+  color: #fff;
+}
+
+.gifo-title {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 19px;
+  color: #fff;
 }
 /*# sourceMappingURL=main.css.map */

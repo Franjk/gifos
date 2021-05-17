@@ -31,16 +31,18 @@ const displayTrendingGifos = async function () {
   const gifos = await giphy.getTrendingGifs();
 
   for (let gifo of gifos) {
-    const classList = ["gifo", "trending-gifo"];
-    const htmlElement = gifo.getVideoElement(classList);
-    trendingGifosGallery.appendChild(htmlElement);
+    // const classList = ["gifo", "trending-gifo"];
+    // const htmlElement = gifo.getVideoElement(classList);
+    const classList = "gifo trending-gifo";
+    const gifoEl = ElementBuilder.buildGifo(gifo, classList);
+
+    trendingGifosGallery.appendChild(gifoEl);
   }
 };
 
 const displaySearchedGifos = async function (searchTerm) {
   const gifos = await giphy.searchGifs(searchTerm);
 
-  console.log(giphy.searchMetadata);
   if (gifos.length > 0) {
     for (let gifo of gifos) {
       const classList = ["gifo", "searched-gifo"];
@@ -50,6 +52,7 @@ const displaySearchedGifos = async function (searchTerm) {
 
     if (!giphy.hasMoreResults()) hideViewMoreButtonElement();
   } else {
+    hideViewMoreButtonElement();
     showNoContentElement();
   }
 };
@@ -164,7 +167,7 @@ const executeNewSearch = function (searchTerm) {
   displaySearchedGifos(searchTerm);
   updateSearchTerm(searchTerm);
   showOnSearchElements();
-  // showViewMoreButtonElement();
+  showViewMoreButtonElement();
   hideNoContentElement();
 };
 
@@ -227,7 +230,7 @@ const main = function () {
   viewMoreButton.addEventListener("click", handleViewMoreButtonClick);
 
   displayTrendingSearchTerms();
-  // displayTrendingGifos();
+  displayTrendingGifos();
 };
 
 main();
