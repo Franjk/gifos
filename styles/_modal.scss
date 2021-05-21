@@ -129,16 +129,23 @@
 
 @media (min-width: $desktop-min-width) {
   .modal {
-    padding-left: 355px;
-    padding-right: 390px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
 
     .button-close-wrapper {
-      margin-top: 66.4px;
-      margin-right: -96px;
+      // margin-top: 66.4px;
+      // margin-right: -96px;
+      position: absolute;
+      top: 67px;
+      right: 10vw;
+      z-index: 52;
     }
     .gif-wrapper {
-      margin-top: 78px;
+      // margin-top: 78px;
       position: relative;
+      padding-bottom: 50px;
     }
 
     .gallery-button{
@@ -153,11 +160,11 @@
       @include reset-button;
 
       &-previous {
-        left: 20%;
+        left: 10vw;
       }
 
       &-next {
-        right: 22%;
+        right: 10vw;
       }
 
       &:hover .svg-background-fill {
@@ -181,7 +188,10 @@
 
     .footer {
       align-items: flex-start;
-      margin-top: 22px;
+      // position: absolute;
+      // bottom: 200px;
+      width: 695px;
+      // margin-top: 22px;
       // position: fixed;
       // bottom: 153px;
       // left: 355px;

@@ -1,0 +1,137 @@
+.section-create-gifo {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  padding-top: 100px;
+
+  .screen {
+    padding: 24px 20px;
+    width: 688px;
+    height: 390px;
+
+    position: relative;
+    border: 1px solid $color-primary;
+
+    .description-container {
+      margin-top: 134px;
+    }
+
+    .screen-title {
+      font-family: $font-primary;
+      font-weight: bold;
+      font-size: 25px;
+      line-height: 35px;
+      color: $color-primary;
+      text-align: center;
+    }
+
+    .screen-subtitle {
+      margin-top: 3px;
+
+      font-family: $font-primary;
+      font-size: 16px;
+      line-height: 29px;
+      color: black;
+      text-align: center;
+    }
+
+    .corner {
+      width: 25px;
+      height: 27px;
+    }
+
+    .corner-top-left {
+      position: absolute;
+      top: 24px;
+      left: 20px;
+
+      border-top: 1px solid $color-secondary;
+      border-left: 1px solid $color-secondary;
+    }
+
+    .corner-top-right {
+      position: absolute;
+      top: 24px;
+      right: 20px;
+
+      border-top: 1px solid $color-secondary;
+      border-right: 1px solid $color-secondary;
+    }
+
+    .corner-bottom-left {
+      position: absolute;
+      bottom: 24px;
+      left: 20px;
+
+      border-bottom: 1px solid $color-secondary;
+      border-left: 1px solid $color-secondary;
+    }
+
+    .corner-bottom-right {
+      position: absolute;
+      bottom: 24px;
+      right: 20px;
+
+      border-bottom: 1px solid $color-secondary;
+      border-right: 1px solid $color-secondary;
+    }
+
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-top: 20px; // 24
+    padding-bottom: 16px; //19
+    width: 688px;
+
+    .placeholder {
+      flex: 0 0 33.3%;
+    }
+
+    .pagination-group {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+
+      flex: 0 0 33.3%;
+
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .pagination-button {
+
+    }
+
+    .video-action {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+
+      flex: 0 0 33.3%;
+    }
+  }
+
+  .divisor {
+    width: 796px;
+    height: 7px;
+    background: $color-primary;
+  }
+
+  .action-button-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    
+    padding-top: 20px;
+    padding-bottom: 12px; //4 26
+  }
+  
+}

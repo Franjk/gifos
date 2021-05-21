@@ -8,6 +8,7 @@
 @import 'section-trending';
 @import 'section-footer';
 @import 'section-gallery';
+@import 'section-create-gifo';
 
 @import 'modal';
 @import 'gifo';
@@ -30,6 +31,7 @@
 
 .top-bar {
   position: fixed;
+  z-index: 40;
 }
 
 .section-test {

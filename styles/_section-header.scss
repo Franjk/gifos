@@ -13,6 +13,7 @@ nav {
   background: $color-white;
   padding-left: 16px;
   padding-top: 29px;
+  padding-bottom: 13px;
   z-index: 5;
 
   .logo {
@@ -183,33 +184,74 @@ nav {
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 48px;
+    align-items: center;
 
     list-style: none;
 
     li {
-      font-family: 'IBM Plex Mono', monospace;
-      line-height: 28px;
-      font-size: 16px;
-      font-weight: 400;
+      font-family: $font-secondary;
+      line-height: 16px;
+      font-size: 13px;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      color: $color-primary;
     }
 
     a {
       text-decoration: none;
-      color: $color-dark;
-
-      transition: color 0.3s ease;
+      color: inherit;
+      text-decoration-color: rgba(0,0,0, 0);
+      transition: text-decoration 0.5s ease;
 
       &:hover {
-        color: $color-secondary;
-        text-decoration: line-through;
-        font-weight: 500;
+        text-decoration: underline solid $color-secondary 2px;
       }
 
       &:active {
-        color: rgb(6, 10, 36);
-        color: rgba(6, 10, 36, 0.56);
-        text-decoration: line-through;
+        text-decoration: underline solid $color-secondary 2px;
+
       }
     }
+
+    .create-gifo-button {
+      width: 54px;
+      height: 54px;
+      
+      
+      .svg-circle {
+        fill: $color-white;
+        transition: fill 0.3s ease;
+      }
+
+      .svg-plus {
+        fill: $color-primary;
+        transition: fill 0.3s ease;
+      }
+
+
+      &:hover .svg-circle {
+        fill: $color-primary;
+      }
+
+      &:hover .svg-plus {
+        fill: $color-white;
+      }
+      
+    }
+
+    .active {
+      color: $color-light;
+
+      .svg-circle {
+        fill: $color-light;
+        stroke: $color-light;
+      }
+
+      .svg-plus {
+        fill: $color-white;
+      }
+    }
+
   }
 }

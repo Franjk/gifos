@@ -14,11 +14,57 @@
 
 
 .button-pill {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 23px;
+    padding-right: 23px;
+
+    border: 1px solid $color-primary;
     border-radius: 25px;
-    background-color: $color-white;
+    background-color: transparent;
 
+    font-family: $font-secondary;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    color: $color-primary;
 
-    font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $color-primary;
+        color: 
+        $color-white;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.button-circle {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-primary;
+    border-radius: 50%;
+    background-color: transparent;
+
+    font-family: $font-primary;
+    font-size: 18px;
+    line-height: 21px;
+    color: $color-primary;
+
+    // cursor: pointer;
+
+    // &:hover {
+    //   color: $color-white;
+    //   background-color: $color-primary;
+    // }
+
+    // &:active {
+    //   transform: scale(0.9);
+    // }
 }
 
 .display-none {
@@ -27,4 +73,14 @@
 
 .overflow-hidden {
     overflow: hidden !important;
+}
+
+.text-light {
+    color: $color-light !important;
+}
+
+@media (min-width: $desktop-min-width) {
+    .mobile-only {
+        display: none !important;
+    }
 }

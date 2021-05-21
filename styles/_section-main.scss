@@ -49,10 +49,6 @@
         border: 1px solid $color-primary;
         border-radius: 27px;
 
-        * {
-            // border: 1px solid red;
-        }
-
         &-form {
             display: flex;
             justify-content: space-between;
@@ -86,6 +82,7 @@
         &-button {
             border: none;
             background-color: transparent;
+            cursor: pointer;
         }
 
         &-expanded {

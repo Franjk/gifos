@@ -10,10 +10,12 @@ export default class GifoGallery {
 
   addGifo(gifo) {
     this.gifos.push(gifo);
+    gifo.gallery = this;
   }
 
   addGifos(gifos) {
     this.gifos = this.gifos.concat(gifos);
+    gifos.forEach((gifo) => (gifo.gallery = this));
   }
 
   getCurrentGifo() {
@@ -24,6 +26,27 @@ export default class GifoGallery {
     if (index > this.gifos.length - 1) index = this.gifos.length - 1;
     if (index < 0) index = 0;
     return this.gifos[index];
+  }
+
+  getGifos(startIndex = 0, amount = 0) {
+    if (amount === 0) return [];
+    if (this.gifos.length === 0) return [];
+
+    if (startIndex > this.gifos.length - 1) {
+      startIndex = this.gifos.length - 1;
+      amount = 1;
+    }
+
+    if (startIndex < 0) {
+      startIndex = 0;
+      amount = 1;
+    }
+
+    if (startIndex + amount > this.gifos.length) {
+      amount = this.gifos.length - startIndex;
+    }
+
+    return this.gifos.slice(startIndex, startIndex + amount);
   }
 
   getLength() {
@@ -63,5 +86,19 @@ export default class GifoGallery {
   previous() {
     if (this.index > 0) this.index -= 1;
     return this.gifos[this.index];
+  }
+
+  nextN(n) {
+    if (n <= 0) return [];
+    const nextGifos = this.getGifos(this.index, n);
+    this.index = this.index + nextGifos.length;
+    return nextGifos;
+  }
+
+  previousN(n) {
+    if (n <= 0) return [];
+    const previousGifos = this.getGifos(this.index - n, n);
+    this.index -= previousGifos.length;
+    return previousGifos;
   }
 }

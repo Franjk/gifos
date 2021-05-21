@@ -59,3 +59,19 @@
         }
     }
 }
+
+@media (min-width: $desktop-min-width) {
+    .section-trending {
+
+        padding-left: 157px;
+        padding-right: 157px;
+
+        .gallery {
+
+            .trending-gifo {
+                height: 275px;
+                flex: 0 0 357px;
+            }
+        }
+    }
+}

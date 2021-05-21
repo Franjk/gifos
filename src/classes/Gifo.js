@@ -1,3 +1,4 @@
+import GifoGallery from "./GifoGallery.js";
 import LocalGifo from "./LocalGifo.js";
 
 export default class Gifo {
@@ -51,6 +52,22 @@ export default class Gifo {
 
   getDownloadLink() {
     return `https://i.giphy.com/media/${this.id}/giphy.mp4`;
+  }
+
+  /**
+   *
+   * @param {GifoGallery} gifoGallery
+   */
+  setGallery(gifoGallery) {
+    this.gallery = gifoGallery;
+  }
+
+  /**
+   *
+   * @returns {GifoGallery} GifoGallery
+   */
+  getGallery() {
+    return this.gallery;
   }
 
   isFavorite() {
