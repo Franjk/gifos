@@ -1,10 +1,25 @@
-import ElementBuilder from "./ElementBuilder.js";
-import Giphy from "./Giphy.js";
+import ElementBuilder from "./classes/ElementBuilder.js";
+import Gifo from "./classes/Gifo.js";
+import GifoGallery from "./classes/GifoGallery.js";
+import Giphy from "./classes/Giphy.js";
 
 const API_KEY = "w5DZnpvGHBZdjQuJDW8TfKjyAtngoYnt";
+const DESKTOP_MIN_WIDTH = 768;
 
 const giphy = new Giphy(API_KEY);
-const gifosArray = [];
+const favoriteGifos = new GifoGallery();
+const searchedGifos = new GifoGallery();
+const trendingGifos = new GifoGallery();
+
+const testGifo = Gifo.createGifo({
+  id: "4Fh44tu3DiaJkmv6Ou",
+  title: "May Chinese GIF by INTO ACTION",
+  username: "IntoAction",
+  imgUrl:
+    "https://media4.giphy.com/media/fvf8V5uS0Ooywojrm0/giphy-preview.mp4?cid=e9eef115bfcw9158acwgnkpirxfu1m8f1fo5v0uma0hr96z9&rid=giphy-preview.mp4&ct=g",
+  imgUrlFull:
+    "https://media4.giphy.com/media/fvf8V5uS0Ooywojrm0/giphy.mp4?cid=e9eef115bfcw9158acwgnkpirxfu1m8f1fo5v0uma0hr96z9&rid=giphy.mp4&ct=g",
+});
 
 const searchbar = document.querySelector("#searchbar");
 const searchbarInput = document.querySelector("#searchbar-input");
@@ -18,6 +33,8 @@ const viewMoreButton = document.querySelector("#view-more-button");
 const noContent = document.querySelector("#no-content");
 const trendingGifosGallery = document.querySelector("#trending-gifos-gallery");
 
+// DOM MANIPULATION FUNCTIONS
+
 const displayTrendingSearchTerms = async function () {
   const trendingSearchTerms = await giphy.getTrendingSearchTerms(5);
   trendingTopicsList.innerHTML =
@@ -30,11 +47,24 @@ const displayTrendingSearchTerms = async function () {
 const displayTrendingGifos = async function () {
   const gifos = await giphy.getTrendingGifs();
 
+  trendingGifos.addGifos(gifos);
+  console.log(trendingGifos);
+
   for (let gifo of gifos) {
-    // const classList = ["gifo", "trending-gifo"];
-    // const htmlElement = gifo.getVideoElement(classList);
+    gifo.gallery = trendingGifos;
+
     const classList = "gifo trending-gifo";
     const gifoEl = ElementBuilder.buildGifo(gifo, classList);
+
+    gifoEl.addEventListener("click", buildHandlerGifoTouchEnd(gifo));
+
+    gifoEl
+      .querySelector(".button-fav")
+      .addEventListener("click", buildHandlerGifoFavButtonClick(gifo));
+
+    gifoEl
+      .querySelector(".button-max")
+      .addEventListener("click", buildHandlerGifoMaxButtonClick(gifo));
 
     trendingGifosGallery.appendChild(gifoEl);
   }
@@ -43,11 +73,27 @@ const displayTrendingGifos = async function () {
 const displaySearchedGifos = async function (searchTerm) {
   const gifos = await giphy.searchGifs(searchTerm);
 
+  searchedGifos.clear();
+  searchedGifos.addGifos(gifos);
+
   if (gifos.length > 0) {
     for (let gifo of gifos) {
-      const classList = ["gifo", "searched-gifo"];
-      const htmlElement = gifo.getVideoElement(classList);
-      gifosGallery.appendChild(htmlElement);
+      gifo.gallery = searchedGifos;
+
+      const classList = "gifo searched-gifo";
+      const gifoEl = ElementBuilder.buildGifo(gifo, classList);
+
+      gifoEl.addEventListener("click", buildHandlerGifoTouchEnd(gifo));
+
+      gifoEl
+        .querySelector(".button-fav")
+        .addEventListener("click", buildHandlerGifoFavButtonClick(gifo));
+
+      gifoEl
+        .querySelector(".button-max")
+        .addEventListener("click", buildHandlerGifoMaxButtonClick(gifo));
+
+      gifosGallery.appendChild(gifoEl);
     }
 
     if (!giphy.hasMoreResults()) hideViewMoreButtonElement();
@@ -61,12 +107,27 @@ const displaySearchedGifos = async function (searchTerm) {
 
 const displayMoreSearchedGifos = async function () {
   const gifos = await giphy.nextSearchResults();
-  console.log(giphy.searchMetadata);
+
+  searchedGifos.addGifos(gifos);
+
   if (gifos.length > 0) {
     for (let gifo of gifos) {
-      const classList = ["gifo", "searched-gifo"];
-      const htmlElement = gifo.getVideoElement(classList);
-      gifosGallery.appendChild(htmlElement);
+      gifo.gallery = searchedGifos;
+
+      const classList = "gifo searched-gifo";
+      const gifoEl = ElementBuilder.buildGifo(gifo, classList);
+
+      gifoEl.addEventListener("click", buildHandlerGifoTouchEnd(gifo));
+
+      gifoEl
+        .querySelector(".button-fav")
+        .addEventListener("click", buildHandlerGifoFavButtonClick(gifo));
+
+      gifoEl
+        .querySelector(".button-max")
+        .addEventListener("click", buildHandlerGifoMaxButtonClick(gifo));
+
+      gifosGallery.appendChild(gifoEl);
     }
     if (!giphy.hasMoreResults()) hideViewMoreButtonElement();
   } else {
@@ -157,6 +218,20 @@ const hideViewMoreButtonElement = function () {
   viewMoreButton.classList.add("display-none");
 };
 
+const showModal = function () {
+  document.querySelector("#modal").classList.remove("display-none");
+  document.querySelector("#modal-overlay").classList.remove("display-none");
+  document.body.classList.add("overflow-hidden");
+};
+
+const hideModal = function () {
+  document.querySelector("#modal").classList.add("display-none");
+  document.querySelector("#modal-overlay").classList.add("display-none");
+  document.body.classList.remove("overflow-hidden");
+};
+
+// GENERAL FUNCTIONS
+
 const executeNewSearch = function (searchTerm) {
   searchbarInput.value = searchTerm;
   searchbarInput.blur();
@@ -169,6 +244,76 @@ const executeNewSearch = function (searchTerm) {
   showOnSearchElements();
   showViewMoreButtonElement();
   hideNoContentElement();
+};
+
+const setUpModal = function (gifo) {
+  // sets the values of the predefined elements
+  document.querySelector("#modal-video").setAttribute("src", gifo.imgUrlFull);
+  document.querySelector("#modal-username").textContent = gifo.username;
+  document.querySelector("#modal-title").textContent = gifo.title;
+
+  // button download config
+  const modalButtonDownload = document.querySelector("#modal-button-download");
+  modalButtonDownload.setAttribute("href", gifo.getDownloadLink());
+  modalButtonDownload.setAttribute("target", "_blank");
+  modalButtonDownload.setAttribute("download", gifo.title + ".mp4");
+
+  // button fav config
+  const modalButtonFav = resetListeners(
+    document.querySelector("#modal-button-fav")
+  );
+
+  if (gifo.isFavorite()) {
+    modalButtonFav.classList.add("favorite");
+  } else {
+    modalButtonFav.classList.remove("favorite");
+  }
+  modalButtonFav.addEventListener(
+    "click",
+    buildHandlerGifoFavButtonClick(gifo)
+  );
+
+  // button next & previous config
+  gifo.gallery.setCurrentGifo(gifo);
+
+  const modalButtonNext = resetListeners(
+    document.querySelector("#modal-button-next")
+  );
+
+  const modalButtonPrevious = resetListeners(
+    document.querySelector("#modal-button-previous")
+  );
+
+  if (gifo.gallery.hasNext()) {
+    modalButtonNext.classList.remove("display-none");
+    modalButtonNext.addEventListener("click", (e) => {
+      setUpModal(gifo.gallery.next());
+    });
+  } else {
+    modalButtonNext.classList.add("display-none");
+  }
+
+  if (gifo.gallery.hasPrevious()) {
+    modalButtonPrevious.classList.remove("display-none");
+    modalButtonPrevious.addEventListener("click", (e) => {
+      setUpModal(gifo.gallery.previous());
+    });
+  } else {
+    modalButtonPrevious.classList.add("display-none");
+  }
+};
+
+/**
+ *
+ * @param {HTMLElement} htmlElement
+ */
+const resetListeners = function (htmlElement) {
+  const parent = htmlElement.parentElement;
+  const id = htmlElement.id;
+
+  htmlElement.replaceWith(htmlElement.cloneNode(true));
+
+  return parent.querySelector("#" + id);
 };
 
 // HANDLERS
@@ -220,6 +365,60 @@ const buildHandlerSearchbarResultClick = function (searchTerm) {
   return handleSearchbarResultClick;
 };
 
+const buildHandlerDownloadGifo = function (gifo) {};
+
+const buildHandlerGifoFavButtonClick = function (gifo) {
+  const handleFavGifoButtonClick = function (e) {
+    e.preventDefault();
+
+    console.log("handleFavGifoButtonClick", gifo, e.target, e.currentTarget);
+    if (gifo.isFavorite()) {
+      gifo.removeFromFavorites();
+      e.currentTarget.classList.remove("favorite");
+      // 'currentTarget' is used instead of 'target' to select the button instead
+      // of its children elements
+    } else {
+      gifo.addToFavorites();
+      e.currentTarget.classList.add("favorite");
+    }
+  };
+
+  return handleFavGifoButtonClick;
+};
+
+const buildHandlerGifoTouchEnd = function (gifo) {
+  const handleGifoTouchEnd = function (e) {
+    e.preventDefault();
+    // when in full screen does not open the modal when
+    // clicking the gifo
+    if (window.screen.width > DESKTOP_MIN_WIDTH) return;
+    setUpModal(gifo);
+    showModal();
+  };
+
+  return handleGifoTouchEnd;
+};
+
+const buildHandlerGifoMaxButtonClick = function (gifo) {
+  const handleGifoMaxButtonClick = function (e) {
+    e.preventDefault();
+    setUpModal(gifo);
+    showModal();
+  };
+
+  return handleGifoMaxButtonClick;
+};
+
+const buildHandlerModalButtonNextClick = function (gifo) {
+  const handleModalButtonNextClick = function (e) {
+    if (gifo.gallery.hasNext()) {
+      const nextGifo = gifo.gallery.next();
+      setUpModal(nextGifo);
+    }
+  };
+  return handleModalButtonNextClick;
+};
+
 const main = function () {
   searchbarInput.addEventListener("input", handleSearchbarInput);
   searchbarForm.addEventListener("submit", handleSearchbarSubmit);
@@ -229,8 +428,16 @@ const main = function () {
   );
   viewMoreButton.addEventListener("click", handleViewMoreButtonClick);
 
+  // modal config
+  document
+    .querySelector("#modal-button-close")
+    .addEventListener("click", hideModal);
+
   displayTrendingSearchTerms();
   displayTrendingGifos();
+
+  // setUpModal(testGifo);
+  // showModal();
 };
 
 main();

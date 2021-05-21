@@ -7,6 +7,11 @@
     
 }
 
+@mixin reset-button {
+    border: none;
+    background-color: transparent;
+}
+
 @mixin transition-opacity {
     transition: opacity 0.5s ease;
 }

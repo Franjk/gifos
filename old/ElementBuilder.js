@@ -87,6 +87,7 @@ export default class ElementBuilder {
       <div class="gifo-button-group">
         <button class="gifo-button button-fav">
           <svg
+            class="icon-fav"
             width="32px"
             height="32px"
             viewBox="0 0 32 32"
@@ -141,6 +142,7 @@ export default class ElementBuilder {
         </button>
         <button class="gifo-button button-fav-active display-none">
           <svg
+            class="icon-fav-active"
             width="20px"
             height="18px"
             viewBox="0 0 20 18"
@@ -180,7 +182,12 @@ export default class ElementBuilder {
             </g>
           </svg>
         </button>
-        <button class="gifo-button button-download">
+        <a 
+          class="gifo-button button-download"
+          href="${gifo.getDownloadLink()}"
+          target="_blank"
+          download="${gifo.title}.mp4"
+          >
           <svg
             width="32px"
             height="32px"
@@ -237,7 +244,7 @@ export default class ElementBuilder {
               </g>
             </g>
           </svg>
-        </button>
+        </a>
         <button class="gifo-button button-max">
           <svg
             width="32px"

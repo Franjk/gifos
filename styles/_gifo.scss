@@ -1,0 +1,152 @@
+.gifo {
+  display: inline-block;
+  position: relative;
+  
+  &-overlay {
+      display: none; // will be displayed with the media query
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      
+      background-color: $color-primary;
+      opacity: 0;
+      @include transition-opacity;
+  }
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+
+  &:hover .gifo-overlay {
+      opacity: 0.6;
+  }
+
+  &:hover .gifo-button {
+      opacity: 0.6;
+  }
+
+  &:hover .gifo-description {
+      opacity: 1;
+  }
+  
+  .button-group {
+      display: none; // will be displayed with the media query
+      // display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 117px;
+  }
+  
+  .gifo-button {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      outline: none;
+      border: none;
+      background-color: $color-white;
+      cursor: pointer;
+
+      opacity: 0;
+      @include transition-opacity;
+
+      svg {
+          width: 100%;
+          height: 100%;
+      }
+      
+      &:hover {
+          opacity: 1;
+      }
+
+      &:active {
+          border: 1px solid $color-primary;
+      }
+
+      
+    }
+    
+  .favorite {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+  
+  .favorite .icon-fav {
+    display: none;
+  }
+
+  .icon-fav-active {
+    display: none;
+  }
+
+  .favorite .icon-fav-active {
+    display: block;
+  }
+
+
+  &-description {
+      display: none; // will be displayed in the media query
+      position: absolute;
+      // top: 132px;
+      bottom: 30px;
+      left: 13px;
+      opacity: 0;
+      @include transition-opacity;
+
+      text-align: left;
+  }
+
+  &-username {
+      margin-bottom: 6px;
+
+      font-family: $font-primary;
+      font-size: 15px;
+      line-height: 18px;
+      color: $color-white;
+  }
+
+  &-title {
+      font-family: $font-primary;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 19px;
+      color: $color-white;
+  }
+
+}
+
+
+
+@media (min-width: $desktop-min-width) {
+
+  .gifo {
+    &-overlay {
+      display: block;
+    }
+
+    &-description {
+      display: block;
+    }
+
+    .button-group {
+      display: flex;
+    }
+  }
+
+  .trending-gifo {
+    width: 375px;
+    height: 275px;
+  }
+  
+  .searched-gifo {
+    width: 260px;
+    height: 200px;
+  }
+}

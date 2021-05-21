@@ -1,0 +1,191 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 51;
+  width: 100vw;
+  height: 100vh;
+
+  padding-left: 29px;
+  padding-right: 29px;
+
+
+  .button-close-wrapper {
+    margin-top: 59px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .button-close {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  .gif-wrapper {
+    margin-top: 73px;
+    text-align: center;
+  }
+  .video {
+    width: 100%;
+    max-width: 328px;
+    object-fit: cover;
+  }
+
+  .gallery-button {
+    display: none;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 14px;
+  }
+
+  .username {
+    font-family: $font-primary;
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .title {
+    margin-top: 6px;
+
+    font-family: $font-secondary;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 22px;
+
+  }
+
+  .button {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    outline: none;
+    border: 1px solid $color-light;
+    background-color: transparent;
+    cursor: pointer;
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+    
+    &:active {
+        border: 1px solid $color-primary;
+    }
+  }
+
+  // comment here
+  .favorite {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  .favorite .icon-fav {
+    display: none;
+  }
+
+  .icon-fav-active {
+    display: none;
+  }
+
+  .favorite .icon-fav-active {
+    display: block;
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: $color-white;
+  opacity: 0.97;
+}
+
+@media (min-width: $desktop-min-width) {
+  .modal {
+    padding-left: 355px;
+    padding-right: 390px;
+
+    .button-close-wrapper {
+      margin-top: 66.4px;
+      margin-right: -96px;
+    }
+    .gif-wrapper {
+      margin-top: 78px;
+      position: relative;
+    }
+
+    .gallery-button{
+      display: block;
+      position: fixed;
+      top: calc(50% - 20px);
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      cursor: pointer;
+
+      @include reset-button;
+
+      &-previous {
+        left: 20%;
+      }
+
+      &-next {
+        right: 22%;
+      }
+
+      &:hover .svg-background-fill {
+        fill: $color-primary;
+      }
+
+      &:hover .svg-arrow-fill {
+        fill: $color-white;
+      }
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+
+    .video {
+      width: auto;
+      max-width: none;
+      max-height: 385px;
+    }
+
+    .footer {
+      align-items: flex-start;
+      margin-top: 22px;
+      // position: fixed;
+      // bottom: 153px;
+      // left: 355px;
+    }
+
+  }
+}

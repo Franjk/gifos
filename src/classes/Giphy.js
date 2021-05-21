@@ -142,6 +142,9 @@ export default class Giphy {
         .then(({ data, pagination, meta }) => {
           if (meta.status !== 200) throw new Error(meta.msg);
 
+          console.log(data);
+          console.log(pagination);
+          console.log(meta);
           this.searchMetadata = {
             query,
             limit,
