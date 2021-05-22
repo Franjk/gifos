@@ -57,11 +57,7 @@
       opacity: 0;
       @include transition-opacity;
 
-      svg {
-          width: 100%;
-          height: 100%;
-      }
-      
+            
       &:hover {
           opacity: 1;
       }
@@ -71,7 +67,7 @@
       }
 
       
-    }
+  }
     
   .favorite {
     padding-left: 7px;
@@ -83,6 +79,8 @@
   }
 
   .icon-fav-active {
+    width: 18px;
+    height: 18px;
     display: none;
   }
 

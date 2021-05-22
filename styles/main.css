@@ -50,7 +50,7 @@
   color: #572ee5;
 }
 
-.button-card {
+.button-card-overlay {
   width: 32px;
   height: 32px;
   border: 1px solid #572ee5;
@@ -60,13 +60,32 @@
   cursor: pointer;
 }
 
-.button-card:hover {
+.button-card-overlay:hover {
   opacity: 1;
 }
 
-.button-card:active {
+.button-card-overlay:active {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
+}
+
+.button-card {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  outline: none;
+  border: 1px solid #9cafc3;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button-card img {
+  width: 100%;
+  height: 100%;
+}
+
+.button-card:active {
+  border: 1px solid #572ee5;
 }
 
 .display-none {
@@ -333,35 +352,20 @@ nav .logo {
     -webkit-text-decoration: underline solid #50e3c2 2px;
             text-decoration: underline solid #50e3c2 2px;
   }
-  .menu-desktop .create-gifo-button {
-    width: 54px;
-    height: 54px;
-  }
-  .menu-desktop .create-gifo-button .svg-circle {
-    fill: #fff;
-    -webkit-transition: fill 0.3s ease;
-    transition: fill 0.3s ease;
-  }
-  .menu-desktop .create-gifo-button .svg-plus {
-    fill: #572ee5;
-    -webkit-transition: fill 0.3s ease;
-    transition: fill 0.3s ease;
-  }
-  .menu-desktop .create-gifo-button:hover .svg-circle {
-    fill: #572ee5;
-  }
-  .menu-desktop .create-gifo-button:hover .svg-plus {
-    fill: #fff;
-  }
-  .menu-desktop .active {
+  .menu-desktop a.active {
     color: #9cafc3;
   }
-  .menu-desktop .active .svg-circle {
-    fill: #9cafc3;
-    stroke: #9cafc3;
+  .menu-desktop .create-gifo-link {
+    display: block;
+    width: 54px;
+    height: 54px;
+    background: url(../assets/button-crear-gifo.svg);
   }
-  .menu-desktop .active .svg-plus {
-    fill: #fff;
+  .menu-desktop .create-gifo-link:hover {
+    background: url(../assets/CTA-crear-gifo-hover.svg);
+  }
+  .menu-desktop .create-gifo-link.active {
+    background: url(../assets/CTA-crear-gifo-active.svg);
   }
 }
 
@@ -531,13 +535,20 @@ nav .logo {
   height: 24px;
 }
 
+.section-main .icon-search {
+  -webkit-filter: grayscale(100%) opacity(40%);
+          filter: grayscale(100%) opacity(40%);
+}
+
+.section-main .icon-close {
+  padding: 5px;
+}
+
 .section-main .icon-search-result {
   width: 15.8px;
   height: 15.8px;
-}
-
-.section-main .icon-search-result .svg-fill {
-  fill: #9cafc3;
+  -webkit-filter: grayscale(100%) opacity(40%);
+          filter: grayscale(100%) opacity(40%);
 }
 
 .section-main .trending {
@@ -709,24 +720,34 @@ nav .logo {
   width: 20px;
   height: 20px;
   margin-left: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.section-footer .icon-link:first-child {
-  margin-left: 0;
+.section-footer .icon-facebook {
+  background-image: url(../assets/icon_facebook.svg);
+  background-size: contain;
+  background-position: 75%;
 }
 
-.section-footer .icon {
-  width: 20px;
-  height: 20px;
-  margin-left: 20px;
+.section-footer .icon-facebook:hover {
+  background-image: url(../assets/icon_facebook_hover.svg);
 }
 
-.section-footer .icon:first-child {
-  margin-left: 0;
+.section-footer .icon-twitter {
+  background-image: url(../assets/icon-twitter.svg);
 }
 
-.section-footer .icon:hover .icon-fill {
-  fill: #572ee5;
+.section-footer .icon-twitter:hover {
+  background-image: url(../assets/icon-twitter-hover.svg);
+}
+
+.section-footer .icon-instagram {
+  background-image: url(../assets/icon_instagram.svg);
+}
+
+.section-footer .icon-instagram:hover {
+  background-image: url(../assets/icon_instagram-hover.svg);
 }
 
 .section-footer .copyright {
@@ -1308,25 +1329,6 @@ nav .logo {
   gap: 22px;
 }
 
-.modal .button {
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
-  outline: none;
-  border: 1px solid #9cafc3;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.modal .button svg {
-  width: 100%;
-  height: 100%;
-}
-
-.modal .button:active {
-  border: 1px solid #572ee5;
-}
-
 .modal .favorite {
   padding-left: 7px;
   padding-right: 7px;
@@ -1393,20 +1395,18 @@ nav .logo {
     background-color: transparent;
   }
   .modal .gallery-button-previous {
+    background: url(../assets/button-slider-left.svg);
     left: 10vw;
   }
+  .modal .gallery-button-previous:hover {
+    background: url(../assets/button-slider-left-hover.svg);
+  }
   .modal .gallery-button-next {
+    background: url(../assets/Button-Slider-right.svg);
     right: 10vw;
   }
-  .modal .gallery-button:hover .svg-background-fill {
-    fill: #572ee5;
-  }
-  .modal .gallery-button:hover .svg-arrow-fill {
-    fill: #fff;
-  }
-  .modal .gallery-button:active {
-    -webkit-transform: scale(0.9);
-            transform: scale(0.9);
+  .modal .gallery-button-next:hover {
+    background: url(../assets/Button-Slider-right-hover.svg);
   }
   .modal .video {
     width: auto;
@@ -1485,11 +1485,6 @@ nav .logo {
   transition: opacity 0.5s ease;
 }
 
-.gifo .gifo-button svg {
-  width: 100%;
-  height: 100%;
-}
-
 .gifo .gifo-button:hover {
   opacity: 1;
 }
@@ -1508,6 +1503,8 @@ nav .logo {
 }
 
 .gifo .icon-fav-active {
+  width: 18px;
+  height: 18px;
   display: none;
 }
 

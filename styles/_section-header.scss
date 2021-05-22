@@ -214,44 +214,24 @@ nav {
       }
     }
 
-    .create-gifo-button {
+    a.active {
+      color: $color-light;
+    }
+
+    .create-gifo-link {
+      display: block;
       width: 54px;
       height: 54px;
-      
-      
-      .svg-circle {
-        fill: $color-white;
-        transition: fill 0.3s ease;
-      }
+      background: url(../assets/button-crear-gifo.svg);
 
-      .svg-plus {
-        fill: $color-primary;
-        transition: fill 0.3s ease;
-      }
-
-
-      &:hover .svg-circle {
-        fill: $color-primary;
-      }
-
-      &:hover .svg-plus {
-        fill: $color-white;
-      }
-      
-    }
-
-    .active {
-      color: $color-light;
-
-      .svg-circle {
-        fill: $color-light;
-        stroke: $color-light;
-      }
-
-      .svg-plus {
-        fill: $color-white;
+      &:hover {
+        background: url(../assets/CTA-crear-gifo-hover.svg);
       }
     }
+    .create-gifo-link.active {
+      background: url(../assets/CTA-crear-gifo-active.svg);
+    }
+
 
   }
 }

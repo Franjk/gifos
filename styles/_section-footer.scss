@@ -26,24 +26,49 @@
         height: 20px;
         margin-left: 20px;
 
-        &:first-child {
-            margin-left: 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+
+    .icon-facebook {
+        background-image: url(../assets/icon_facebook.svg);
+        background-size: contain;
+        background-position: 75%;
+
+        &:hover {
+            background-image: url(../assets/icon_facebook_hover.svg);
         }
     }
-    
-    .icon {
-        width: 20px;
-        height: 20px;
-        margin-left: 20px;
 
-        &:first-child {
-            margin-left: 0;
-        }
-
-        &:hover .icon-fill {
-            fill: $color-primary;
+    .icon-twitter {
+        background-image: url(../assets/icon-twitter.svg);
+        &:hover {
+            background-image: url(../assets/icon-twitter-hover.svg);
         }
     }
+
+    .icon-instagram {
+        background-image: url(../assets/icon_instagram.svg);
+
+        &:hover {
+            background-image: url(../assets/icon_instagram-hover.svg);
+        }
+    }
+
+    // .icon {
+    //     width: 20px;
+    //     height: 20px;
+    //     margin-left: 20px;
+
+    //     &:first-child {
+    //         margin-left: 0;
+    //     }
+
+    //     &:hover .icon-fill {
+    //         fill: $color-primary;
+    //     }
+    // }
 
     .copyright {
         padding-top: 47.8px;

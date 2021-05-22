@@ -136,17 +136,19 @@
         height: 24px;
     }
 
+    .icon-search {
+        filter: grayscale(100%) opacity(40%);
+
+    }
+
+    .icon-close {
+        padding: 5px;
+    }
+
     .icon-search-result {
         width: 15.8px;
         height: 15.8px;
-
-        .svg-fill {
-            fill: $color-light;
-        }
-    }
-
-    #use {
-        // fill: red;
+        filter: grayscale(100%) opacity(40%);
     }
 
     .trending {
@@ -212,11 +214,6 @@
             background-color: $color-white;
             border: 1px solid $color-primary;
             border-radius: 27px;
-
-            &-expanded {
-                // margin-bottom: 55px;
-            }
-
         }
     }
 
