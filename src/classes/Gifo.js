@@ -54,6 +54,10 @@ export default class Gifo {
     return `https://i.giphy.com/media/${this.id}/giphy.mp4`;
   }
 
+  getLink() {
+    return `https://media.giphy.com/media/${this.id}/giphy.gif`;
+  }
+
   /**
    *
    * @param {GifoGallery} gifoGallery
@@ -86,15 +90,35 @@ export default class Gifo {
       imgUrlFull: this.imgUrlFull,
     });
     LocalGifo.saveFavorites(favorites);
-
-    console.log(LocalGifo.getFavorites());
   }
 
   removeFromFavorites() {
     const favorites = LocalGifo.getFavorites();
     const filteredFavorites = favorites.filter((fav) => fav.id !== this.id);
     LocalGifo.saveFavorites(filteredFavorites);
+  }
 
-    console.log(LocalGifo.getFavorites());
+  isMyGifo() {
+    const myGifos = LocalGifo.getMyGifos();
+
+    return myGifos.map((myGifo) => myGifo.id).includes(this.id);
+  }
+
+  addToMyGifos() {
+    const myGifos = LocalGifo.getMyGifos();
+    myGifos.push({
+      id: this.id,
+      username: this.username,
+      title: this.title,
+      imgUrl: this.imgUrl,
+      imgUrlFull: this.imgUrlFull,
+    });
+    LocalGifo.saveMyGifos(myGifos);
+  }
+
+  removeFromMyGifos() {
+    const myGifos = LocalGifo.getMyGifos();
+    const filteredMyGifos = myGifos.filter((myGifo) => myGifo.id !== this.id);
+    LocalGifo.saveMyGifos(filteredMyGifos);
   }
 }

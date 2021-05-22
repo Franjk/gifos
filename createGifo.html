@@ -173,20 +173,60 @@
     <section class="section-create-gifo">
       <!-- screen -->
       <div class="screen">
-        <div class="description-container">
-          <h2 class="screen-title">
+        <div id="description-container" class="description-container">
+          <h2 id="screen-title" class="screen-title">
             Aquí podrás<br />crear tus propios
             <span class="text-secondary">GIFOS</span>
           </h2>
-          <p class="screen-subtitle">
+          <p id="screen-subtitle" class="screen-subtitle">
             ¡Crea tu GIFO en sólo 3 pasos!<br />sólo necesitas una cámara para
             grabar un video
           </p>
         </div>
 
-        <div class="video-container">
-          <video class="display-none" src=""></video>
-          <div class="video-overlay"></div>
+        <div id="video-container" class="video-container display-none">
+          <video id="video" class="recorded-screen"></video>
+          <img
+            src=""
+            alt="image placeholder"
+            id="img-gif"
+            class="recorded-screen display-none"
+          />
+          <div
+            id="video-status-container"
+            class="video-status-container display-none"
+          >
+            <img
+              id="video-status-icon"
+              class="video-status-icon"
+              src="./assets/loader.svg"
+              alt="loader"
+            />
+            <p id="video-status-description" class="video-status-description">
+              Estamos subiendo tu GIFO
+            </p>
+
+            <div
+              id="video-status-button-group"
+              class="button-group display-none"
+            >
+              <button id="button-download" class="button-card">
+                <img
+                  class="icon-download"
+                  src="./assets/icon-download-hover.svg"
+                  alt="download"
+                />
+              </button>
+              <button id="button-link" class="button-card">
+                <img
+                  class="icon-hover"
+                  src="./assets/icon-link-hover.svg"
+                  alt="link"
+                />
+              </button>
+            </div>
+          </div>
+          <div id="video-overlay" class="video-overlay display-none"></div>
         </div>
         <div class="corner corner-top-left"></div>
         <div class="corner corner-top-right"></div>
@@ -201,13 +241,21 @@
 
         <!-- pagination -->
         <div class="pagination-group">
-          <button class="button-circle pagination-button">1</button>
-          <button class="button-circle pagination-button">2</button>
-          <button class="button-circle pagination-button">3</button>
+          <button id="step-1" class="button-circle pagination-button">1</button>
+          <button id="step-2" class="button-circle pagination-button">2</button>
+          <button id="step-3" class="button-circle pagination-button">3</button>
         </div>
 
         <!-- video action -->
-        <div class="video-action">Action</div>
+        <div class="video-action-container">
+          <span id="timer" class="timer display-none">00:00:00</span>
+          <button
+            id="repeat-recording-button"
+            class="repeat-recording-button display-none"
+          >
+            REPETIR CAPTURA
+          </button>
+        </div>
       </div>
 
       <!-- divisor -->
@@ -219,6 +267,17 @@
           COMENZAR
         </button>
       </div>
+
+      <!-- svgs -->
+
+      <!-- camera & light -->
+      <img class="svg-camera" src="./assets/camara.svg" alt="camera" />
+      <img
+        class="svg-camera-light"
+        src="./assets/element-luz-camara.svg"
+        alt="camera light"
+      />
+      <img class="svg-tape" src="./assets/pelicula.svg" alt="tape" />
     </section>
 
     <!-- section footer -->
@@ -392,7 +451,7 @@
     <!-- bottom bar -->
     <div class="bottom-bar"></div>
 
-    <!-- <script src="src/main.js" type="module"></script> -->
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
     <script src="src/createGifo.js" type="module"></script>
   </body>
 </html>

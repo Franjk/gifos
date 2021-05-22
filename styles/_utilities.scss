@@ -65,6 +65,25 @@
     // &:active {
     //   transform: scale(0.9);
     // }
+
+}
+
+.button-card {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-primary;
+    border-radius: 6px;
+    background-color: white;
+    opacity: 0.7;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
 }
 
 .display-none {
@@ -77,6 +96,10 @@
 
 .text-light {
     color: $color-light !important;
+}
+
+.visibility-hidden {
+    visibility: hidden !important;
 }
 
 @media (min-width: $desktop-min-width) {

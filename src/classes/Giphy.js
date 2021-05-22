@@ -16,6 +16,7 @@ export default class Giphy {
     AUTOCOMPLETE: "api.giphy.com/v1/gifs/search/tags",
     CATEGORIES: "api.giphy.com/v1/gifs/categories",
     UPLOAD: "upload.giphy.com/v1/gifs",
+    GET_GIF_BY_ID: "api.giphy.com/v1/gifs", // {gif_id}
   };
 
   constructor(apiKey) {
@@ -110,6 +111,30 @@ export default class Giphy {
 
           // console.log("gifosArray", gifosArray);
           resolve(gifosArray);
+        })
+        .catch((err) => {
+          console.warn(err);
+          reject(err);
+        });
+    });
+  }
+
+  getGifById(id) {
+    const url = `https://${Giphy.ENDPOINTS.GET_GIF_BY_ID}/${id}?api_key=${this.apiKey}`;
+    return new Promise((resolve, reject) => {
+      fetch(url)
+        .then((response) => response.json())
+        .then(({ data, meta }) => {
+          if (meta.status !== 200) throw new Error(meta.msg);
+          console.log(data);
+          const gifo = new Gifo(
+            data.id,
+            data.title,
+            data.username,
+            data.images.preview.mp4,
+            data.images.original_mp4.mp4
+          );
+          resolve(gifo);
         })
         .catch((err) => {
           console.warn(err);
@@ -223,5 +248,29 @@ export default class Giphy {
 
   hasMoreResults() {
     return this.searchMetadata.offset < this.searchMetadata.totalCount;
+  }
+
+  uploadGif(blob) {
+    const url = `https://${Giphy.ENDPOINTS.UPLOAD}`;
+
+    const form = new FormData();
+    form.append("api_key", this.apiKey);
+    form.append("file", blob, "myGif.gif");
+
+    return new Promise((resolve, reject) => {
+      const request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+        if (request.readyState == XMLHttpRequest.DONE) {
+          const parsedResponse = JSON.parse(request.responseText);
+          if (request.status === 200) {
+            resolve(parsedResponse.data.id);
+          } else {
+            reject(parsedResponse.meta.msg);
+          }
+        }
+      };
+      request.open("POST", url);
+      request.send(form);
+    });
   }
 }

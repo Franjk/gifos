@@ -6,7 +6,8 @@
   padding-top: 100px;
 
   .screen {
-    padding: 24px 20px;
+    // padding: 24px 20px;
+    padding: 35px 104px;
     width: 688px;
     height: 390px;
 
@@ -14,7 +15,7 @@
     border: 1px solid $color-primary;
 
     .description-container {
-      margin-top: 134px;
+      margin-top: 99px;
     }
 
     .screen-title {
@@ -34,6 +35,72 @@
       line-height: 29px;
       color: black;
       text-align: center;
+    }
+
+    .video-container {
+      position: relative;
+    }
+
+    .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 480px;
+      height: 320px;
+      z-index: 51;
+
+      background-color: $color-primary;
+      opacity: 0.6;
+    }
+
+    .video-status-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 480px;
+      height: 320px;
+      z-index: 52;
+
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+
+      .video-status-icon {
+        width: 22px;
+        height: 22px;
+      }
+
+      .video-status-description {
+        padding-top: 10px;
+
+        font-family: $font-secondary;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 19px;
+        text-align: center;
+        color: $color-white;
+      }
+
+      .button-group {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        height: 32px;
+        z-index: 52;
+
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+      }
+
+    }
+
+    .recorded-screen {
+      width: 480px;
+      height: 320px;
+      object-fit: cover;
     }
 
     .corner {
@@ -105,17 +172,49 @@
       padding-right: 20px;
     }
 
-    .pagination-button {
-
+    .active {
+      color: $color-white;
+      background-color: $color-primary;
     }
 
-    .video-action {
+    .video-action-container {
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
 
       flex: 0 0 33.3%;
+    }
+
+
+
+    .timer {
+      font-family: $font-secondary;
+      font-weight: bold;
+      font-size: 15px;
+      color: $color-primary;
+      text-align: center;
+      line-height: 22px;
+    }
+
+    .repeat-recording-button {
+      font-family: $font-secondary;
+      font-weight: bold;
+      color: $color-primary;
+      text-align: center;
+      line-height: 16px;
+
+      text-decoration: underline solid $color-secondary 2px;
+      background-color: transparent;
+      border: none;
+
+      &:hover {
+        cursor: pointer;
+      }
+      &:active {
+        transform: scale(0.95);
+      }
+
     }
   }
 
@@ -133,5 +232,49 @@
     padding-top: 20px;
     padding-bottom: 12px; //4 26
   }
+
+  .svg-camera {
+    position: absolute;
+    top: 213px;
+    left: 116px;
+
+    width: 123px;
+    height: 162px;
+
+  }
+
+  .svg-camera-light {
+    position: absolute;
+    top: 219px;
+    left: 241px;
+    width: 91px;
+    height: 151px;
+  }
+
+  .svg-tape {
+    position: absolute;
+    top: 477px;
+    right: 97px;
+    width: 142px;
+    height: 88px;
+  }
   
+}
+
+@media(max-width: $desktop-max-width-md) {
+  .section-create-gifo {
+
+
+    .svg-camera {
+      display: none;
+    }
+
+    .svg-camera-light {
+      display: none;
+    }
+
+    .svg-tape {
+      display: none;
+    }
+  }
 }
