@@ -364,20 +364,34 @@ const setUpModal = function (gifo) {
   modalButtonDownload.setAttribute("target", "_blank");
   modalButtonDownload.setAttribute("download", gifo.title + ".mp4");
 
-  // button fav config
-  const modalButtonFav = resetListeners(
-    document.querySelector("#modal-button-fav")
-  );
-
-  if (gifo.isFavorite()) {
-    modalButtonFav.classList.add("favorite");
+  let modalButtonDelete = document.querySelector("#modal-button-delete");
+  let modalButtonFav = document.querySelector("#modal-button-fav");
+  if (gifo.isMyGifo()) {
+    showElement(modalButtonDelete);
+    hideElement(modalButtonFav);
+    modalButtonDelete = resetListeners(modalButtonDelete);
+    modalButtonDelete.addEventListener(
+      "click",
+      buildHandlerGifoDeleteButtonClick(gifo)
+    );
   } else {
-    modalButtonFav.classList.remove("favorite");
+    // button fav config
+    showElement(modalButtonFav);
+    hideElement(modalButtonDelete);
+    modalButtonFav = resetListeners(
+      document.querySelector("#modal-button-fav")
+    );
+
+    if (gifo.isFavorite()) {
+      modalButtonFav.classList.add("favorite");
+    } else {
+      modalButtonFav.classList.remove("favorite");
+    }
+    modalButtonFav.addEventListener(
+      "click",
+      buildHandlerGifoFavButtonClick(gifo)
+    );
   }
-  modalButtonFav.addEventListener(
-    "click",
-    buildHandlerGifoFavButtonClick(gifo)
-  );
 
   // button next & previous config
   gifo.getGallery().setCurrentGifo(gifo);

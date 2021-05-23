@@ -35,7 +35,7 @@
   }
 
   .gif-wrapper {
-    margin-top: 73px;
+    // margin-top: 73px;
     text-align: center;
   }
   .video {
@@ -169,6 +169,7 @@
     .video {
       width: 695px;
       max-width: none;
+      max-height: 500px;
       height: auto;
     }
 

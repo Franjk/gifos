@@ -41,7 +41,7 @@ nav {
     transition: color 0.3s ease;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration-style: underline;
       text-decoration-color: $color-secondary;
       text-decoration-thickness: 3px;
     }
@@ -213,11 +213,11 @@ nav {
 
       &:hover {
         cursor: pointer;
-        text-decoration: underline solid $color-secondary 2px;
+        text-decoration: underline solid $color-secondary 4px;
       }
 
       &:active {
-        text-decoration: underline solid $color-secondary 2px;
+        text-decoration: underline solid $color-secondary 4px;
 
       }
     }

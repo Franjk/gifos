@@ -244,7 +244,8 @@ nav .logo-svg {
 }
 
 .menu-toggle .menu-link:hover {
-  text-decoration: underline;
+  -webkit-text-decoration-style: underline;
+          text-decoration-style: underline;
   -webkit-text-decoration-color: #50e3c2;
           text-decoration-color: #50e3c2;
   text-decoration-thickness: 3px;
@@ -441,12 +442,12 @@ nav .logo-svg {
   }
   .menu-desktop .menu-link:hover {
     cursor: pointer;
-    -webkit-text-decoration: underline solid #50e3c2 2px;
-            text-decoration: underline solid #50e3c2 2px;
+    -webkit-text-decoration: underline solid #50e3c2 4px;
+            text-decoration: underline solid #50e3c2 4px;
   }
   .menu-desktop .menu-link:active {
-    -webkit-text-decoration: underline solid #50e3c2 2px;
-            text-decoration: underline solid #50e3c2 2px;
+    -webkit-text-decoration: underline solid #50e3c2 4px;
+            text-decoration: underline solid #50e3c2 4px;
   }
   .menu-desktop .menu-link.active {
     color: var(--text-light);
@@ -635,11 +636,6 @@ nav .logo-svg {
 .section-main .icon-search-dark {
   -webkit-filter: grayscale(100%) opacity(40%);
           filter: grayscale(100%) opacity(40%);
-}
-
-.section-main .dark-theme .icon-search-dark {
-  -webkit-filter: hue-rotate(50%);
-          filter: hue-rotate(50%);
 }
 
 .section-main .icon-close {
@@ -1282,8 +1278,8 @@ nav .logo-svg {
   color: var(--text-primary);
   text-align: center;
   line-height: 16px;
-  -webkit-text-decoration: underline solid #50e3c2 2px;
-          text-decoration: underline solid #50e3c2 2px;
+  -webkit-text-decoration: underline solid #50e3c2 4px;
+          text-decoration: underline solid #50e3c2 4px;
   background-color: transparent;
   border: none;
 }
@@ -1401,7 +1397,6 @@ nav .logo-svg {
 }
 
 .modal .gif-wrapper {
-  margin-top: 73px;
   text-align: center;
 }
 
@@ -1540,6 +1535,7 @@ nav .logo-svg {
   .modal .video {
     width: 695px;
     max-width: none;
+    max-height: 500px;
     height: auto;
   }
   .modal .footer {
