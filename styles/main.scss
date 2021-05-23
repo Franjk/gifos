@@ -1,13 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap');
+@import 'themes';
 @import 'variables';
-@import 'utilities';
 @import 'mixins';
+@import 'utilities';
 
-@import 'header';
+@import 'section-header';
 @import 'section-main';
 @import 'section-trending';
 @import 'section-footer';
 @import 'section-gallery';
+@import 'section-create-gifo';
+
+@import 'modal';
+@import 'gifo';
 
 
 
@@ -15,17 +20,30 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: $color-primary;
   font-family: $font-primary;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background-blank);
+}
 
 .bottom-bar, .top-bar {
-  background-color: $color-primary;
+  background-color: var(--background-primary);
   width: 100%;
   height: 5px;
 }
 
 .top-bar {
   position: fixed;
+  z-index: 40;
 }
+
+.section-test {
+  padding-top: 150px;
+  
+}
+

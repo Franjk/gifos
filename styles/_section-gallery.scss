@@ -1,5 +1,6 @@
 .section-gallery {
     padding-top: 100px;
+    padding-bottom: 78px;
     text-align: center;
     display: flex;
     flex-flow: column nowrap;
@@ -28,7 +29,7 @@
         font-family: $font-secondary;
         font-size: 20px;
         line-height: 30px;
-        color: $color-primary;
+        color: var(--text-primary);
     }
 
     .gallery {
@@ -49,28 +50,13 @@
         border: 1px solid purple;
     }
 
-    .button {
+    .searched-gifo {
+        width: 156px;
+        height: 120px;
+    }
+
+    .button-container {
         margin-top: 78px;
-        margin-bottom: 78px;
-
-        padding-top: 16px;
-        padding-bottom: 16px;
-        padding-left: 38px;
-        padding-right: 38px;
-
-        border: 1px solid $color-primary;
-        border-radius: 25px;
-        background-color: $color-white;
-
-        font-family: $font-secondary;
-        font-size: 13px;
-        color: $color-primary;
-        font-weight: 700;
-
-        &:hover {
-            background-color: $color-primary;
-            color: $color-white;
-        }
     }
 
     .no-content {
@@ -108,6 +94,11 @@
             padding-top: 60px;    
             padding-left: 21px;
             padding-right: 21px;
+        }
+
+        .searched-gifo {
+            width: 260px;
+            height: 200px;
         }
     }
 }

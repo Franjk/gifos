@@ -4,8 +4,9 @@
     justify-content: center;
     align-items: center;
 
-    background-color: $color-background-light-2;
+    background-color: var(--background-contrast);
     text-align: center;
+    position: relative;
 
     .title {
         padding-top: 46px;
@@ -14,7 +15,7 @@
         font-weight: bold;
         font-size: 20px;
         line-height: 30px;
-        color: $color-primary;
+        color: var(--text-primary);
     }
 
     .subtitle {
@@ -24,7 +25,7 @@
         margin-right: 21px;
         
 
-        color: $color-black;
+        color: var(--text-blank);
         font-family: $font-primary;
         font-size: 16px;
         font-weight: 400;        
@@ -38,24 +39,67 @@
         gap: 22px;
         overflow: auto;
         width: 100%;
+        scroll-behavior: smooth;
 
         padding-top: 32px;
         padding-bottom: 82px;
         padding-left: 22px;
 
-        // borrar
-        .placeholder-img {
-            border: 1px solid purple;
-            background-color: red;
-            // width: 243px;
-            height: 187px;
-            flex: 0 0 243px;
-            
-        }
-
         .trending-gifo {
             height: 187px;
             flex: 0 0 243px;
         }
+
+        &::-webkit-scrollbar {
+            height: 1px;
+        }
+    }
+
+}
+
+@media (min-width: $desktop-min-width) {
+    .section-trending {
+
+        padding-left: 157px;
+        padding-right: 157px;
+
+        .gallery {
+
+            .trending-gifo {
+                height: 275px;
+                flex: 0 0 357px;
+            }
+        }
+
+
+    .gallery-button {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        background-color: green;
+        top: 260px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .gallery-button-previous {
+        background: var(--button-slider-left);
+        left: 5vw;
+  
+        &:hover {
+          background: var(--button-slider-left-hover);
+        }
+      }
+  
+      .gallery-button-next {
+        background: var(--button-slider-right);
+        right: 5vw;
+  
+        &:hover {
+          background: var(--button-slider-right-hover);
+        }
+      }
     }
 }

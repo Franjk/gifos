@@ -2,7 +2,16 @@
 
 @mixin button {
     border-radius: 25px;
-    background-color: white;
+    background-color: transparent;
 
     
+}
+
+@mixin reset-button {
+    border: none;
+    background-color: transparent;
+}
+
+@mixin transition-opacity {
+    transition: opacity 0.5s ease;
 }

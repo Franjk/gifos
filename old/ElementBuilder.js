@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="styles/main.css"
-    />
-  </head>
-  <body>
-    <div class="gif-container section-main">
-      <svg
+export default class ElementBuilder {
+  static buildAutocompletionSearchElement = function (term) {
+    return `
+      <div class="searchbar-result" data-searchterm="${term}">
+        <svg
+        class="icon-search-result"
         width="20px"
         height="20px"
         viewBox="0 0 20 20"
@@ -22,13 +11,12 @@
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
       >
-        <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
         <title>icon-search</title>
         <desc>Created with Sketch.</desc>
         <defs>
           <path
             d="M8.5,0 C13.1944204,0 17,3.80557963 17,8.5 C17,10.4865245 16.3185332,12.3138839 15.1766205,13.7610573 L19.7071068,18.2928932 C20.0976311,18.6834175 20.0976311,19.3165825 19.7071068,19.7071068 C19.3165825,20.0976311 18.6834175,20.0976311 18.2928932,19.7071068 L18.2928932,19.7071068 L13.7610573,15.1766205 C12.3138839,16.3185332 10.4865245,17 8.5,17 C3.80557963,17 0,13.1944204 0,8.5 C0,3.80557963 3.80557963,0 8.5,0 Z M8.5,2 C4.91014913,2 2,4.91014913 2,8.5 C2,12.0898509 4.91014913,15 8.5,15 C10.2704128,15 11.8755097,14.2921984 13.0477521,13.1441339 L13.0928932,13.0928932 C13.1090201,13.0767663 13.1255608,13.0613054 13.1424811,13.0465104 C14.2921984,11.8755097 15,10.2704128 15,8.5 C15,4.91014913 12.0898509,2 8.5,2 Z"
-            id="path-1"
+            id="icon-search-${term}-path-1"
           ></path>
         </defs>
         <g
@@ -38,38 +26,68 @@
           fill="none"
           fill-rule="evenodd"
         >
-          <g id="00-UI-Kit" transform="translate(-637.000000, -518.000000)">
+          <g
+            id="00-UI-Kit"
+            transform="translate(-637.000000, -518.000000)"
+          >
             <g
               id="-Nav-Desktop-Sticky"
               transform="translate(0.000000, 479.000000)"
             >
-              <g id="icon-search" transform="translate(637.000000, 39.000000)">
+              <g
+                id="icon-search"
+                transform="translate(637.000000, 39.000000)"
+              >
                 <mask id="mask-2" fill="white">
-                  <use xlink:href="#path-1"></use>
+                  <use xlink:href="#icon-search-${term}-path-1"></use>
                 </mask>
                 <use
-                  fill="#572EE5"
+                  class="svg-fill"
+                  fill="#9cafc3"
                   fill-rule="nonzero"
-                  xlink:href="#path-1"
+                  xlink:href="#icon-search-${term}-path-1"
                 ></use>
               </g>
             </g>
           </g>
         </g>
       </svg>
+  
+      <p class="searchbar-result-text">${term}</p>
     </div>
+    `;
+  };
 
-    <div class="gifo trending-gifo">
+  static buildTrendingTopicsList = function (trendingTopics) {
+    let innerHtmlTemp = "";
+
+    for (let i = 0; i < trendingTopics.length; i++) {
+      const topic = trendingTopics[i];
+      innerHtmlTemp += `<span class="trending-topic">${topic}</span>`;
+
+      // at the last element of the list we do not add the comma
+      if (i < trendingTopics.length - 1) {
+        innerHtmlTemp += `<span>, </span>`;
+      }
+    }
+
+    return innerHtmlTemp;
+  };
+
+  static buildGifo = function (gifo, classList) {
+    const gifoEl = document.createElement("div");
+    gifoEl.classList = classList;
+    gifoEl.innerHTML = `
       <video
-        class="gifo-video"
-        src="https://media1.giphy.com/media/xUNd9Ob3q13l2dfFXW/giphy-preview.mp4?cid=e9eef11583kkl1qou2o4os9806pvecxjyspsr05q4rzunjhp&amp;rid=giphy-preview.mp4&amp;ct=g"
-        autoplay=""
-        loop=""
+        src="${gifo.imgUrl}"
+        autoplay
+        loop
       ></video>
       <div class="gifo-overlay"></div>
       <div class="gifo-button-group">
         <button class="gifo-button button-fav">
           <svg
+            class="icon-fav"
             width="32px"
             height="32px"
             viewBox="0 0 32 32"
@@ -124,6 +142,7 @@
         </button>
         <button class="gifo-button button-fav-active display-none">
           <svg
+            class="icon-fav-active"
             width="20px"
             height="18px"
             viewBox="0 0 20 18"
@@ -163,13 +182,12 @@
             </g>
           </svg>
         </button>
-        <a
+        <a 
           class="gifo-button button-download"
-          href="https://i.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.mp4"
+          href="${gifo.getDownloadLink()}"
           target="_blank"
-          download
-        >
-          <!-- href="media0.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.mp4?cid=e9eef115hrxw8wgy11lfntuldltoergfxn0355ppm60wec4p&rid=giphy.mp4&ct=g" -->
+          download="${gifo.title}.mp4"
+          >
           <svg
             width="32px"
             height="32px"
@@ -227,10 +245,7 @@
             </g>
           </svg>
         </a>
-        <button
-          class="gifo-button button-max"
-          onclick="DownloadFile('https://i.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.mp4')"
-        >
+        <button class="gifo-button button-max">
           <svg
             width="32px"
             height="32px"
@@ -290,12 +305,11 @@
         </button>
       </div>
       <div class="gifo-description">
-        <p class="gifo-user">User</p>
-        <p class="gifo-title">Titulo</p>
+        <p class="gifo-user">${gifo.username}</p>
+        <p class="gifo-title">${gifo.title}</p>
       </div>
-    </div>
+      `;
 
-    <!-- <script src="src/main.js" type="module"></script> -->
-    <script src="src/test.js"></script>
-  </body>
-</html>
+    return gifoEl;
+  };
+}

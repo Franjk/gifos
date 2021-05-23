@@ -1,4 +1,4 @@
-header {
+.section-header {
   position: fixed;
   z-index: 1;
   width: 100vw;
@@ -10,14 +10,20 @@ nav {
   left: 0;
   width: 100vw;
   height: 95px;
-  background: $color-white;
+  background-color: var(--background-blank);
   padding-left: 16px;
   padding-top: 29px;
+  padding-bottom: 13px;
   z-index: 5;
+  user-select: none;
 
   .logo {
     height: 48.8px;
     width: 48.8px;
+  }
+
+  .logo-svg {
+    fill: var(--text-primary);
   }
 }
 
@@ -28,14 +34,14 @@ nav {
   right: 27px;
   user-select: none;
 
-  a {
+  .menu-link {
     text-decoration: none;
     color: $color-white;
-
+    user-select: none;
     transition: color 0.3s ease;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration-style: underline;
       text-decoration-color: $color-secondary;
       text-decoration-thickness: 3px;
     }
@@ -60,14 +66,14 @@ nav {
     z-index: 20;
   }
 
-  span {
+  span.hamburguer-menu {
     display: block;
     width: 18px;
     height: 2px;
     margin-bottom: 3px;
     position: relative;
 
-    background: $color-primary;
+    background: var(--text-primary);
     border-radius: 3px;
 
     z-index: 10;
@@ -79,25 +85,25 @@ nav {
       background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
   }
 
-  span:first-child {
+  span.hamburguer-menu:first-child {
     transform-origin: 0 0;
   }
 
-  span:nth-last-child(2) {
+  span.hamburguer-menu:nth-last-child(2) {
     transform-origin: 0 100%;
   }
 
-  input:checked ~ span {
+  input:checked ~ span.hamburguer-menu {
     opacity: 1;
     transform: rotate(45deg) translate(6.5px, 3px);
   }
 
-  input:checked ~ span:nth-last-child(3) {
+  input:checked ~ span.hamburguer-menu:nth-last-child(3) {
     opacity: 0;
     transform: rotate(0deg) scale(0.2, 0.2);
   }
 
-  input:checked ~ span:nth-last-child(2) {
+  input:checked ~ span.hamburguer-menu:nth-last-child(2) {
     transform: rotate(-45deg) translate(4px, 4px);
   }
 
@@ -106,6 +112,7 @@ nav {
   }
 }
 
+// The overlay
 .menu {
   position: fixed;
   width: 100vw;
@@ -114,7 +121,7 @@ nav {
 
   top: 0;
   left: 0;
-  background: $color-primary;
+  background: var(--background-primary);
   opacity: 0.9;
   list-style-type: none;
 
@@ -173,8 +180,8 @@ nav {
     padding-right: 100px;
 
     .logo {
-      height: 36px;
-      width: 36px;
+      width: 59.1px;
+      height: 59.1px;
     }
   }
 
@@ -183,33 +190,56 @@ nav {
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 48px;
+    align-items: center;
 
     list-style: none;
 
     li {
-      font-family: 'IBM Plex Mono', monospace;
-      line-height: 28px;
-      font-size: 16px;
-      font-weight: 400;
+      font-family: $font-secondary;
+      line-height: 16px;
+      font-size: 13px;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      color: var(--text-primary);
     }
 
-    a {
+    .menu-link {
       text-decoration: none;
-      color: $color-dark;
-
-      transition: color 0.3s ease;
+      color: inherit;
+      text-decoration-color: rgba(0,0,0, 0);
+      transition: text-decoration 0.5s ease;
+      user-select: none;
 
       &:hover {
-        color: $color-secondary;
-        text-decoration: line-through;
-        font-weight: 500;
+        cursor: pointer;
+        text-decoration: underline solid $color-secondary 4px;
       }
 
       &:active {
-        color: rgb(6, 10, 36);
-        color: rgba(6, 10, 36, 0.56);
-        text-decoration: line-through;
+        text-decoration: underline solid $color-secondary 4px;
+
       }
     }
+
+    .menu-link.active {
+      color: var(--text-light);
+    }
+
+    .create-gifo-link {
+      display: block;
+      width: 54px;
+      height: 54px;
+      background: var(--button-crear-gifo);
+
+      &:hover {
+        background: var(--button-crear-gifo-hover);
+      }
+    }
+    .create-gifo-link.active {
+      background: var(--button-crear-gifo-active);
+    }
+
+
   }
 }

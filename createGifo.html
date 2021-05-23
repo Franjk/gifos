@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="icon" type="image/svg+xml" href="./assets/logo-mobile.svg" />
-    <title>Gifos - Favoritos</title>
+    <title>Gifos - Crear Gifo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -14,85 +14,6 @@
     />
   </head>
   <body>
-    <!-- section modal -->
-    <div id="modal" class="modal display-none">
-      <div class="button-close-wrapper">
-        <button id="modal-button-close" class="button-close">
-          <!-- added icon with css -->
-        </button>
-      </div>
-
-      <div class="gif-wrapper">
-        <button
-          id="modal-button-previous"
-          class="gallery-button gallery-button-previous"
-        ></button>
-
-        <video
-          id="modal-video"
-          class="video"
-          src="https://media0.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.mp4?cid=e9eef115hrxw8wgy11lfntuldltoergfxn0355ppm60wec4p&rid=giphy.mp4&ct=g"
-          autoplay
-          loop
-        ></video>
-
-        <button
-          id="modal-button-next"
-          class="gallery-button gallery-button-next"
-        ></button>
-      </div>
-
-      <div class="footer">
-        <div class="description">
-          <p id="modal-username" class="username">User</p>
-          <p id="modal-title" class="title">Titulo GIFO</p>
-        </div>
-        <div class="button-group">
-          <button id="modal-button-fav" class="button-card button-fav favorite">
-            <!-- icon-fav -->
-            <img
-              class="icon-fav"
-              src="./assets/icon-fav.svg"
-              alt="icon favorites"
-            />
-
-            <!-- icon-fav-active -->
-            <img
-              class="icon-fav-active"
-              src="./assets/icon-fav-active.svg"
-              alt="icon favorites active"
-            />
-          </button>
-
-          <button
-            id="modal-button-delete"
-            class="button-card button-delete display-none"
-          >
-            <!-- icon-delete -->
-            <img
-              class="icon-delete"
-              src="./assets/icon-trash-hover.svg"
-              alt="icon trash"
-            />
-          </button>
-
-          <a
-            id="modal-button-download"
-            class="button-card"
-            href="#"
-            target="_blank"
-            download
-          >
-            <!-- icon-download -->
-            <img src="./assets/icon-download.svg" alt="icon download" />
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- modal overlay -->
-    <div id="modal-overlay" class="modal-overlay display-none"></div>
-
     <!-- top bar -->
     <div class="top-bar"></div>
 
@@ -101,14 +22,14 @@
       <div id="menu-toggle" class="menu-toggle">
         <input type="checkbox" />
 
-        <span class="hamburguer-menu"></span>
-        <span class="hamburguer-menu"></span>
-        <span class="hamburguer-menu"></span>
+        <span></span>
+        <span></span>
+        <span></span>
 
         <!-- mobile menu -->
         <ul id="menu" class="menu">
           <li>
-            <span class="menu-link dark-mode-toggler">Modo Nocturno</span>
+            <span class="dark-mode-toggler menu-link">Modo Nocturno</span>
           </li>
           <li><a class="menu-link" href="./favorites.html">Favoritos</a></li>
           <li><a class="menu-link" href="./myGifos.html">Mis GIFOS</a></li>
@@ -181,76 +102,135 @@
             <span class="menu-link dark-mode-toggler">Modo Nocturno</span>
           </li>
           <li>
-            <a class="active menu-link" href="./favorites.html">Favoritos</a>
+            <a class="menu-link" href="./favorites.html">Favoritos</a>
           </li>
           <li><a class="menu-link" href="./myGifos.html">Mis GIFOS</a></li>
           <li>
-            <a class="create-gifo-link menu-link" href="./createGifo.html"> </a>
+            <a
+              class="create-gifo-link menu-link active"
+              href="./createGifo.html"
+            >
+            </a>
           </li>
         </ul>
       </nav>
     </header>
 
-    <!-- section gallery -->
-    <section class="section-gallery">
-      <!-- icon favorites -->
-      <img
-        class="title-icon"
-        src="./assets/icon-favoritos.svg"
-        alt="icon favoritos"
-      />
+    <!-- section create-gifo -->
+    <section class="section-create-gifo">
+      <!-- screen -->
+      <div class="screen">
+        <div id="description-container" class="description-container">
+          <h2 id="screen-title" class="screen-title">
+            Aquí podrás<br />crear tus propios
+            <span class="text-secondary">GIFOS</span>
+          </h2>
+          <p id="screen-subtitle" class="screen-subtitle">
+            ¡Crea tu GIFO en sólo 3 pasos!<br />sólo necesitas una cámara para
+            grabar un video
+          </p>
+        </div>
 
-      <!-- title -->
-      <h1 id="search-term-title" class="title">Favoritos</h1>
+        <div id="video-container" class="video-container display-none">
+          <video id="video" class="recorded-screen"></video>
+          <img
+            src="./assets/placeholder.gif"
+            alt="image placeholder"
+            id="img-gif"
+            class="recorded-screen display-none"
+          />
+          <div
+            id="video-status-container"
+            class="video-status-container display-none"
+          >
+            <img
+              id="video-status-icon"
+              class="video-status-icon"
+              src="./assets/loader.svg"
+              alt="loader"
+            />
+            <p id="video-status-description" class="video-status-description">
+              Estamos subiendo tu GIFO
+            </p>
 
-      <!-- gallery -->
-      <div id="gifos-gallery" class="gallery">
-        <!-- here the resulting gif of the search are appended dynamically
-          sample gif:     
-          <div class="sample-gif"></div>
-        -->
+            <div
+              id="video-status-button-group"
+              class="button-group display-none"
+            >
+              <button id="button-download" class="button-card-overlay">
+                <img
+                  class="icon-download"
+                  src="./assets/icon-download-hover.svg"
+                  alt="download"
+                />
+              </button>
+              <button id="button-link" class="button-card-overlay">
+                <img
+                  class="icon-hover"
+                  src="./assets/icon-link-hover.svg"
+                  alt="link"
+                />
+              </button>
+            </div>
+          </div>
+          <div id="video-overlay" class="video-overlay display-none"></div>
+        </div>
+        <div class="corner corner-top-left"></div>
+        <div class="corner corner-top-right"></div>
+        <div class="corner corner-bottom-left"></div>
+        <div class="corner corner-bottom-right"></div>
       </div>
 
-      <!-- view more button -->
-      <div class="button-container">
-        <button id="view-more-button" class="button-pill display-none">
-          VER MÁS
+      <!-- screen footer -->
+      <div class="footer">
+        <!-- placeholder el -->
+        <div class="placeholder"></div>
+
+        <!-- pagination -->
+        <div class="pagination-group">
+          <button id="step-1" class="button-circle pagination-button">1</button>
+          <button id="step-2" class="button-circle pagination-button">2</button>
+          <button id="step-3" class="button-circle pagination-button">3</button>
+        </div>
+
+        <!-- video action -->
+        <div class="video-action-container">
+          <span id="timer" class="timer display-none">00:00:00</span>
+          <button
+            id="repeat-recording-button"
+            class="repeat-recording-button display-none"
+          >
+            REPETIR CAPTURA
+          </button>
+        </div>
+      </div>
+
+      <!-- divisor -->
+      <div class="divisor"></div>
+
+      <!-- buttons -->
+      <div class="action-button-container">
+        <button id="action-button" class="action-button button-pill">
+          COMENZAR
         </button>
       </div>
 
-      <!-- no content -->
-      <div id="no-content" class="no-content display-none">
-        <!-- no-content-icon -->
-        <img
-          src="./assets/icon-fav-sin-contenido.svg"
-          alt="icon fav sin contenido"
-          class="no-content-icon"
-        />
+      <!-- svgs -->
 
-        <p class="no-content-text">
-          ¡Guarda tu primer GIFO en Favoritos para que se muestre aquí!
-        </p>
+      <!-- camera & light -->
+      <div class="svg-camera">
+        <!-- <img class="svg-camera" src="./assets/camara.svg" alt="camera" /> -->
       </div>
-    </section>
-
-    <!-- section trending -->
-    <section class="section-trending">
-      <!-- title & subtitle -->
-      <h2 class="title">Trending GIFOS</h2>
-      <h3 class="subtitle">
-        Mira los últimos <br class="mobile-only" />GIFOS de nuestra comunidad
-      </h3>
-
-      <!-- gallery -->
-      <div
-        id="trending-gallery-button-previous"
-        class="gallery-button gallery-button-previous"
-      ></div>
-      <div id="trending-gifos-gallery" class="gallery"></div>
-      <div
-        id="trending-gallery-button-next"
-        class="gallery-button gallery-button-next"
-      ></div>
+      <div class="svg-camera-light">
+        <!-- <img
+          class="svg-camera-light"
+          src="./assets/element-luz-camara.svg"
+          alt="camera light"
+        /> -->
+      </div>
+      <div class="svg-tape">
+        <!-- <img class="svg-tape" src="./assets/pelicula.svg" alt="tape" /> -->
+      </div>
     </section>
 
     <!-- section footer -->
@@ -290,6 +270,7 @@
     <!-- bottom bar -->
     <div class="bottom-bar"></div>
 
-    <script src="src/favorites.js" type="module"></script>
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+    <script src="src/createGifo.js" type="module"></script>
   </body>
 </html>

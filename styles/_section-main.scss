@@ -16,7 +16,7 @@
         font-weight: bold;
         font-size: 25px;
         line-height: 33px;
-        color: $color-primary;
+        color: var(--text-primary);
     }
 
     .searchblock {
@@ -34,58 +34,123 @@
         }
 
 
-        &-searchbar {
-           
-            width: 334px;
-            height: 50px;
-
-            padding-top: 15px;
-            padding-left: 55px;
-            padding-right: 20px;
-
-            background-color: $color-white;
-            border: 1px solid $color-primary;
-            border-radius: 27px;
-
-            &-form {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
-            }
-    
-
-            &-input {
-                border: none;
-                outline: none;
-             
-                font-family: $font-primary;
-                font-size: 16px;
-                line-height: 19px;
-                color: $color-dark;
-            }
-
-            &-button {
-                border: none;
-                background-color: transparent;
-            }
-
-            &-divisor {
-                width: 505px;
-                height: 3px;
-                background-color: $color-light;
-            }
-
-            &-results {
-
-            }
-        }
-
-        .searchbar-expanded {
-            height: 200px;
-        }
 
     }
 
+    .searchbar {
+           
+        width: 334px;
+        padding-top: 15px;
+        padding-bottom: 13px;
+
+        background-color: var(--background-blank);
+        border: 1px solid var(--text-primary);
+        border-radius: 27px;
+
+        &-form {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            margin-left: 19px;
+            margin-right: 20px;
+        }
+
+        &-input-group {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            height: 22px;
+        }
+
+
+        &-input {
+            margin-left: 14px;
+
+            border: none;
+            outline: none;
+            background-color: var(--background-blank);
+            
+            font-family: $font-primary;
+            font-size: 16px;
+            line-height: 19px;
+            color: var(--text-blank);
+
+        }
+
+        &-button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        &-expanded {
+            margin-bottom: 55px;
+        }
+
+        &-divisor {
+            width: 90%;
+            height: 1px;
+            background-color: var(--text-light);
+            margin: 5px auto;
+        }
+
+        &-result-group {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            padding-top: 12px;
+            padding-bottom: 18px;
+            width: 100%;
+
+        }
+
+        &-result {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-start;
+            align-items: center;
+
+            padding-left: 23.6px;
+            width: 100%;
+            cursor: pointer;
+            margin-bottom: 10px;
+
+            &-text {
+                margin-left: 14.6px;
+                font-family: $font-primary;
+                font-size: 16px;
+                line-height: 19px;
+                color: $color-light;
+            }
+        }
+    }
+    
+    .button-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .icon-search-dark {
+        filter: grayscale(100%) opacity(40%);
+
+    }
+
+    .icon-close {
+        padding: 5px;
+    }
+
+    .icon-search-result {
+        width: 15.8px;
+        height: 15.8px;
+    }
+    
+    .icon-search-result.dark-theme-hide {
+        filter: grayscale(100%) opacity(40%);
+    }
 
     .trending {
         padding-top: 31px;
@@ -98,7 +163,7 @@
             font-weight: bold;
             font-size: 16px;
             line-height: 25px;
-            color: $color-primary;
+            color: var(--text-primary);
         }
 
         &-topics {
@@ -106,8 +171,21 @@
             font-weight: normal;
             font-size: 14px;
             line-height: 25px;
-            color: $color-primary;
+            color: var(--text-primary);
             
+        }
+
+        &-topic {
+            font-family: $font-secondary;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 25px;
+            color: var(--text-primary);
+
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
         }
     }
 }
@@ -129,19 +207,19 @@
                 width: 399px;
                 height: 190px;
             }
-    
-            &-searchbar {
-                width: 551px;
-                height: 50px;
-    
-                padding-left: 55px;
-                padding-right: 20px;
-    
-                background-color: $color-white;
-                border: 1px solid $color-primary;
-                border-radius: 27px;
 
-            }
+        }
+
+            
+        .searchbar {
+            width: 551px;
+
+            padding-top: 15px;
+            padding-bottom: 13px;
+
+            background-color: var(--background-blank);
+            border: 1px solid var(--text-primary);
+            border-radius: 27px;
         }
     }
 

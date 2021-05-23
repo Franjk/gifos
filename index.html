@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>gifos</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/logo-mobile.svg" />
+    <title>Gifos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -13,26 +14,109 @@
     />
   </head>
   <body>
+    <!-- section modal -->
+    <div id="modal" class="modal display-none">
+      <div class="button-close-wrapper">
+        <button id="modal-button-close" class="button-close">
+          <!-- <img src="./assets/close.svg" alt="close button" /> -->
+        </button>
+      </div>
+
+      <div class="gif-wrapper">
+        <button
+          id="modal-button-previous"
+          class="gallery-button gallery-button-previous"
+        ></button>
+
+        <video
+          id="modal-video"
+          class="video"
+          src="https://media0.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.mp4?cid=e9eef115hrxw8wgy11lfntuldltoergfxn0355ppm60wec4p&rid=giphy.mp4&ct=g"
+          autoplay
+          loop
+        ></video>
+
+        <button
+          id="modal-button-next"
+          class="gallery-button gallery-button-next"
+        ></button>
+      </div>
+
+      <div class="footer">
+        <div class="description">
+          <p id="modal-username" class="username">User</p>
+          <p id="modal-title" class="title">Titulo GIFO</p>
+        </div>
+        <div class="button-group">
+          <button id="modal-button-fav" class="button-card button-fav favorite">
+            <!-- icon-fav -->
+            <img
+              class="icon-fav"
+              src="./assets/icon-fav.svg"
+              alt="icon favorites"
+            />
+
+            <!-- icon-fav-active -->
+            <img
+              class="icon-fav-active"
+              src="./assets/icon-fav-active.svg"
+              alt="icon favorites active"
+            />
+          </button>
+
+          <button
+            id="modal-button-delete"
+            class="button-card button-delete display-none"
+          >
+            <!-- icon-delete -->
+            <img
+              class="icon-delete"
+              src="./assets/icon-trash-hover.svg"
+              alt="icon trash"
+            />
+          </button>
+
+          <a
+            id="modal-button-download"
+            class="button-card"
+            href="#"
+            target="_blank"
+            download
+          >
+            <!-- icon-download -->
+            <img src="./assets/icon-download.svg" alt="icon download" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal overlay -->
+    <div id="modal-overlay" class="modal-overlay display-none"></div>
+
     <!-- top bar -->
     <div class="top-bar"></div>
 
     <!-- header -->
-    <header>
+    <header class="section-header">
       <div id="menu-toggle" class="menu-toggle">
         <input type="checkbox" />
 
-        <span></span>
-        <span></span>
-        <span></span>
+        <span class="hamburguer-menu"></span>
+        <span class="hamburguer-menu"></span>
+        <span class="hamburguer-menu"></span>
 
+        <!-- mobile menu -->
         <ul id="menu" class="menu">
-          <li><a href="#darkMode">Modo Nocturno</a></li>
-          <li><a href="./favorites.html">Favoritos</a></li>
-          <li><a href="./myGifos.html">Mis GIFOS</a></li>
+          <li>
+            <span class="dark-mode-toggler menu-link">Modo Nocturno</span>
+          </li>
+          <li><a class="menu-link" href="./favorites.html">Favoritos</a></li>
+          <li><a class="menu-link" href="./myGifos.html">Mis GIFOS</a></li>
         </ul>
       </div>
       <nav>
         <a href="./index.html">
+          <!-- logo -->
           <svg
             class="logo"
             width="63px"
@@ -42,8 +126,7 @@
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
           >
-            <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-            <title>logo-desktop</title>
+            <title>Gifos</title>
             <desc>Created with Sketch.</desc>
             <defs>
               <polygon
@@ -52,16 +135,13 @@
               ></polygon>
             </defs>
             <g
-              id="GIFOS"
+              id="GIFOS1"
               stroke="none"
               stroke-width="1"
               fill="none"
               fill-rule="evenodd"
             >
-              <g
-                id="00-UI-Kit"
-                transform="translate(-156.000000, -2463.000000)"
-              >
+              <g id="g1" transform="translate(-156.000000, -2463.000000)">
                 <g
                   id="logo-desktop"
                   transform="translate(156.000000, 2463.000000)"
@@ -78,7 +158,8 @@
                       </mask>
                       <g id="Clip-3"></g>
                       <text
-                        id="GIFOS"
+                        id="GIFOS2"
+                        class="logo-svg"
                         mask="url(#mask-2)"
                         font-family="Roboto-Black, Roboto"
                         font-size="18"
@@ -94,14 +175,23 @@
             </g>
           </svg>
         </a>
+        <!-- desktop menu -->
         <ul id="menu-desktop" class="menu-desktop">
-          <li><a href="#darkMode">Modo Nocturno</a></li>
-          <li><a href="./favorites.html">Favoritos</a></li>
-          <li><a href="./myGifos.html">Mis GIFOS</a></li>
+          <li>
+            <span class="menu-link dark-mode-toggler">Modo Nocturno</span>
+          </li>
+          <li>
+            <a class="menu-link" href="./favorites.html">Favoritos</a>
+          </li>
+          <li><a class="menu-link" href="./myGifos.html">Mis GIFOS</a></li>
+          <li>
+            <a class="create-gifo-link menu-link" href="./createGifo.html"> </a>
+          </li>
         </ul>
       </nav>
     </header>
 
+    <!-- section main -->
     <section class="section-main">
       <!-- title -->
       <h1>
@@ -110,195 +200,138 @@
       </h1>
 
       <!-- searchbar -->
+
       <div class="searchblock">
         <img
           class="searchblock-img"
           src="./assets/ilustra_header.svg"
           alt="A group of friends hugging each other"
         />
-        <div class="searchblock-searchbar searchbar-expanded">
-          <form class="searchblock-searchbar-form" action="" method="GET">
-            <input
-              type="text"
-              id="searchbar"
-              class="searchblock-searchbar-input"
-              placeholder="Busca GIFOS y más"
-            />
-            <button type="submit" class="searchblock-searchbar-button">
-              <img src="./assets/icon-search.svg" alt="lupa" />
+        <div id="searchbar" class="searchbar">
+          <form
+            id="searchbar-form"
+            class="searchbar-form"
+            action="#"
+            method="GET"
+            autocomplete="off"
+          >
+            <div class="searchbar-input-group">
+              <img
+                class="
+                  button-icon
+                  active-search-show
+                  display-none
+                  icon-search-dark
+                  dark-theme-hide
+                "
+                src="./assets/icon-search.svg"
+                alt="icon search"
+              />
+
+              <img
+                class="
+                  button-icon
+                  active-search-show
+                  display-none
+                  icon-search
+                  dark-theme-show
+                "
+                src="./assets/icon-search-mod-noc.svg"
+                alt="icon search"
+              />
+
+              <input
+                type="text"
+                id="searchbar-input"
+                name="searchbar-input"
+                class="searchbar-input"
+                placeholder="Busca GIFOS y más"
+              />
+            </div>
+            <button type="submit" class="searchbar-button active-search-hide">
+              <!-- icon search -->
+              <img
+                class="button-icon dark-theme-hide"
+                src="./assets/icon-search.svg"
+                alt="icon search"
+              />
+
+              <img
+                class="button-icon dark-theme-show"
+                src="./assets/icon-search-mod-noc.svg"
+                alt="icon search"
+              />
+            </button>
+            <button
+              id="searchbar-button-close"
+              type="submit"
+              class="searchbar-button active-search-show display-none"
+            >
+              <!-- icon close -->
+              <img
+                class="button-icon icon-close dark-theme-hide"
+                src="./assets/close.svg"
+                alt="icon close"
+              />
+
+              <img
+                class="dark-theme-show button-icon icon-close"
+                src="./assets/close-modo-noct.svg"
+                alt="icon close"
+              />
             </button>
           </form>
-          <!-- <div class="searchblock-searchbar-divisor"></div> -->
-          <div class="searchblock-searchbar-results"></div>
+          <div class="searchbar-divisor active-search-show display-none"></div>
+          <div
+            id="searchbar-result-group"
+            class="searchbar-result-group active-search-show display-none"
+          ></div>
         </div>
       </div>
 
       <!-- trending -->
-      <div class="trending">
+      <div class="trending active-search-hide">
         <h3 class="trending-title">Trending:</h3>
         <!-- el contenido de .trending-topics es un placeholder, luego se llenara con js -->
-        <div id="trending-topics-list" class="trending-topics">
-          Reactions, Entertainment, Sports, Stickers, Artists
-        </div>
+        <div id="trending-topics-list" class="trending-topics"></div>
       </div>
     </section>
 
     <!-- section gallery -->
-    <section class="section-gallery">
+    <section class="section-gallery onsearch-show display-none">
       <!-- section divider -->
       <div class="divider"></div>
 
       <!-- title -->
-      <h1 class="title">Search text</h1>
+      <h1 id="search-term-title" class="title">Search text</h1>
 
       <!-- gallery -->
-      <div class="gallery">
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
+      <div id="gifos-gallery" class="gallery">
+        <!-- here the resulting gif of the search are appended dynamically
+          sample gif:     
+          <div class="sample-gif"></div>
+        -->
       </div>
 
       <!-- view more button -->
-      <button class="button button-primary">VER MÁS</button>
+      <div class="button-container">
+        <button id="view-more-button" class="button-pill display-none">
+          VER MÁS
+        </button>
+      </div>
 
       <!-- no content -->
-      <div class="no-content">
-        <svg
+      <div id="no-content" class="no-content display-none">
+        <img
           class="no-content-icon"
-          width="150px"
-          height="150px"
-          viewBox="0 0 150 150"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-        >
-          <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-          <title>icon-busqueda-sin-resultado</title>
-          <desc>Created with Sketch.</desc>
-          <g
-            id="GIFOS"
-            stroke="none"
-            stroke-width="1"
-            fill="none"
-            fill-rule="evenodd"
-          >
-            <g
-              id="04-Busqueda-sin-resultados"
-              transform="translate(-645.000000, -962.000000)"
-            >
-              <g
-                id="icon-busqueda-sin-resultado"
-                transform="translate(645.000000, 962.000000)"
-              >
-                <circle
-                  id="Oval-3"
-                  fill="#F3F5F8"
-                  fill-rule="nonzero"
-                  cx="75"
-                  cy="75"
-                  r="75"
-                ></circle>
-                <g
-                  id="ouch"
-                  transform="translate(38.000000, 37.000000)"
-                  fill="#50E3C2"
-                >
-                  <polygon
-                    id="Fill-2"
-                    points="70.4545455 14.3939394 70.4545455 19.0342193 70.4545455 23.6744992 70.4545455 28.3140943 70.4545455 32.9543742 70.4545455 37.5946542 70.4545455 42.2349341 70.4545455 46.875214 70.4545455 51.5151515 75 51.5151515 75 14.3939394"
-                  ></polygon>
-                  <polygon
-                    id="Fill-3"
-                    points="65.9090909 56.0606061 70.4545455 56.0606061 70.4545455 51.5151515 65.9090909 51.5151515"
-                  ></polygon>
-                  <polygon
-                    id="Fill-4"
-                    points="65.9090909 13.6363636 70.4545455 13.6363636 70.4545455 9.09090909 65.9090909 9.09090909"
-                  ></polygon>
-                  <polygon
-                    id="Fill-5"
-                    points="60.6060606 60.6060606 65.1515152 60.6060606 65.1515152 56.0606061 60.6060606 56.0606061"
-                  ></polygon>
-                  <polygon
-                    id="Fill-6"
-                    points="60.6060606 9.09090909 65.1515152 9.09090909 65.1515152 4.54545455 60.6060606 4.54545455"
-                  ></polygon>
-                  <polygon
-                    id="Fill-7"
-                    points="55.9089523 60.6060606 55.9089523 65.4042765 51.2121905 65.4042765 51.2121905 60.6060606 46.5154288 60.6060606 41.8183205 60.6060606 37.1212121 60.6060606 32.4241038 60.6060606 27.7273421 60.6060606 23.0302337 60.6060606 18.3331254 60.6060606 13.6363636 60.6060606 13.6363636 65.4042765 18.3331254 65.4042765 23.0302337 65.4042765 27.7273421 65.4042765 32.4241038 65.4042765 37.1212121 65.4042765 41.8183205 65.4042765 46.5154288 65.4042765 46.5154288 70.2024923 51.2121905 70.2024923 55.9089523 70.2024923 55.9089523 75 60.6060606 75 60.6060606 70.2024923 60.6060606 65.4042765 60.6060606 60.6060606"
-                  ></polygon>
-                  <polygon
-                    id="Fill-8"
-                    points="13.6363636 0 13.6363636 4.54545455 18.3330907 4.54545455 23.030511 4.54545455 27.7272381 4.54545455 32.4239651 4.54545455 37.1213854 4.54545455 41.8181125 4.54545455 46.5151862 4.54545455 51.2119132 4.54545455 55.9086403 4.54545455 60.6060606 4.54545455 60.6060606 0"
-                  ></polygon>
-                  <polygon
-                    id="Fill-9"
-                    points="9.09090909 60.6060606 13.6363636 60.6060606 13.6363636 56.0606061 9.09090909 56.0606061"
-                  ></polygon>
-                  <polygon
-                    id="Fill-10"
-                    points="9.09090909 9.09090909 13.6363636 9.09090909 13.6363636 4.54545455 9.09090909 4.54545455"
-                  ></polygon>
-                  <polygon
-                    id="Fill-11"
-                    points="4.54545455 56.0606061 9.09090909 56.0606061 9.09090909 51.5151515 4.54545455 51.5151515"
-                  ></polygon>
-                  <polygon
-                    id="Fill-12"
-                    points="4.54545455 13.6363636 9.09090909 13.6363636 9.09090909 9.09090909 4.54545455 9.09090909"
-                  ></polygon>
-                  <polygon
-                    id="Fill-13"
-                    points="0 14.3939394 0 19.0342193 0 23.6744992 0 28.3140943 0 32.9543742 0 37.5946542 0 42.2349341 0 46.875214 0 51.5151515 4.54545455 51.5151515 4.54545455 46.875214 4.54545455 42.2349341 4.54545455 37.5946542 4.54545455 32.9543742 4.54545455 28.3140943 4.54545455 23.6744992 4.54545455 19.0342193 4.54545455 14.3939394"
-                  ></polygon>
-                  <path
-                    d="M22.2449707,32.2066462 C22.2449707,29.928145 20.800488,28.21457 18.5791087,28.21457 C16.3580742,28.21457 14.9311776,29.928145 14.9311776,32.2066462 C14.9311776,34.4666994 16.3580742,36.1987224 18.5791087,36.1987224 C20.800488,36.1987224 22.2449707,34.4666994 22.2449707,32.2066462 M12.2949707,32.2066462 C12.2949707,28.5428051 14.9494535,25.9179689 18.5791087,25.9179689 C22.2266949,25.9179689 24.8815225,28.5428051 24.8815225,32.2066462 C24.8815225,35.8701392 22.2266949,38.4949754 18.5791087,38.4949754 C14.9494535,38.4949754 12.2949707,35.8701392 12.2949707,32.2066462"
-                    id="Fill-14"
-                  ></path>
-                  <path
-                    d="M26.3246259,33.427973 L26.3246259,26.1183907 L28.9249707,26.1183907 L28.9249707,33.3367772 C28.9249707,35.0319042 29.9001432,36.1986527 31.7601432,36.1986527 C33.6201432,36.1986527 34.5773845,35.0319042 34.5773845,33.3367772 L34.5773845,26.1183907 L37.1953156,26.1183907 L37.1953156,33.409525 C37.1953156,36.4356921 35.4260052,38.4952539 31.7601432,38.4952539 C28.0946259,38.4952539 26.3246259,36.4172441 26.3246259,33.427973"
-                    id="Fill-16"
-                  ></path>
-                  <path
-                    d="M38.6209018,32.2066462 C38.6209018,28.4700573 41.4198673,25.9179689 45.0315914,25.9179689 C47.6860742,25.9179689 49.2209018,27.3760565 50.0698673,28.88914 L47.866419,29.9827928 C47.3612466,28.9984357 46.2774535,28.21457 45.0315914,28.21457 C42.8467638,28.21457 41.2574535,29.909697 41.2574535,32.2066462 C41.2574535,34.5035954 42.8467638,36.1987224 45.0315914,36.1987224 C46.2774535,36.1987224 47.3612466,35.4333047 47.866419,34.4304996 L50.0698673,35.5060524 C49.2029707,37.0187879 47.6860742,38.4949754 45.0315914,38.4949754 C41.4198673,38.4949754 38.6209018,35.9432351 38.6209018,32.2066462"
-                    id="Fill-18"
-                  ></path>
-                  <polygon
-                    id="Fill-20"
-                    points="59.4951087 38.2765581 59.4951087 33.1727293 53.8068328 33.1727293 53.8068328 38.2765581 51.2423501 38.2765581 51.2423501 26.1182862 53.8068328 26.1182862 53.8068328 30.8942281 59.4951087 30.8942281 59.4951087 26.1182862 62.0771776 26.1182862 62.0771776 38.2765581"
-                  ></polygon>
-                </g>
-                <polygon
-                  id="Fill-1"
-                  fill="#F3F5F8"
-                  points="81.0002582 89 75.0005164 89 68.9997418 89 63 89 63 89.0034425 63 95 68.9997418 95 75.0005164 95 81.0002582 95 87 95 87 89.0034425 87 89"
-                ></polygon>
-                <polygon
-                  id="Fill-2-Copy"
-                  fill="#50E3C2"
-                  points="73 42 77 42 77 38 73 38"
-                ></polygon>
-              </g>
-            </g>
-          </g>
-        </svg>
+          src="./assets/icon-busqueda-sin-resultado.svg"
+          alt="busqueda sin resultados"
+        />
         <p class="no-content-text">Intenta con otra búsqueda.</p>
       </div>
     </section>
 
+    <!-- section trending -->
     <section class="section-trending">
       <!-- title & subtitle -->
       <h2 class="title">Trending GIFOS</h2>
@@ -307,157 +340,44 @@
       </h3>
 
       <!-- gallery -->
+      <div
+        id="trending-gallery-button-previous"
+        class="gallery-button gallery-button-previous"
+      ></div>
       <div id="trending-gifos-gallery" class="gallery"></div>
+      <div
+        id="trending-gallery-button-next"
+        class="gallery-button gallery-button-next"
+      ></div>
     </section>
 
+    <!-- section footer -->
     <footer class="section-footer">
       <!-- share -->
       <div class="share-group">
         <p class="share-text">Compartir en:</p>
 
         <div class="share-icon-group">
-          <svg
-            class="icon icon-facebook"
-            width="8px"
-            height="17px"
-            viewBox="0 0 8 17"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+          <a
+            class="icon-link icon-facebook"
+            href="https://facebook.com"
+            target="_blank"
           >
-            <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-            <title>icon_facebook</title>
-            <desc>Created with Sketch.</desc>
-            <g
-              id="GIFOS"
-              stroke="none"
-              stroke-width="1"
-              fill="none"
-              fill-rule="evenodd"
-            >
-              <g
-                id="00-UI-Kit"
-                transform="translate(-1027.000000, -2780.000000)"
-              >
-                <g
-                  id="icon_facebook"
-                  transform="translate(1018.000000, 2778.000000)"
-                >
-                  <g></g>
-                  <path
-                    class="icon-fill"
-                    d="M10.715503,19 L10.715503,10.4988913 L9,10.4988913 L9,7.56971739 L10.715503,7.56971739 L10.715503,5.81095652 C10.715503,3.42171739 11.6832226,2 14.4354173,2 L16.7259217,2 L16.7259217,4.93028261 L15.2944004,4.93028261 C14.2232227,4.93028261 14.1521393,5.3393913 14.1521393,6.10365217 L14.1475647,7.56971739 L16.7417571,7.56971739 L16.4380691,10.4988913 L14.1475647,10.4988913 L14.1475647,19 L10.715503,19 Z"
-                    id="Clip-4"
-                    fill="#CDD6E0"
-                  ></path>
-                  <rect
-                    id="Rectangle"
-                    x="0"
-                    y="0"
-                    width="20"
-                    height="20"
-                  ></rect>
-                </g>
-              </g>
-            </g>
-          </svg>
+          </a>
 
-          <svg
-            class="icon icon-twitter"
-            width="18px"
-            height="17px"
-            viewBox="0 0 18 17"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+          <a
+            class="icon-link icon-twitter"
+            href="https://twitter.com"
+            target="_blank"
           >
-            <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-            <title>icon-twitter</title>
-            <desc>Created with Sketch.</desc>
-            <g
-              id="GIFOS"
-              stroke="none"
-              stroke-width="1"
-              fill="none"
-              fill-rule="evenodd"
-            >
-              <g
-                id="00-UI-Kit"
-                transform="translate(-1057.000000, -2780.000000)"
-              >
-                <g id="Footer" transform="translate(1056.000000, 2778.000000)">
-                  <g id="icon-twitter">
-                    <rect
-                      id="Rectangle-Copy-9"
-                      x="0"
-                      y="0"
-                      width="20"
-                      height="20"
-                    ></rect>
-                    <path
-                      class="icon-fill"
-                      d="M18.5024286,2.29975862 C17.788,2.76875032 16.999,3.10811669 16.1568571,3.29175259 C15.4848571,2.49599699 14.5244286,2 13.4615714,2 C11.4224286,2 9.77028571,3.83140812 9.77028571,6.08994976 C9.77028571,6.41086252 9.80071429,6.7232236 9.86414286,7.02163195 C6.796,6.85059851 4.07542857,5.22398043 2.25314286,2.74759619 C1.93514286,3.35386474 1.75342857,4.05600204 1.75342857,4.80494849 C1.75342857,6.2236259 2.40528571,7.47577075 3.39614286,8.21031439 C2.791,8.18961034 2.22142857,8.0032739 1.72257143,7.69901441 L1.72257143,7.74942426 C1.72257143,9.73161187 2.99457143,11.3852352 4.68614286,11.7597085 C4.37542857,11.8555772 4.05014286,11.9037366 3.712,11.9037366 C3.47457143,11.9037366 3.24185714,11.8789818 3.01814286,11.8312724 C3.487,13.4556401 4.85114286,14.6398216 6.46771429,14.6713278 C5.203,15.7690925 3.61085714,16.4221702 1.88114286,16.4221702 C1.58328571,16.4221702 1.28842857,16.4046167 1,16.3659092 C2.63457143,17.525786 4.57514286,18.2031684 6.661,18.2031684 C13.4542857,18.2031684 17.167,11.9703496 17.167,6.56524271 C17.167,6.38745794 17.1648571,6.21057335 17.1575714,6.03638929 C17.8788571,5.45937646 18.5067143,4.73833546 19,3.91782502 C18.3374286,4.24323865 17.6255714,4.46333169 16.8794286,4.56145088 C17.6422857,4.05600204 18.2277143,3.25439529 18.5024286,2.29975862 Z"
-                      fill="#CDD6E0"
-                    ></path>
-                    <rect
-                      id="Rectangle-Copy-10"
-                      x="0"
-                      y="0"
-                      width="20"
-                      height="20"
-                    ></rect>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </svg>
+          </a>
 
-          <svg
-            class="icon icon-instagram"
-            width="18px"
-            height="18px"
-            viewBox="0 0 18 18"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+          <a
+            class="icon-link icon-instagram"
+            href="https://instagram.com"
+            target="_blank"
           >
-            <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-            <title>icon_instagram</title>
-            <desc>Created with Sketch.</desc>
-            <g
-              id="GIFOS"
-              stroke="none"
-              stroke-width="1"
-              fill="none"
-              fill-rule="evenodd"
-            >
-              <g
-                id="00-UI-Kit"
-                transform="translate(-1095.000000, -2779.000000)"
-              >
-                <g id="Footer" transform="translate(1056.000000, 2778.000000)">
-                  <g
-                    id="icon_instagram"
-                    transform="translate(38.000000, 0.000000)"
-                  >
-                    <rect
-                      id="Rectangle-Copy-2"
-                      x="0"
-                      y="0"
-                      width="20"
-                      height="20"
-                    ></rect>
-                    <path
-                      class="icon-fill"
-                      d="M10,2.62163636 C12.403,2.62163636 12.6877273,2.63063636 13.6368182,2.674 C14.5143182,2.71409091 14.9909091,2.86095455 15.3079545,2.98409091 C15.7280909,3.14731818 16.0279545,3.34245455 16.3429545,3.65704545 C16.6575455,3.97204545 16.8526818,4.27190909 17.0159091,4.69204545 C17.1390455,5.00909091 17.2859091,5.48568182 17.326,6.36318182 C17.3693636,7.31227273 17.3783636,7.597 17.3783636,10 C17.3783636,12.403 17.3693636,12.6877273 17.326,13.6368182 C17.2859091,14.5143182 17.1390455,14.9909091 17.0159091,15.3079545 C16.8526818,15.7280909 16.6575455,16.0279545 16.3429545,16.3429545 C16.0279545,16.6575455 15.7280909,16.8526818 15.3079545,17.0159091 C14.9909091,17.1394545 14.5143182,17.2859091 13.6368182,17.326 C12.6877273,17.3693636 12.4034091,17.3783636 10,17.3783636 C7.59659091,17.3783636 7.31227273,17.3693636 6.36318182,17.326 C5.48568182,17.2859091 5.00909091,17.1394545 4.69204545,17.0159091 C4.27190909,16.8526818 3.97204545,16.6575455 3.65704545,16.3429545 C3.34245455,16.0279545 3.14731818,15.7280909 2.98409091,15.3079545 C2.86054545,14.9909091 2.71409091,14.5143182 2.674,13.6368182 C2.63063636,12.6877273 2.62163636,12.403 2.62163636,10 C2.62163636,7.597 2.63063636,7.31227273 2.674,6.36318182 C2.71409091,5.48568182 2.86054545,5.00909091 2.98409091,4.69204545 C3.14731818,4.27190909 3.34245455,3.97204545 3.65704545,3.65704545 C3.97204545,3.34245455 4.27190909,3.14731818 4.69204545,2.98409091 C5.00909091,2.86095455 5.48568182,2.71409091 6.36318182,2.674 C7.31227273,2.63063636 7.597,2.62163636 10,2.62163636 L10,2.62163636 Z M10,1 C7.55568182,1 7.24927273,1.01022727 6.28913636,1.054 C5.33145455,1.09777273 4.67731818,1.24995455 4.10459091,1.4725 C3.51263636,1.70240909 3.01068182,2.01004545 2.51036364,2.51036364 C2.01004545,3.01109091 1.70240909,3.51263636 1.4725,4.10459091 C1.24995455,4.67731818 1.09777273,5.33145455 1.054,6.28913636 C1.01022727,7.24927273 1,7.55568182 1,10 C1,12.4443182 1.01022727,12.7507273 1.054,13.7108636 C1.09777273,14.6685455 1.24995455,15.3226818 1.4725,15.8954091 C1.70240909,16.4873636 2.01004545,16.9889091 2.51036364,17.4892273 C3.01068182,17.9899545 3.51263636,18.2975909 4.10459091,18.5275 C4.67731818,18.7500455 5.33145455,18.9022273 6.28913636,18.946 C7.24927273,18.9897727 7.55568182,19 10,19 C12.4443182,19 12.7507273,18.9897727 13.7104545,18.946 C14.6685455,18.9022273 15.3226818,18.7500455 15.8954091,18.5275 C16.4873636,18.2975909 16.9889091,17.9899545 17.4892273,17.4892273 C17.9899545,16.9889091 18.2975909,16.4873636 18.5275,15.8954091 C18.7500455,15.3226818 18.9022273,14.6685455 18.946,13.7108636 C18.9897727,12.7507273 19,12.4443182 19,10 C19,7.55568182 18.9897727,7.24927273 18.946,6.28913636 C18.9022273,5.33145455 18.7500455,4.67731818 18.5275,4.10459091 C18.2975909,3.51263636 17.9899545,3.01109091 17.4892273,2.51036364 C16.9889091,2.01004545 16.4873636,1.70240909 15.8954091,1.4725 C15.3226818,1.24995455 14.6685455,1.09777273 13.7104545,1.054 C12.7507273,1.01022727 12.4443182,1 10,1 L10,1 Z M10.018,5.39281818 C7.46363636,5.39281818 5.39281818,7.46363636 5.39281818,10.018 C5.39281818,12.5719545 7.46363636,14.6427727 10.018,14.6427727 C12.5719545,14.6427727 14.6427727,12.5719545 14.6427727,10.018 C14.6427727,7.46363636 12.5719545,5.39281818 10.018,5.39281818 L10.018,5.39281818 Z M10.018,13.0199091 C8.35995455,13.0199091 7.01568182,11.6760455 7.01568182,10.018 C7.01568182,8.35995455 8.35995455,7.01568182 10.018,7.01568182 C11.6760455,7.01568182 13.0199091,8.35995455 13.0199091,10.018 C13.0199091,11.6760455 11.6760455,13.0199091 10.018,13.0199091 L10.018,13.0199091 Z M15.8569545,5.17845455 C15.8569545,5.77040909 15.3775,6.24986364 14.7855455,6.24986364 C14.194,6.24986364 13.7141364,5.77040909 13.7141364,5.17845455 C13.7141364,4.58690909 14.194,4.10704545 14.7855455,4.10704545 C15.3775,4.10704545 15.8569545,4.58690909 15.8569545,5.17845455 L15.8569545,5.17845455 Z"
-                      id="Clip-19"
-                      fill="#CDD6E0"
-                    ></path>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </svg>
+          </a>
         </div>
       </div>
 
@@ -468,6 +388,7 @@
     <!-- bottom bar -->
     <div class="bottom-bar"></div>
 
-    <script src="src/main.js" type="module"></script>
+    <!-- <script src="src/main.js" type="module"></script> -->
+    <script src="src/index.js" type="module"></script>
   </body>
 </html>

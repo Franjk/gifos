@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>gifos - Mis GIFOS</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/logo-mobile.svg" />
+    <title>Gifos - Mis Gifos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -13,148 +14,226 @@
     />
   </head>
   <body>
+    <!-- section modal -->
+    <div id="modal" class="modal display-none">
+      <div class="button-close-wrapper">
+        <button id="modal-button-close" class="button-close">
+          <!-- added icon with css -->
+        </button>
+      </div>
+
+      <div class="gif-wrapper">
+        <button
+          id="modal-button-previous"
+          class="gallery-button gallery-button-previous"
+        ></button>
+
+        <video
+          id="modal-video"
+          class="video"
+          src="https://media0.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.mp4?cid=e9eef115hrxw8wgy11lfntuldltoergfxn0355ppm60wec4p&rid=giphy.mp4&ct=g"
+          autoplay
+          loop
+        ></video>
+
+        <button
+          id="modal-button-next"
+          class="gallery-button gallery-button-next"
+        ></button>
+      </div>
+
+      <div class="footer">
+        <div class="description">
+          <p id="modal-username" class="username">User</p>
+          <p id="modal-title" class="title">Titulo GIFO</p>
+        </div>
+        <div class="button-group">
+          <button id="modal-button-fav" class="button-card button-fav favorite">
+            <!-- icon-fav -->
+            <img
+              class="icon-fav"
+              src="./assets/icon-fav.svg"
+              alt="icon favorites"
+            />
+
+            <!-- icon-fav-active -->
+            <img
+              class="icon-fav-active"
+              src="./assets/icon-fav-active.svg"
+              alt="icon favorites active"
+            />
+          </button>
+
+          <button
+            id="modal-button-delete"
+            class="button-card button-delete display-none"
+          >
+            <!-- icon-delete -->
+            <img
+              class="icon-delete"
+              src="./assets/icon-trash-hover.svg"
+              alt="icon trash"
+            />
+          </button>
+
+          <a
+            id="modal-button-download"
+            class="button-card"
+            href="#"
+            target="_blank"
+            download
+          >
+            <!-- icon-download -->
+            <img src="./assets/icon-download.svg" alt="icon download" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal overlay -->
+    <div id="modal-overlay" class="modal-overlay display-none"></div>
+
     <!-- top bar -->
     <div class="top-bar"></div>
 
     <!-- header -->
-    <header>
+    <header class="section-header">
       <div id="menu-toggle" class="menu-toggle">
         <input type="checkbox" />
 
-        <span></span>
-        <span></span>
-        <span></span>
+        <span class="hamburguer-menu"></span>
+        <span class="hamburguer-menu"></span>
+        <span class="hamburguer-menu"></span>
 
+        <!-- mobile menu -->
         <ul id="menu" class="menu">
-          <li><a href="#darkMode">Modo Nocturno</a></li>
-          <li><a href="./favorites.html">Favoritos</a></li>
-          <li><a href="./myGifos.html">Mis GIFOS</a></li>
+          <li>
+            <span class="menu-link dark-mode-toggler">Modo Nocturno</span>
+          </li>
+          <li><a class="menu-link" href="./favorites.html">Favoritos</a></li>
+          <li><a class="menu-link" href="./myGifos.html">Mis GIFOS</a></li>
         </ul>
       </div>
       <nav>
         <a href="./index.html">
-          <img
+          <!-- logo -->
+          <svg
             class="logo"
-            src="./assets/logo-mobile.svg"
-            alt="logo de la compañía"
-          />
+            width="63px"
+            height="60px"
+            viewBox="0 0 63 60"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <title>Gifos</title>
+            <desc>Created with Sketch.</desc>
+            <defs>
+              <polygon
+                id="path-1"
+                points="0.494619458 0.526112695 58.2715334 0.526112695 58.2715334 24.1695652 0.494619458 24.1695652"
+              ></polygon>
+            </defs>
+            <g
+              id="GIFOS1"
+              stroke="none"
+              stroke-width="1"
+              fill="none"
+              fill-rule="evenodd"
+            >
+              <g id="g1" transform="translate(-156.000000, -2463.000000)">
+                <g
+                  id="logo-desktop"
+                  transform="translate(156.000000, 2463.000000)"
+                >
+                  <g id="Group-5">
+                    <polygon
+                      id="Fill-1"
+                      fill="#5ED7C6"
+                      points="0 -0.0002 0 59.1084314 59.1086314 59.1084314 59.1086314 46.4422961 54.8865863 46.4422961 54.8865863 54.8863863 4.2220451 54.8863863 4.2220451 4.2218451 42.220451 4.2218451 42.220451 16.8879804 54.8865863 16.8879804 54.8865863 25.332915 59.1086314 25.332915 59.1086314 12.6659353 46.4424961 -0.0002"
+                    ></polygon>
+                    <g id="Group-4" transform="translate(9.000000, 20.000000)">
+                      <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                      </mask>
+                      <g id="Clip-3"></g>
+                      <text
+                        id="GIFOS2"
+                        class="logo-svg"
+                        mask="url(#mask-2)"
+                        font-family="Roboto-Black, Roboto"
+                        font-size="18"
+                        font-weight="700"
+                        fill="#572EE5"
+                      >
+                        <tspan x="3" y="21">GIFOS</tspan>
+                      </text>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
         </a>
+        <!-- desktop menu -->
         <ul id="menu-desktop" class="menu-desktop">
-          <li><a href="#darkMode">Modo Nocturno</a></li>
-          <li><a href="./favorites.html">Favoritos</a></li>
-          <li><a href="./myGifos.html">Mis GIFOS</a></li>
+          <li>
+            <span class="menu-link dark-mode-toggler">Modo Nocturno</span>
+          </li>
+          <li>
+            <a class="menu-link" href="./favorites.html">Favoritos</a>
+          </li>
+          <li>
+            <a class="active menu-link" href="./myGifos.html">Mis GIFOS</a>
+          </li>
+          <li>
+            <a class="create-gifo-link menu-link" href="./createGifo.html"> </a>
+          </li>
         </ul>
       </nav>
     </header>
 
+    <!-- section gallery -->
     <section class="section-gallery">
-      <!-- icon -->
-      <svg
-        width="23px"
-        height="21px"
-        viewBox="0 0 23 21"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-      >
-        <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-        <title>icon-mis-gifos</title>
-        <desc>Created with Sketch.</desc>
-        <g
-          id="GIFOS"
-          stroke="none"
-          stroke-width="1"
-          fill="none"
-          fill-rule="evenodd"
-        >
-          <g
-            id="16-UI-Kit-Modo-Nocturno"
-            transform="translate(-686.000000, -2819.000000)"
-            fill="#50E3C2"
-          >
-            <path
-              d="M692.901055,2819 L692.901055,2821.09928 L690.601715,2821.09928 L690.601715,2823.20096 L690.598945,2823.20096 L688.299472,2823.20096 L688.299472,2827.39831 L686,2827.39831 L686,2829.49759 L686,2829.50229 L686,2831.60169 L688.299472,2831.60169 L688.299472,2835.79904 L690.598945,2835.79904 L690.598945,2837.90072 L690.601715,2837.90072 L692.901055,2837.90072 L692.901055,2840 L702.098813,2840 L702.098813,2837.90072 L704.398549,2837.90072 L704.398549,2835.80132 L704.398549,2835.79904 L704.401055,2835.79904 L706.70066,2835.79904 L706.70066,2831.60169 L709,2831.60169 L709,2827.39831 L706.70066,2827.39831 L706.70066,2823.20096 L704.401055,2823.20096 L704.398549,2823.20096 L704.398549,2821.09928 L702.098813,2821.09928 L702.098813,2819 L692.901055,2819 Z M699.964286,2829.28226 L702.190092,2829.28226 L702.190092,2827.25 L699.964286,2827.25 L699.964286,2829.28226 Z M692.571429,2829.28226 L694.797235,2829.28226 L694.797235,2827.25 L692.571429,2827.25 L692.571429,2829.28226 Z M695.627227,2833.78167 L697.976959,2833.78167 L700.326286,2833.78167 L702.675614,2833.78167 L702.675614,2831.75 L705.025346,2831.75 L705.025346,2833.78284 L702.675614,2833.78284 L702.675614,2835.81452 L700.326286,2835.81452 L697.976959,2835.81452 L695.627227,2835.81452 L693.277899,2835.81452 L693.277899,2833.78284 L690.928571,2833.78284 L690.928571,2831.75 L693.277899,2831.75 L693.277899,2833.78167 L695.627227,2833.78167 Z"
-              id="icon-mis-gifos"
-            ></path>
-          </g>
-        </g>
-      </svg>
+      <!-- icon my gifos -->
+      <img
+        src="./assets/icon-mis-gifos.svg"
+        alt="mis gifos"
+        class="title-icon"
+      />
+
       <!-- title -->
-      <h1 class="title">Mis GIFOS</h1>
+      <h1 id="search-term-title" class="title">Mis GIFOS</h1>
 
       <!-- gallery -->
-      <div class="gallery">
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
-        <div class="sample-gif"></div>
+      <div id="gifos-gallery" class="gallery">
+        <!-- here the resulting gif of the search are appended dynamically
+          sample gif:     
+          <div class="sample-gif"></div>
+        -->
       </div>
 
       <!-- view more button -->
-      <button class="button button-primary">VER MÁS</button>
+      <div class="button-container">
+        <button id="view-more-button" class="button-pill display-none">
+          VER MÁS
+        </button>
+      </div>
 
       <!-- no content -->
-      <div class="no-content display-none">
-        <svg
-          class="no-content-logo"
-          width="150px"
-          height="150px"
-          viewBox="0 0 150 150"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-        >
-          <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-          <title>icon-mis-gifos-sin-contenido</title>
-          <desc>Created with Sketch.</desc>
-          <g
-            id="GIFOS"
-            stroke="none"
-            stroke-width="1"
-            fill="none"
-            fill-rule="evenodd"
-          >
-            <g
-              id="08-Mis-Gifos-sin-contenido"
-              transform="translate(-645.000000, -276.000000)"
-            >
-              <g
-                id="icon-mis-gifos-sin-contenido"
-                transform="translate(645.000000, 276.000000)"
-              >
-                <circle
-                  id="Oval-3"
-                  fill="#F3F5F8"
-                  fill-rule="nonzero"
-                  cx="75"
-                  cy="75"
-                  r="75"
-                ></circle>
-                <path
-                  d="M59.8034874,41 L59.8034874,47.8976256 L52.2052312,47.8976256 L52.2052312,54.8031659 L52.1969485,54.8031659 L44.5982563,54.8031659 L44.5982563,68.5944597 L37,68.5944597 L37,75.4920853 L37,75.5075189 L37,82.4055403 L44.5982563,82.4055403 L44.5982563,96.1968341 L52.1969485,96.1968341 L52.1969485,103.102374 L52.2052312,103.102374 L59.8034874,103.102374 L59.8034874,110 L90.1965126,110 L90.1965126,103.102374 L97.7952048,103.102374 L97.7952048,96.2043531 L97.7952048,96.1968341 L97.8034874,96.1968341 L105.40218,96.1968341 L105.40218,82.4055403 L113,82.4055403 L113,68.5944597 L105.40218,68.5944597 L105.40218,54.8031659 L97.8034874,54.8031659 L97.7952048,54.8031659 L97.7952048,47.8976256 L90.1965126,47.8976256 L90.1965126,41 L59.8034874,41 Z M82,76 L90,76 L90,69 L82,69 L82,76 Z M60,76 L68,76 L68,69 L60,69 L60,76 Z M60,89.0040161 L60,89 L67.5,89 L75,89 L82.5,89 L90,89 L90,89.0040161 L90,96 L82.5,96 L75,96 L67.5,96 L60,96 L60,89.0040161 Z"
-                  id="Fill-1"
-                  fill="#50E3C2"
-                ></path>
-              </g>
-            </g>
-          </g>
-        </svg>
+      <div id="no-content" class="no-content display-none">
+        <!-- no-content-icon -->
+        <img
+          src="./assets/icon-mis-gifos-sin-contenido.svg"
+          alt="icon mis gifos sin contenido"
+          class="no-content-icon"
+        />
+
         <p class="no-content-text">¡Anímate a crear tu primer GIFO!</p>
       </div>
     </section>
 
+    <!-- section trending -->
     <section class="section-trending">
       <!-- title & subtitle -->
       <h2 class="title">Trending GIFOS</h2>
@@ -163,144 +242,45 @@
       </h3>
 
       <!-- gallery -->
-      <div class="gallery">
-        <div class="placeholder-img"></div>
-        <div class="placeholder-img"></div>
-      </div>
+      <div
+        id="trending-gallery-button-previous"
+        class="gallery-button gallery-button-previous"
+      ></div>
+      <div id="trending-gifos-gallery" class="gallery"></div>
+      <div
+        id="trending-gallery-button-next"
+        class="gallery-button gallery-button-next"
+      ></div>
     </section>
 
+    <!-- section footer -->
     <footer class="section-footer">
       <!-- share -->
-      <p class="share-text">Compartir en:</p>
+      <div class="share-group">
+        <p class="share-text">Compartir en:</p>
 
-      <div class="share-icon-group">
-        <svg
-          class="icon icon-facebook"
-          width="8px"
-          height="17px"
-          viewBox="0 0 8 17"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-        >
-          <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-          <title>icon_facebook</title>
-          <desc>Created with Sketch.</desc>
-          <g
-            id="GIFOS"
-            stroke="none"
-            stroke-width="1"
-            fill="none"
-            fill-rule="evenodd"
+        <div class="share-icon-group">
+          <a
+            class="icon-link icon-facebook"
+            href="https://facebook.com"
+            target="_blank"
           >
-            <g id="00-UI-Kit" transform="translate(-1027.000000, -2780.000000)">
-              <g
-                id="icon_facebook"
-                transform="translate(1018.000000, 2778.000000)"
-              >
-                <g></g>
-                <path
-                  class="icon-fill"
-                  d="M10.715503,19 L10.715503,10.4988913 L9,10.4988913 L9,7.56971739 L10.715503,7.56971739 L10.715503,5.81095652 C10.715503,3.42171739 11.6832226,2 14.4354173,2 L16.7259217,2 L16.7259217,4.93028261 L15.2944004,4.93028261 C14.2232227,4.93028261 14.1521393,5.3393913 14.1521393,6.10365217 L14.1475647,7.56971739 L16.7417571,7.56971739 L16.4380691,10.4988913 L14.1475647,10.4988913 L14.1475647,19 L10.715503,19 Z"
-                  id="Clip-4"
-                  fill="#CDD6E0"
-                ></path>
-                <rect id="Rectangle" x="0" y="0" width="20" height="20"></rect>
-              </g>
-            </g>
-          </g>
-        </svg>
+          </a>
 
-        <svg
-          class="icon icon-twitter"
-          width="18px"
-          height="17px"
-          viewBox="0 0 18 17"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-        >
-          <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-          <title>icon-twitter</title>
-          <desc>Created with Sketch.</desc>
-          <g
-            id="GIFOS"
-            stroke="none"
-            stroke-width="1"
-            fill="none"
-            fill-rule="evenodd"
+          <a
+            class="icon-link icon-twitter"
+            href="https://twitter.com"
+            target="_blank"
           >
-            <g id="00-UI-Kit" transform="translate(-1057.000000, -2780.000000)">
-              <g id="Footer" transform="translate(1056.000000, 2778.000000)">
-                <g id="icon-twitter">
-                  <rect
-                    id="Rectangle-Copy-9"
-                    x="0"
-                    y="0"
-                    width="20"
-                    height="20"
-                  ></rect>
-                  <path
-                    class="icon-fill"
-                    d="M18.5024286,2.29975862 C17.788,2.76875032 16.999,3.10811669 16.1568571,3.29175259 C15.4848571,2.49599699 14.5244286,2 13.4615714,2 C11.4224286,2 9.77028571,3.83140812 9.77028571,6.08994976 C9.77028571,6.41086252 9.80071429,6.7232236 9.86414286,7.02163195 C6.796,6.85059851 4.07542857,5.22398043 2.25314286,2.74759619 C1.93514286,3.35386474 1.75342857,4.05600204 1.75342857,4.80494849 C1.75342857,6.2236259 2.40528571,7.47577075 3.39614286,8.21031439 C2.791,8.18961034 2.22142857,8.0032739 1.72257143,7.69901441 L1.72257143,7.74942426 C1.72257143,9.73161187 2.99457143,11.3852352 4.68614286,11.7597085 C4.37542857,11.8555772 4.05014286,11.9037366 3.712,11.9037366 C3.47457143,11.9037366 3.24185714,11.8789818 3.01814286,11.8312724 C3.487,13.4556401 4.85114286,14.6398216 6.46771429,14.6713278 C5.203,15.7690925 3.61085714,16.4221702 1.88114286,16.4221702 C1.58328571,16.4221702 1.28842857,16.4046167 1,16.3659092 C2.63457143,17.525786 4.57514286,18.2031684 6.661,18.2031684 C13.4542857,18.2031684 17.167,11.9703496 17.167,6.56524271 C17.167,6.38745794 17.1648571,6.21057335 17.1575714,6.03638929 C17.8788571,5.45937646 18.5067143,4.73833546 19,3.91782502 C18.3374286,4.24323865 17.6255714,4.46333169 16.8794286,4.56145088 C17.6422857,4.05600204 18.2277143,3.25439529 18.5024286,2.29975862 Z"
-                    fill="#CDD6E0"
-                  ></path>
-                  <rect
-                    id="Rectangle-Copy-10"
-                    x="0"
-                    y="0"
-                    width="20"
-                    height="20"
-                  ></rect>
-                </g>
-              </g>
-            </g>
-          </g>
-        </svg>
+          </a>
 
-        <svg
-          class="icon icon-instagram"
-          width="18px"
-          height="18px"
-          viewBox="0 0 18 18"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-        >
-          <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-          <title>icon_instagram</title>
-          <desc>Created with Sketch.</desc>
-          <g
-            id="GIFOS"
-            stroke="none"
-            stroke-width="1"
-            fill="none"
-            fill-rule="evenodd"
+          <a
+            class="icon-link icon-instagram"
+            href="https://instagram.com"
+            target="_blank"
           >
-            <g id="00-UI-Kit" transform="translate(-1095.000000, -2779.000000)">
-              <g id="Footer" transform="translate(1056.000000, 2778.000000)">
-                <g
-                  id="icon_instagram"
-                  transform="translate(38.000000, 0.000000)"
-                >
-                  <rect
-                    id="Rectangle-Copy-2"
-                    x="0"
-                    y="0"
-                    width="20"
-                    height="20"
-                  ></rect>
-                  <path
-                    class="icon-fill"
-                    d="M10,2.62163636 C12.403,2.62163636 12.6877273,2.63063636 13.6368182,2.674 C14.5143182,2.71409091 14.9909091,2.86095455 15.3079545,2.98409091 C15.7280909,3.14731818 16.0279545,3.34245455 16.3429545,3.65704545 C16.6575455,3.97204545 16.8526818,4.27190909 17.0159091,4.69204545 C17.1390455,5.00909091 17.2859091,5.48568182 17.326,6.36318182 C17.3693636,7.31227273 17.3783636,7.597 17.3783636,10 C17.3783636,12.403 17.3693636,12.6877273 17.326,13.6368182 C17.2859091,14.5143182 17.1390455,14.9909091 17.0159091,15.3079545 C16.8526818,15.7280909 16.6575455,16.0279545 16.3429545,16.3429545 C16.0279545,16.6575455 15.7280909,16.8526818 15.3079545,17.0159091 C14.9909091,17.1394545 14.5143182,17.2859091 13.6368182,17.326 C12.6877273,17.3693636 12.4034091,17.3783636 10,17.3783636 C7.59659091,17.3783636 7.31227273,17.3693636 6.36318182,17.326 C5.48568182,17.2859091 5.00909091,17.1394545 4.69204545,17.0159091 C4.27190909,16.8526818 3.97204545,16.6575455 3.65704545,16.3429545 C3.34245455,16.0279545 3.14731818,15.7280909 2.98409091,15.3079545 C2.86054545,14.9909091 2.71409091,14.5143182 2.674,13.6368182 C2.63063636,12.6877273 2.62163636,12.403 2.62163636,10 C2.62163636,7.597 2.63063636,7.31227273 2.674,6.36318182 C2.71409091,5.48568182 2.86054545,5.00909091 2.98409091,4.69204545 C3.14731818,4.27190909 3.34245455,3.97204545 3.65704545,3.65704545 C3.97204545,3.34245455 4.27190909,3.14731818 4.69204545,2.98409091 C5.00909091,2.86095455 5.48568182,2.71409091 6.36318182,2.674 C7.31227273,2.63063636 7.597,2.62163636 10,2.62163636 L10,2.62163636 Z M10,1 C7.55568182,1 7.24927273,1.01022727 6.28913636,1.054 C5.33145455,1.09777273 4.67731818,1.24995455 4.10459091,1.4725 C3.51263636,1.70240909 3.01068182,2.01004545 2.51036364,2.51036364 C2.01004545,3.01109091 1.70240909,3.51263636 1.4725,4.10459091 C1.24995455,4.67731818 1.09777273,5.33145455 1.054,6.28913636 C1.01022727,7.24927273 1,7.55568182 1,10 C1,12.4443182 1.01022727,12.7507273 1.054,13.7108636 C1.09777273,14.6685455 1.24995455,15.3226818 1.4725,15.8954091 C1.70240909,16.4873636 2.01004545,16.9889091 2.51036364,17.4892273 C3.01068182,17.9899545 3.51263636,18.2975909 4.10459091,18.5275 C4.67731818,18.7500455 5.33145455,18.9022273 6.28913636,18.946 C7.24927273,18.9897727 7.55568182,19 10,19 C12.4443182,19 12.7507273,18.9897727 13.7104545,18.946 C14.6685455,18.9022273 15.3226818,18.7500455 15.8954091,18.5275 C16.4873636,18.2975909 16.9889091,17.9899545 17.4892273,17.4892273 C17.9899545,16.9889091 18.2975909,16.4873636 18.5275,15.8954091 C18.7500455,15.3226818 18.9022273,14.6685455 18.946,13.7108636 C18.9897727,12.7507273 19,12.4443182 19,10 C19,7.55568182 18.9897727,7.24927273 18.946,6.28913636 C18.9022273,5.33145455 18.7500455,4.67731818 18.5275,4.10459091 C18.2975909,3.51263636 17.9899545,3.01109091 17.4892273,2.51036364 C16.9889091,2.01004545 16.4873636,1.70240909 15.8954091,1.4725 C15.3226818,1.24995455 14.6685455,1.09777273 13.7104545,1.054 C12.7507273,1.01022727 12.4443182,1 10,1 L10,1 Z M10.018,5.39281818 C7.46363636,5.39281818 5.39281818,7.46363636 5.39281818,10.018 C5.39281818,12.5719545 7.46363636,14.6427727 10.018,14.6427727 C12.5719545,14.6427727 14.6427727,12.5719545 14.6427727,10.018 C14.6427727,7.46363636 12.5719545,5.39281818 10.018,5.39281818 L10.018,5.39281818 Z M10.018,13.0199091 C8.35995455,13.0199091 7.01568182,11.6760455 7.01568182,10.018 C7.01568182,8.35995455 8.35995455,7.01568182 10.018,7.01568182 C11.6760455,7.01568182 13.0199091,8.35995455 13.0199091,10.018 C13.0199091,11.6760455 11.6760455,13.0199091 10.018,13.0199091 L10.018,13.0199091 Z M15.8569545,5.17845455 C15.8569545,5.77040909 15.3775,6.24986364 14.7855455,6.24986364 C14.194,6.24986364 13.7141364,5.77040909 13.7141364,5.17845455 C13.7141364,4.58690909 14.194,4.10704545 14.7855455,4.10704545 C15.3775,4.10704545 15.8569545,4.58690909 15.8569545,5.17845455 L15.8569545,5.17845455 Z"
-                    id="Clip-19"
-                    fill="#CDD6E0"
-                  ></path>
-                </g>
-              </g>
-            </g>
-          </g>
-        </svg>
+          </a>
+        </div>
       </div>
 
       <!-- copyright -->
@@ -310,6 +290,6 @@
     <!-- bottom bar -->
     <div class="bottom-bar"></div>
 
-    <script src="src/main.js"></script>
+    <script src="src/myGifos.js" type="module"></script>
   </body>
 </html>

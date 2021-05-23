@@ -1,6 +1,6 @@
 .section-footer {
     text-align: center;
-    color: $color-dark;
+    color: var(--text-blank);
 
     .share-text {
         padding-top: 47px;
@@ -8,7 +8,7 @@
         font-family: $font-primary;
         font-size: 15px;
         line-height: 18px;
-        color: $color-dark;
+        color: var(--text-blank);
     }
 
     .share-icon-group {
@@ -20,18 +20,39 @@
         padding-top: 24px;
     }
     
-    
-    .icon {
+    .icon-link {
+        display: block;
         width: 20px;
         height: 20px;
         margin-left: 20px;
 
-        &:first-child {
-            margin-left: 0;
-        }
+        background-repeat: no-repeat;
+        background-size: cover;
 
-        &:hover .icon-fill {
-            fill: $color-primary;
+    }
+
+    .icon-facebook {
+        background-image: var(--icon-facebook);
+        background-size: contain;
+        background-position: 75%;
+
+        &:hover {
+            background-image: var(--icon-facebook-hover);
+        }
+    }
+
+    .icon-twitter {
+        background-image: var(--icon-twitter);
+        &:hover {
+            background-image: var(--icon-twitter-hover);
+        }
+    }
+
+    .icon-instagram {
+        background-image: var(--icon-instagram);
+
+        &:hover {
+            background-image: var(--icon-instagram-hover);
         }
     }
 
@@ -41,7 +62,7 @@
         font-family: $font-primary;
         font-size: 14px;
         line-height: 20px;
-        color: $color-dark;
+        color: var(--text-blank);
     }
 
 
