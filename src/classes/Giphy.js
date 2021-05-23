@@ -126,7 +126,6 @@ export default class Giphy {
         .then((response) => response.json())
         .then(({ data, meta }) => {
           if (meta.status !== 200) throw new Error(meta.msg);
-          console.log(data);
           const gifo = new Gifo(
             data.id,
             data.title,

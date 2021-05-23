@@ -1,3 +1,5 @@
-import { initializeFavoritesPage } from "./main.js";
+import { initializeFavoritesPage } from "./shared/main.js";
+import { initializeDarkMode } from "./shared/darkMode.js";
 
+initializeDarkMode();
 initializeFavoritesPage();

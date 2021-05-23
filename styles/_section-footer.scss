@@ -1,6 +1,6 @@
 .section-footer {
     text-align: center;
-    color: $color-dark;
+    color: var(--text-blank);
 
     .share-text {
         padding-top: 47px;
@@ -8,7 +8,7 @@
         font-family: $font-primary;
         font-size: 15px;
         line-height: 18px;
-        color: $color-dark;
+        color: var(--text-blank);
     }
 
     .share-icon-group {
@@ -32,43 +32,29 @@
     }
 
     .icon-facebook {
-        background-image: url(../assets/icon_facebook.svg);
+        background-image: var(--icon-facebook);
         background-size: contain;
         background-position: 75%;
 
         &:hover {
-            background-image: url(../assets/icon_facebook_hover.svg);
+            background-image: var(--icon-facebook-hover);
         }
     }
 
     .icon-twitter {
-        background-image: url(../assets/icon-twitter.svg);
+        background-image: var(--icon-twitter);
         &:hover {
-            background-image: url(../assets/icon-twitter-hover.svg);
+            background-image: var(--icon-twitter-hover);
         }
     }
 
     .icon-instagram {
-        background-image: url(../assets/icon_instagram.svg);
+        background-image: var(--icon-instagram);
 
         &:hover {
-            background-image: url(../assets/icon_instagram-hover.svg);
+            background-image: var(--icon-instagram-hover);
         }
     }
-
-    // .icon {
-    //     width: 20px;
-    //     height: 20px;
-    //     margin-left: 20px;
-
-    //     &:first-child {
-    //         margin-left: 0;
-    //     }
-
-    //     &:hover .icon-fill {
-    //         fill: $color-primary;
-    //     }
-    // }
 
     .copyright {
         padding-top: 47.8px;
@@ -76,7 +62,7 @@
         font-family: $font-primary;
         font-size: 14px;
         line-height: 20px;
-        color: $color-dark;
+        color: var(--text-blank);
     }
 
 

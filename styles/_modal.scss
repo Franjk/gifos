@@ -23,8 +23,11 @@
     border-radius: 6px;
     outline: none;
     border: none;
-    background-color: transparent;
     cursor: pointer;
+    background-color: transparent;
+    background-image: var(--button-close);
+    background-repeat: no-repeat;
+    background-position: 25% 25%;
 
     &:active {
       transform: scale(0.9);
@@ -57,6 +60,7 @@
     font-family: $font-primary;
     font-size: 15px;
     line-height: 18px;
+    color: var(--text-blank);
   }
 
   .title {
@@ -66,6 +70,7 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 19px;
+    color: var(--text-blank);
 
   }
 
@@ -104,7 +109,7 @@
   width: 100vw;
   height: 100vh;
 
-  background-color: $color-white;
+  background-color: var(--background-blank);
   opacity: 0.97;
 }
 
@@ -144,20 +149,20 @@
     }
 
     .gallery-button-previous {
-      background: url(../assets/button-slider-left.svg);
+      background: var(--button-slider-left);
       left: 10vw;
 
       &:hover {
-        background: url(../assets/button-slider-left-hover.svg);
+        background: var(--button-slider-left-hover);
       }
     }
 
     .gallery-button-next {
-      background: url(../assets/Button-Slider-right.svg);
+      background: var(--button-slider-right);
       right: 10vw;
 
       &:hover {
-        background: url(../assets/Button-Slider-right-hover.svg);
+        background: var(--button-slider-right-hover);
       }
     }
 
@@ -169,13 +174,7 @@
 
     .footer {
       align-items: flex-start;
-      // position: absolute;
-      // bottom: 200px;
       width: 695px;
-      // margin-top: 22px;
-      // position: fixed;
-      // bottom: 153px;
-      // left: 355px;
     }
 
   }

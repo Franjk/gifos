@@ -1,4 +1,4 @@
-export default class GifoGallery {
+export default class Gallery {
   /**
    *
    * @param {Array<Gifo>} gifos
@@ -10,12 +10,12 @@ export default class GifoGallery {
 
   addGifo(gifo) {
     this.gifos.push(gifo);
-    gifo.gallery = this;
+    gifo.setGallery(this);
   }
 
   addGifos(gifos) {
     this.gifos = this.gifos.concat(gifos);
-    gifos.forEach((gifo) => (gifo.gallery = this));
+    gifos.forEach((gifo) => gifo.setGallery(this));
   }
 
   getCurrentGifo() {

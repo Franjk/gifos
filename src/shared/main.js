@@ -1,8 +1,9 @@
-import ElementBuilder from "./classes/ElementBuilder.js";
-import Gifo from "./classes/Gifo.js";
-import GifoGallery from "./classes/GifoGallery.js";
-import Giphy from "./classes/Giphy.js";
-import LocalGifo from "./classes/LocalGifo.js";
+import ElementBuilder from "../classes/ElementBuilder.js";
+import Gifo from "../classes/Gifo.js";
+import Gallery from "../classes/Gallery.js";
+import Giphy from "../classes/Giphy.js";
+import Local from "../classes/Local.js";
+import { initializeDarkMode } from "./darkMode.js";
 
 const API_KEY = "w5DZnpvGHBZdjQuJDW8TfKjyAtngoYnt";
 const DESKTOP_MIN_WIDTH = 768;
@@ -10,21 +11,17 @@ const DEFAULT_GIFOS_DISPLAYED = 12;
 
 const giphy = new Giphy(API_KEY);
 
-const searchedGifos = new GifoGallery();
-const trendingGifos = new GifoGallery();
-const favoriteGifos = new GifoGallery();
-const favoriteGifosOnDisplay = new GifoGallery();
-const myGifos = new GifoGallery();
-const myGifosOnDisplay = new GifoGallery();
+const searchedGifos = new Gallery();
+const trendingGifos = new Gallery();
+const favoriteGifos = new Gallery();
+const favoriteGifosOnDisplay = new Gallery();
+const myGifos = new Gallery();
+const myGifosOnDisplay = new Gallery();
 
 const testGifo = Gifo.createGifo({
   id: "4Fh44tu3DiaJkmv6Ou",
   title: "May Chinese GIF by INTO ACTION",
   username: "IntoAction",
-  imgUrl:
-    "https://media4.giphy.com/media/fvf8V5uS0Ooywojrm0/giphy-preview.mp4?cid=e9eef115bfcw9158acwgnkpirxfu1m8f1fo5v0uma0hr96z9&rid=giphy-preview.mp4&ct=g",
-  imgUrlFull:
-    "https://media4.giphy.com/media/fvf8V5uS0Ooywojrm0/giphy.mp4?cid=e9eef115bfcw9158acwgnkpirxfu1m8f1fo5v0uma0hr96z9&rid=giphy.mp4&ct=g",
 });
 
 trendingGifos.addGifo(testGifo);
@@ -60,7 +57,11 @@ const displayTrendingGifos = async function () {
 
   for (let gifo of gifos) {
     const classList = "gifo trending-gifo";
-    const gifoEl = ElementBuilder.buildGifo(gifo, classList);
+    const gifoEl = ElementBuilder.buildGifo(
+      gifo,
+      classList,
+      Gifo.URI_TYPE.ORIGINAL_MP4
+    );
 
     gifoEl.addEventListener("click", buildHandlerGifoTouchEnd(gifo));
 
@@ -85,7 +86,11 @@ const displaySearchedGifos = async function (searchTerm) {
     searchedGifos.addGifos(gifos);
     for (let gifo of gifos) {
       const classList = "gifo searched-gifo";
-      const gifoEl = ElementBuilder.buildGifo(gifo, classList);
+      const gifoEl = ElementBuilder.buildGifo(
+        gifo,
+        classList,
+        Gifo.URI_TYPE.ORIGINAL_MP4
+      );
 
       gifoEl.addEventListener("click", buildHandlerGifoTouchEnd(gifo));
 
@@ -115,7 +120,11 @@ const displayMoreSearchedGifos = async function () {
 
     for (let gifo of gifos) {
       const classList = "gifo searched-gifo";
-      const gifoEl = ElementBuilder.buildGifo(gifo, classList);
+      const gifoEl = ElementBuilder.buildGifo(
+        gifo,
+        classList,
+        Gifo.URI_TYPE.ORIGINAL_MP4
+      );
 
       gifoEl.addEventListener("click", buildHandlerGifoTouchEnd(gifo));
 
@@ -143,7 +152,11 @@ const displayMoreFavoriteGifos = function () {
 
     for (let gifo of gifos) {
       const classList = "gifo searched-gifo";
-      const gifoEl = ElementBuilder.buildGifo(gifo, classList);
+      const gifoEl = ElementBuilder.buildGifo(
+        gifo,
+        classList,
+        Gifo.URI_TYPE.ORIGINAL_MP4
+      );
 
       gifoEl.addEventListener("click", buildHandlerGifoTouchEnd(gifo));
 
@@ -177,7 +190,11 @@ const displayMoreMyGifos = function () {
 
     for (let gifo of gifos) {
       const classList = "gifo searched-gifo";
-      const gifoEl = ElementBuilder.buildGifo(gifo, classList);
+      const gifoEl = ElementBuilder.buildGifo(
+        gifo,
+        classList,
+        Gifo.URI_TYPE.ORIGINAL_MP4
+      );
 
       gifoEl.addEventListener("click", buildHandlerGifoTouchEnd(gifo));
 
@@ -324,7 +341,9 @@ const executeNewSearch = function (searchTerm) {
 
 const setUpModal = function (gifo) {
   // sets the values of the predefined elements
-  document.querySelector("#modal-video").setAttribute("src", gifo.imgUrlFull);
+  document
+    .querySelector("#modal-video")
+    .setAttribute("src", gifo.getGifURI(Gifo.URI_TYPE.ORIGINAL_MP4));
   document.querySelector("#modal-username").textContent = gifo.username;
   document.querySelector("#modal-title").textContent = gifo.title;
 
@@ -350,7 +369,7 @@ const setUpModal = function (gifo) {
   );
 
   // button next & previous config
-  gifo.gallery.setCurrentGifo(gifo);
+  gifo.getGallery().setCurrentGifo(gifo);
 
   const modalButtonNext = resetListeners(
     document.querySelector("#modal-button-next")
@@ -360,19 +379,19 @@ const setUpModal = function (gifo) {
     document.querySelector("#modal-button-previous")
   );
 
-  if (gifo.gallery.hasNext()) {
+  if (gifo.getGallery().hasNext()) {
     showElement(modalButtonNext);
     modalButtonNext.addEventListener("click", (e) => {
-      setUpModal(gifo.gallery.next());
+      setUpModal(gifo.getGallery().next());
     });
   } else {
     hideElement(modalButtonNext);
   }
 
-  if (gifo.gallery.hasPrevious()) {
+  if (gifo.getGallery().hasPrevious()) {
     showElement(modalButtonPrevious);
     modalButtonPrevious.addEventListener("click", (e) => {
-      setUpModal(gifo.gallery.previous());
+      setUpModal(gifo.getGallery().previous());
     });
   } else {
     hideElement(modalButtonPrevious);
@@ -501,8 +520,8 @@ const buildHandlerGifoMaxButtonClick = function (gifo) {
 
 const buildHandlerModalButtonNextClick = function (gifo) {
   const handleModalButtonNextClick = function (e) {
-    if (gifo.gallery.hasNext()) {
-      const nextGifo = gifo.gallery.next();
+    if (gifo.getGallery().hasNext()) {
+      const nextGifo = gifo.getGallery().next();
       setUpModal(nextGifo);
     }
   };
@@ -536,7 +555,7 @@ const initializeFavoritesPage = function () {
   viewMoreButton.addEventListener("click", handleFavoritesViewMoreButtonClick);
   modalButtonCloseEl.addEventListener("click", hideModal);
 
-  favoriteGifos.addGifos(LocalGifo.getFavorites());
+  favoriteGifos.addGifos(Local.getFavorites());
   displayMoreFavoriteGifos();
   displayTrendingGifos();
 };
@@ -545,7 +564,7 @@ const initializeMyGifosPage = function () {
   viewMoreButton.addEventListener("click", (e) => displayMoreMyGifos());
   modalButtonCloseEl.addEventListener("click", hideModal);
 
-  myGifos.addGifos(LocalGifo.getMyGifos());
+  myGifos.addGifos(Local.getMyGifos());
   displayMoreMyGifos();
   displayTrendingGifos();
 };

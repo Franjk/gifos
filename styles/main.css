@@ -1,22 +1,101 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap");
+body {
+  --color-primary: #572ee5;
+  --color-secondary: #50e3c2;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-dark: #000;
+  --color-light: #9cafc3;
+  --color-background-dark-1: #37383c;
+  --color-background-dark-2: #222326;
+  --color-background-light-1: #fff;
+  --color-background-light-2: #F3F5F8;
+  --text-primary: #572ee5;
+  --text-secondary: #50e3c2;
+  --text-blank: #000;
+  --text-contrast: #fff;
+  --text-light: #9cafc3;
+  --background-primary: #572ee5;
+  --background-overlay: #572ee5;
+  --background-blank: #fff;
+  --background-contrast: #F3F5F8;
+  --button-crear-gifo: url(../assets/button-crear-gifo.svg);
+  --button-crear-gifo-hover: url(../assets/CTA-crear-gifo-hover.svg);
+  --button-crear-gifo-active: url(../assets/CTA-crear-gifo-active.svg);
+  --button-slider-left: url(../assets/button-slider-left.svg);
+  --button-slider-left-hover: url(../assets/button-slider-left-hover.svg);
+  --button-slider-right: url(../assets/Button-Slider-right.svg);
+  --button-slider-right-hover: url(../assets/Button-Slider-right-hover.svg);
+  --button-close: url(../assets/close.svg);
+  --image-camera: url(../assets/camara.svg);
+  --image-camera-light: url(../assets/element-luz-camara.svg);
+  --image-tape: url(../assets/pelicula.svg);
+  --icon-facebook: url(../assets/icon_facebook.svg);
+  --icon-facebook-hover: url(../assets/icon_facebook_hover.svg);
+  --icon-twitter: url(../assets/icon-twitter.svg);
+  --icon-twitter-hover: url(../assets/icon-twitter-hover.svg);
+  --icon-instagram: url(../assets/icon_instagram.svg);
+  --icon-instagram-hover: url(../assets/icon_instagram-hover.svg);
+}
+
+body .dark-theme-show {
+  display: none;
+}
+
+body.dark-theme {
+  --text-primary: #fff;
+  --text-secondary: #50e3c2;
+  --text-blank: #fff;
+  --text-contrast: #000;
+  --background-primary: #000;
+  --background-overlay: #572ee5;
+  --background-blank: #37383c;
+  --background-contrast: #222326;
+  --button-crear-gifo: url(../assets/CTA-crear-gifo-modo-noc.svg);
+  --button-crear-gifo-hover: url(../assets/CTA-crear-gifo-hover-modo-noc.svg);
+  --button-crear-gifo-active: url(../assets/CTA-crear-gifo-active-modo-noc.svg);
+  --button-slider-left: url(../assets/button-slider-left-md-noct.svg);
+  --button-slider-left-hover: url(../assets/button-slider-left-hover.svg);
+  --button-slider-right: url(../assets/button-slider-right-md-noct.svg);
+  --button-slider-right-hover: url(../assets/Button-Slider-right-hover.svg);
+  --button-close: url(../assets/close-modo-noct.svg);
+  --image-camera: url(../assets/camara-modo-noc.svg);
+  --image-camera-light: url(../assets/element-luz-camara.svg);
+  --image-tape: url(../assets/pelicula-modo-noc.svg);
+  --icon-facebook: url(../assets/icon_facebook.svg);
+  --icon-facebook-hover: url(../assets/icon_facebook_noc.svg);
+  --icon-twitter: url(../assets/icon-twitter.svg);
+  --icon-twitter-hover: url(../assets/icon_twitter_noc.svg);
+  --icon-instagram: url(../assets/icon_instagram.svg);
+  --icon-instagram-hover: url(../assets/icon_instagram_noc.svg);
+}
+
+body.dark-theme .dark-theme-hide {
+  display: none;
+}
+
+body.dark-theme .dark-theme-show {
+  display: initial;
+}
+
 .text-primary {
-  color: #572ee5;
+  color: var(--text-primary);
 }
 
 .text-secondary {
-  color: #50e3c2;
+  color: var(--text-secondary);
 }
 
 .text-dark {
-  color: #000;
+  color: var(--text-blank);
 }
 
 .button-pill {
   padding-top: 16px;
   padding-bottom: 16px;
-  padding-left: 23px;
-  padding-right: 23px;
-  border: 1px solid #572ee5;
+  padding-left: 38px;
+  padding-right: 38px;
+  border: 1px solid var(--text-primary);
   border-radius: 25px;
   background-color: transparent;
   font-family: "Montserrat", sans-serif;
@@ -24,13 +103,13 @@
   font-size: 13px;
   line-height: 16px;
   text-align: center;
-  color: #572ee5;
-  cursor: pointer;
+  color: var(--text-primary);
 }
 
 .button-pill:hover {
-  background-color: #572ee5;
-  color: #fff;
+  cursor: pointer;
+  background-color: var(--text-primary);
+  color: var(--text-contrast);
 }
 
 .button-pill:active {
@@ -41,19 +120,19 @@
 .button-circle {
   width: 32px;
   height: 32px;
-  border: 1px solid #572ee5;
+  border: 1px solid var(--text-primary);
   border-radius: 50%;
   background-color: transparent;
   font-family: "Roboto", sans-serif;
   font-size: 18px;
   line-height: 21px;
-  color: #572ee5;
+  color: var(--text-primary);
 }
 
 .button-card-overlay {
   width: 32px;
   height: 32px;
-  border: 1px solid #572ee5;
+  border: 1px solid var(--text-primary);
   border-radius: 6px;
   background-color: white;
   opacity: 0.7;
@@ -74,8 +153,8 @@
   height: 36px;
   border-radius: 6px;
   outline: none;
-  border: 1px solid #9cafc3;
-  background-color: transparent;
+  border: 1px solid var(--text-light);
+  background-color: white;
   cursor: pointer;
 }
 
@@ -85,7 +164,7 @@
 }
 
 .button-card:active {
-  border: 1px solid #572ee5;
+  border: 1px solid var(--text-primary);
 }
 
 .display-none {
@@ -122,16 +201,24 @@ nav {
   left: 0;
   width: 100vw;
   height: 95px;
-  background: #fff;
+  background-color: var(--background-blank);
   padding-left: 16px;
   padding-top: 29px;
   padding-bottom: 13px;
   z-index: 5;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 nav .logo {
   height: 48.8px;
   width: 48.8px;
+}
+
+nav .logo-svg {
+  fill: var(--text-primary);
 }
 
 .menu-toggle {
@@ -145,21 +232,25 @@ nav .logo {
           user-select: none;
 }
 
-.menu-toggle a {
+.menu-toggle .menu-link {
   text-decoration: none;
   color: #fff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-transition: color 0.3s ease;
   transition: color 0.3s ease;
 }
 
-.menu-toggle a:hover {
+.menu-toggle .menu-link:hover {
   text-decoration: underline;
   -webkit-text-decoration-color: #50e3c2;
           text-decoration-color: #50e3c2;
   text-decoration-thickness: 3px;
 }
 
-.menu-toggle a:active {
+.menu-toggle .menu-link:active {
   text-decoration: underline;
   -webkit-text-decoration-color: #50e3c2;
           text-decoration-color: #50e3c2;
@@ -183,7 +274,7 @@ nav .logo {
   height: 2px;
   margin-bottom: 3px;
   position: relative;
-  background: #572ee5;
+  background: var(--text-primary);
   border-radius: 3px;
   z-index: 10;
   -webkit-transform-origin: 4px 0;
@@ -235,7 +326,7 @@ nav .logo {
   padding-top: 100px;
   top: 0;
   left: 0;
-  background: #572ee5;
+  background: var(--background-primary);
   opacity: 0.9;
   list-style-type: none;
   -webkit-transform-origin: 0 0;
@@ -332,9 +423,9 @@ nav .logo {
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
-    color: #572ee5;
+    color: var(--text-primary);
   }
-  .menu-desktop a {
+  .menu-desktop .menu-link {
     text-decoration: none;
     color: inherit;
     -webkit-text-decoration-color: rgba(0, 0, 0, 0);
@@ -343,29 +434,34 @@ nav .logo {
     transition: -webkit-text-decoration 0.5s ease;
     transition: text-decoration 0.5s ease;
     transition: text-decoration 0.5s ease, -webkit-text-decoration 0.5s ease;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
   }
-  .menu-desktop a:hover {
+  .menu-desktop .menu-link:hover {
+    cursor: pointer;
     -webkit-text-decoration: underline solid #50e3c2 2px;
             text-decoration: underline solid #50e3c2 2px;
   }
-  .menu-desktop a:active {
+  .menu-desktop .menu-link:active {
     -webkit-text-decoration: underline solid #50e3c2 2px;
             text-decoration: underline solid #50e3c2 2px;
   }
-  .menu-desktop a.active {
-    color: #9cafc3;
+  .menu-desktop .menu-link.active {
+    color: var(--text-light);
   }
   .menu-desktop .create-gifo-link {
     display: block;
     width: 54px;
     height: 54px;
-    background: url(../assets/button-crear-gifo.svg);
+    background: var(--button-crear-gifo);
   }
   .menu-desktop .create-gifo-link:hover {
-    background: url(../assets/CTA-crear-gifo-hover.svg);
+    background: var(--button-crear-gifo-hover);
   }
   .menu-desktop .create-gifo-link.active {
-    background: url(../assets/CTA-crear-gifo-active.svg);
+    background: var(--button-crear-gifo-active);
   }
 }
 
@@ -392,7 +488,7 @@ nav .logo {
   font-weight: bold;
   font-size: 25px;
   line-height: 33px;
-  color: #572ee5;
+  color: var(--text-primary);
 }
 
 .section-main .searchblock {
@@ -420,8 +516,8 @@ nav .logo {
   width: 334px;
   padding-top: 15px;
   padding-bottom: 13px;
-  background-color: #fff;
-  border: 1px solid #572ee5;
+  background-color: var(--background-blank);
+  border: 1px solid var(--text-primary);
   border-radius: 27px;
 }
 
@@ -460,10 +556,11 @@ nav .logo {
   margin-left: 14px;
   border: none;
   outline: none;
+  background-color: var(--background-blank);
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   line-height: 19px;
-  color: #000;
+  color: var(--text-blank);
 }
 
 .section-main .searchbar-button {
@@ -479,7 +576,7 @@ nav .logo {
 .section-main .searchbar-divisor {
   width: 90%;
   height: 1px;
-  background-color: #9cafc3;
+  background-color: var(--text-light);
   margin: 5px auto;
 }
 
@@ -535,9 +632,14 @@ nav .logo {
   height: 24px;
 }
 
-.section-main .icon-search {
+.section-main .icon-search-dark {
   -webkit-filter: grayscale(100%) opacity(40%);
           filter: grayscale(100%) opacity(40%);
+}
+
+.section-main .dark-theme .icon-search-dark {
+  -webkit-filter: hue-rotate(50%);
+          filter: hue-rotate(50%);
 }
 
 .section-main .icon-close {
@@ -547,6 +649,9 @@ nav .logo {
 .section-main .icon-search-result {
   width: 15.8px;
   height: 15.8px;
+}
+
+.section-main .icon-search-result.dark-theme-hide {
   -webkit-filter: grayscale(100%) opacity(40%);
           filter: grayscale(100%) opacity(40%);
 }
@@ -563,7 +668,7 @@ nav .logo {
   font-weight: bold;
   font-size: 16px;
   line-height: 25px;
-  color: #572ee5;
+  color: var(--text-primary);
 }
 
 .section-main .trending-topics {
@@ -571,7 +676,15 @@ nav .logo {
   font-weight: normal;
   font-size: 14px;
   line-height: 25px;
-  color: #572ee5;
+  color: var(--text-primary);
+}
+
+.section-main .trending-topic {
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 25px;
+  color: var(--text-primary);
 }
 
 .section-main .trending-topic:hover {
@@ -596,8 +709,8 @@ nav .logo {
     width: 551px;
     padding-top: 15px;
     padding-bottom: 13px;
-    background-color: #fff;
-    border: 1px solid #572ee5;
+    background-color: var(--background-blank);
+    border: 1px solid var(--text-primary);
     border-radius: 27px;
   }
 }
@@ -616,7 +729,7 @@ nav .logo {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #F3F5F8;
+  background-color: var(--background-contrast);
   text-align: center;
 }
 
@@ -626,14 +739,14 @@ nav .logo {
   font-weight: bold;
   font-size: 20px;
   line-height: 30px;
-  color: #572ee5;
+  color: var(--text-primary);
 }
 
 .section-trending .subtitle {
   padding-top: 7px;
   margin-left: 21px;
   margin-right: 21px;
-  color: #000;
+  color: var(--text-blank);
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -654,15 +767,6 @@ nav .logo {
   padding-top: 32px;
   padding-bottom: 82px;
   padding-left: 22px;
-}
-
-.section-trending .gallery .placeholder-img {
-  border: 1px solid purple;
-  background-color: red;
-  height: 187px;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 243px;
-          flex: 0 0 243px;
 }
 
 .section-trending .gallery .trending-gifo {
@@ -687,7 +791,7 @@ nav .logo {
 
 .section-footer {
   text-align: center;
-  color: #000;
+  color: var(--text-blank);
 }
 
 .section-footer .share-text {
@@ -695,7 +799,7 @@ nav .logo {
   font-family: "Roboto", sans-serif;
   font-size: 15px;
   line-height: 18px;
-  color: #000;
+  color: var(--text-blank);
 }
 
 .section-footer .share-icon-group {
@@ -725,29 +829,29 @@ nav .logo {
 }
 
 .section-footer .icon-facebook {
-  background-image: url(../assets/icon_facebook.svg);
+  background-image: var(--icon-facebook);
   background-size: contain;
   background-position: 75%;
 }
 
 .section-footer .icon-facebook:hover {
-  background-image: url(../assets/icon_facebook_hover.svg);
+  background-image: var(--icon-facebook-hover);
 }
 
 .section-footer .icon-twitter {
-  background-image: url(../assets/icon-twitter.svg);
+  background-image: var(--icon-twitter);
 }
 
 .section-footer .icon-twitter:hover {
-  background-image: url(../assets/icon-twitter-hover.svg);
+  background-image: var(--icon-twitter-hover);
 }
 
 .section-footer .icon-instagram {
-  background-image: url(../assets/icon_instagram.svg);
+  background-image: var(--icon-instagram);
 }
 
 .section-footer .icon-instagram:hover {
-  background-image: url(../assets/icon_instagram-hover.svg);
+  background-image: var(--icon-instagram-hover);
 }
 
 .section-footer .copyright {
@@ -756,7 +860,7 @@ nav .logo {
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   line-height: 20px;
-  color: #000;
+  color: var(--text-blank);
 }
 
 @media (min-width: 768px) {
@@ -837,7 +941,7 @@ nav .logo {
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
   line-height: 30px;
-  color: #572ee5;
+  color: var(--text-primary);
 }
 
 .section-gallery .gallery {
@@ -865,24 +969,8 @@ nav .logo {
   height: 120px;
 }
 
-.section-gallery .button {
+.section-gallery .button-container {
   margin-top: 78px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-left: 38px;
-  padding-right: 38px;
-  border: 1px solid #572ee5;
-  border-radius: 25px;
-  background-color: #fff;
-  font-family: "Montserrat", sans-serif;
-  font-size: 13px;
-  color: #572ee5;
-  font-weight: 700;
-}
-
-.section-gallery .button:hover {
-  background-color: #572ee5;
-  color: #fff;
 }
 
 .section-gallery .no-content {
@@ -944,7 +1032,7 @@ nav .logo {
   width: 688px;
   height: 390px;
   position: relative;
-  border: 1px solid #572ee5;
+  border: 1px solid var(--text-primary);
 }
 
 .section-create-gifo .screen .description-container {
@@ -956,7 +1044,7 @@ nav .logo {
   font-weight: bold;
   font-size: 25px;
   line-height: 35px;
-  color: #572ee5;
+  color: var(--text-primary);
   text-align: center;
 }
 
@@ -965,7 +1053,7 @@ nav .logo {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   line-height: 29px;
-  color: black;
+  color: var(--text-blank);
   text-align: center;
 }
 
@@ -980,7 +1068,7 @@ nav .logo {
   width: 480px;
   height: 320px;
   z-index: 51;
-  background-color: #572ee5;
+  background-color: var(--background-overlay);
   opacity: 0.6;
 }
 
@@ -1018,7 +1106,7 @@ nav .logo {
   font-size: 15px;
   line-height: 19px;
   text-align: center;
-  color: #fff;
+  color: var(--text-blank);
 }
 
 .section-create-gifo .screen .video-status-container .button-group {
@@ -1052,32 +1140,32 @@ nav .logo {
   position: absolute;
   top: 24px;
   left: 20px;
-  border-top: 1px solid #50e3c2;
-  border-left: 1px solid #50e3c2;
+  border-top: 1px solid var(--text-secondary);
+  border-left: 1px solid var(--text-secondary);
 }
 
 .section-create-gifo .screen .corner-top-right {
   position: absolute;
   top: 24px;
   right: 20px;
-  border-top: 1px solid #50e3c2;
-  border-right: 1px solid #50e3c2;
+  border-top: 1px solid var(--text-secondary);
+  border-right: 1px solid var(--text-secondary);
 }
 
 .section-create-gifo .screen .corner-bottom-left {
   position: absolute;
   bottom: 24px;
   left: 20px;
-  border-bottom: 1px solid #50e3c2;
-  border-left: 1px solid #50e3c2;
+  border-bottom: 1px solid var(--text-secondary);
+  border-left: 1px solid var(--text-secondary);
 }
 
 .section-create-gifo .screen .corner-bottom-right {
   position: absolute;
   bottom: 24px;
   right: 20px;
-  border-bottom: 1px solid #50e3c2;
-  border-right: 1px solid #50e3c2;
+  border-bottom: 1px solid var(--text-secondary);
+  border-right: 1px solid var(--text-secondary);
 }
 
 .section-create-gifo .footer {
@@ -1126,8 +1214,8 @@ nav .logo {
 }
 
 .section-create-gifo .footer .active {
-  color: #fff;
-  background-color: #572ee5;
+  color: var(--text-contrast);
+  background-color: var(--text-primary);
 }
 
 .section-create-gifo .footer .video-action-container {
@@ -1153,7 +1241,7 @@ nav .logo {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   font-size: 15px;
-  color: #572ee5;
+  color: var(--text-primary);
   text-align: center;
   line-height: 22px;
 }
@@ -1161,7 +1249,7 @@ nav .logo {
 .section-create-gifo .footer .repeat-recording-button {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
-  color: #572ee5;
+  color: var(--text-primary);
   text-align: center;
   line-height: 16px;
   -webkit-text-decoration: underline solid #50e3c2 2px;
@@ -1182,7 +1270,7 @@ nav .logo {
 .section-create-gifo .divisor {
   width: 796px;
   height: 7px;
-  background: #572ee5;
+  background: var(--background-primary);
 }
 
 .section-create-gifo .action-button-container {
@@ -1206,6 +1294,7 @@ nav .logo {
   left: 116px;
   width: 123px;
   height: 162px;
+  background-image: var(--image-camera);
 }
 
 .section-create-gifo .svg-camera-light {
@@ -1214,6 +1303,10 @@ nav .logo {
   left: 241px;
   width: 91px;
   height: 151px;
+  background-image: var(--image-camera-light);
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
 }
 
 .section-create-gifo .svg-tape {
@@ -1222,6 +1315,7 @@ nav .logo {
   right: 97px;
   width: 142px;
   height: 88px;
+  background-image: var(--image-tape);
 }
 
 @media (max-width: 1300px) {
@@ -1264,8 +1358,11 @@ nav .logo {
   border-radius: 6px;
   outline: none;
   border: none;
-  background-color: transparent;
   cursor: pointer;
+  background-color: transparent;
+  background-image: var(--button-close);
+  background-repeat: no-repeat;
+  background-position: 25% 25%;
 }
 
 .modal .button-close:active {
@@ -1306,6 +1403,7 @@ nav .logo {
   font-family: "Roboto", sans-serif;
   font-size: 15px;
   line-height: 18px;
+  color: var(--text-blank);
 }
 
 .modal .title {
@@ -1314,6 +1412,7 @@ nav .logo {
   font-weight: bold;
   font-size: 16px;
   line-height: 19px;
+  color: var(--text-blank);
 }
 
 .modal .button-group {
@@ -1353,7 +1452,7 @@ nav .logo {
   z-index: 50;
   width: 100vw;
   height: 100vh;
-  background-color: #fff;
+  background-color: var(--background-blank);
   opacity: 0.97;
 }
 
@@ -1395,18 +1494,18 @@ nav .logo {
     background-color: transparent;
   }
   .modal .gallery-button-previous {
-    background: url(../assets/button-slider-left.svg);
+    background: var(--button-slider-left);
     left: 10vw;
   }
   .modal .gallery-button-previous:hover {
-    background: url(../assets/button-slider-left-hover.svg);
+    background: var(--button-slider-left-hover);
   }
   .modal .gallery-button-next {
-    background: url(../assets/Button-Slider-right.svg);
+    background: var(--button-slider-right);
     right: 10vw;
   }
   .modal .gallery-button-next:hover {
-    background: url(../assets/Button-Slider-right-hover.svg);
+    background: var(--button-slider-right-hover);
   }
   .modal .video {
     width: auto;
@@ -1569,8 +1668,12 @@ nav .logo {
   font-family: "Roboto", sans-serif;
 }
 
+body {
+  background-color: var(--background-blank);
+}
+
 .bottom-bar, .top-bar {
-  background-color: #572ee5;
+  background-color: var(--background-primary);
   width: 100%;
   height: 5px;
 }

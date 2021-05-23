@@ -1,25 +1,27 @@
 // text
 
 .text-primary {
-    color: $color-primary;
+    color: var(--text-primary);
 }
 
 .text-secondary {
-    color: $color-secondary;
+    color:var(--text-secondary);
 }
 
 .text-dark {
-    color: $color-dark;
+    color: var(--text-blank);
 }
 
 
 .button-pill {
     padding-top: 16px;
     padding-bottom: 16px;
-    padding-left: 23px;
-    padding-right: 23px;
+    // padding-left: 23px;
+    // padding-right: 23px;
+    padding-left: 38px;
+    padding-right: 38px;
 
-    border: 1px solid $color-primary;
+    border: 1px solid var(--text-primary);
     border-radius: 25px;
     background-color: transparent;
 
@@ -28,14 +30,13 @@
     font-size: 13px;
     line-height: 16px;
     text-align: center;
-    color: $color-primary;
+    color: var(--text-primary);
 
-    cursor: pointer;
-
+    
     &:hover {
-        background-color: $color-primary;
-        color: 
-        $color-white;
+        cursor: pointer;
+        background-color: var(--text-primary);
+        color: var(--text-contrast);
     }
 
     &:active {
@@ -46,14 +47,14 @@
 .button-circle {
     width: 32px;
     height: 32px;
-    border: 1px solid $color-primary;
+    border: 1px solid var(--text-primary);
     border-radius: 50%;
     background-color: transparent;
 
     font-family: $font-primary;
     font-size: 18px;
     line-height: 21px;
-    color: $color-primary;
+    color: var(--text-primary);
 
     // cursor: pointer;
 
@@ -71,7 +72,7 @@
 .button-card-overlay {
     width: 32px;
     height: 32px;
-    border: 1px solid $color-primary;
+    border: 1px solid var(--text-primary);
     border-radius: 6px;
     background-color: white;
     opacity: 0.7;
@@ -91,8 +92,8 @@
     height: 36px;
     border-radius: 6px;
     outline: none;
-    border: 1px solid $color-light;
-    background-color: transparent;
+    border: 1px solid var(--text-light);
+    background-color: white;
     cursor: pointer;
 
     img {
@@ -101,7 +102,7 @@
     }
 
     &:active {
-        border: 1px solid $color-primary;
+        border: 1px solid var(--text-primary);
     }
 }
 

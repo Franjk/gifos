@@ -1,4 +1,6 @@
+import Gifo from "./classes/Gifo.js";
 import Giphy from "./classes/Giphy.js";
+import { initializeDarkMode } from "./shared/darkMode.js";
 
 const STAGE = {
   INITIAL: "initial",
@@ -269,7 +271,7 @@ const startUploadingStage = async function () {
   hideElement(repeatRecordingButtonEl);
 
   const id = await giphy.uploadGif(blob);
-  uploadedGifo = await giphy.getGifById(id);
+  uploadedGifo = new Gifo(id);
   uploadedGifo.addToMyGifos();
   startFinishedUploadingStage();
 };
@@ -332,7 +334,9 @@ const initializeCreateGifoPage = function () {
   buttonDownloadEl.addEventListener("click", handleButtonDownloadClick);
   buttonLinkEl.addEventListener("click", handleButtonLinkClick);
   // startBeforeRecordingStage();
-  // giphy.getGifById("JLTO9y5eB131m1i9gJ");
+  giphy.getGifById("Rlxfht52POeHMUrner");
+  giphy.getGifById("cE8GxM2AxzTfh1DnsO");
 };
 
+initializeDarkMode();
 initializeCreateGifoPage();

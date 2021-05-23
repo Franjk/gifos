@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
 
-    background-color: $color-background-light-2;
+    background-color: var(--background-contrast);
     text-align: center;
 
     .title {
@@ -14,7 +14,7 @@
         font-weight: bold;
         font-size: 20px;
         line-height: 30px;
-        color: $color-primary;
+        color: var(--text-primary);
     }
 
     .subtitle {
@@ -24,7 +24,7 @@
         margin-right: 21px;
         
 
-        color: $color-black;
+        color: var(--text-blank);
         font-family: $font-primary;
         font-size: 16px;
         font-weight: 400;        
@@ -42,16 +42,6 @@
         padding-top: 32px;
         padding-bottom: 82px;
         padding-left: 22px;
-
-        // borrar
-        .placeholder-img {
-            border: 1px solid purple;
-            background-color: red;
-            // width: 243px;
-            height: 187px;
-            flex: 0 0 243px;
-            
-        }
 
         .trending-gifo {
             height: 187px;

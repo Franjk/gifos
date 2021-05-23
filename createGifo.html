@@ -28,9 +28,11 @@
 
         <!-- mobile menu -->
         <ul id="menu" class="menu">
-          <li><a href="#darkMode">Modo Nocturno</a></li>
-          <li><a href="./favorites.html">Favoritos</a></li>
-          <li><a href="./myGifos.html">Mis GIFOS</a></li>
+          <li>
+            <span class="dark-mode-toggler menu-link">Modo Nocturno</span>
+          </li>
+          <li><a class="menu-link" href="./favorites.html">Favoritos</a></li>
+          <li><a class="menu-link" href="./myGifos.html">Mis GIFOS</a></li>
         </ul>
       </div>
       <nav>
@@ -81,6 +83,7 @@
                       <g id="Clip-3"></g>
                       <text
                         id="GIFOS"
+                        class="logo-svg"
                         mask="url(#mask-2)"
                         font-family="Roboto-Black, Roboto"
                         font-size="18"
@@ -98,13 +101,19 @@
         </a>
         <!-- desktop menu -->
         <ul id="menu-desktop" class="menu-desktop">
-          <li><a href="#">Modo Nocturno</a></li>
           <li>
-            <a href="./favorites.html">Favoritos</a>
+            <span class="menu-link dark-mode-toggler">Modo Nocturno</span>
           </li>
-          <li><a href="./myGifos.html">Mis GIFOS</a></li>
           <li>
-            <a class="active create-gifo-link" href="./createGifo.html"> </a>
+            <a class="menu-link" href="./favorites.html">Favoritos</a>
+          </li>
+          <li><a class="menu-link" href="./myGifos.html">Mis GIFOS</a></li>
+          <li>
+            <a
+              class="create-gifo-link menu-link active"
+              href="./createGifo.html"
+            >
+            </a>
           </li>
         </ul>
       </nav>
@@ -212,13 +221,19 @@
       <!-- svgs -->
 
       <!-- camera & light -->
-      <img class="svg-camera" src="./assets/camara.svg" alt="camera" />
-      <img
-        class="svg-camera-light"
-        src="./assets/element-luz-camara.svg"
-        alt="camera light"
-      />
-      <img class="svg-tape" src="./assets/pelicula.svg" alt="tape" />
+      <div class="svg-camera">
+        <!-- <img class="svg-camera" src="./assets/camara.svg" alt="camera" /> -->
+      </div>
+      <div class="svg-camera-light">
+        <!-- <img
+          class="svg-camera-light"
+          src="./assets/element-luz-camara.svg"
+          alt="camera light"
+        /> -->
+      </div>
+      <div class="svg-tape">
+        <!-- <img class="svg-tape" src="./assets/pelicula.svg" alt="tape" /> -->
+      </div>
     </section>
 
     <!-- section footer -->

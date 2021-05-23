@@ -16,7 +16,7 @@
         font-weight: bold;
         font-size: 25px;
         line-height: 33px;
-        color: $color-primary;
+        color: var(--text-primary);
     }
 
     .searchblock {
@@ -40,13 +40,11 @@
     .searchbar {
            
         width: 334px;
-        // height: 50px;
-
         padding-top: 15px;
         padding-bottom: 13px;
 
-        background-color: $color-white;
-        border: 1px solid $color-primary;
+        background-color: var(--background-blank);
+        border: 1px solid var(--text-primary);
         border-radius: 27px;
 
         &-form {
@@ -72,11 +70,13 @@
 
             border: none;
             outline: none;
+            background-color: var(--background-blank);
             
             font-family: $font-primary;
             font-size: 16px;
             line-height: 19px;
-            color: $color-dark;
+            color: var(--text-blank);
+
         }
 
         &-button {
@@ -86,14 +86,13 @@
         }
 
         &-expanded {
-            // height: 200px;
             margin-bottom: 55px;
         }
 
         &-divisor {
             width: 90%;
             height: 1px;
-            background-color: $color-light;
+            background-color: var(--text-light);
             margin: 5px auto;
         }
 
@@ -105,7 +104,6 @@
 
             padding-top: 12px;
             padding-bottom: 18px;
-            // height: 150px;
             width: 100%;
 
         }
@@ -136,10 +134,15 @@
         height: 24px;
     }
 
-    .icon-search {
+    .icon-search-dark {
         filter: grayscale(100%) opacity(40%);
 
     }
+
+    .dark-theme .icon-search-dark {
+        filter: hue-rotate(50%);
+    }
+
 
     .icon-close {
         padding: 5px;
@@ -148,6 +151,9 @@
     .icon-search-result {
         width: 15.8px;
         height: 15.8px;
+    }
+    
+    .icon-search-result.dark-theme-hide {
         filter: grayscale(100%) opacity(40%);
     }
 
@@ -162,7 +168,7 @@
             font-weight: bold;
             font-size: 16px;
             line-height: 25px;
-            color: $color-primary;
+            color: var(--text-primary);
         }
 
         &-topics {
@@ -170,11 +176,16 @@
             font-weight: normal;
             font-size: 14px;
             line-height: 25px;
-            color: $color-primary;
+            color: var(--text-primary);
             
         }
 
         &-topic {
+            font-family: $font-secondary;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 25px;
+            color: var(--text-primary);
 
             &:hover {
                 text-decoration: underline;
@@ -211,8 +222,8 @@
             padding-top: 15px;
             padding-bottom: 13px;
 
-            background-color: $color-white;
-            border: 1px solid $color-primary;
+            background-color: var(--background-blank);
+            border: 1px solid var(--text-primary);
             border-radius: 27px;
         }
     }

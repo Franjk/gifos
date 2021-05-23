@@ -18,7 +18,7 @@
     <div id="modal" class="modal display-none">
       <div class="button-close-wrapper">
         <button id="modal-button-close" class="button-close">
-          <img src="./assets/close.svg" alt="close button" />
+          <!-- <img src="./assets/close.svg" alt="close button" /> -->
         </button>
       </div>
 
@@ -94,9 +94,11 @@
 
         <!-- mobile menu -->
         <ul id="menu" class="menu">
-          <li><a href="#darkMode">Modo Nocturno</a></li>
-          <li><a href="./favorites.html">Favoritos</a></li>
-          <li><a href="./myGifos.html">Mis GIFOS</a></li>
+          <li>
+            <span class="dark-mode-toggler menu-link">Modo Nocturno</span>
+          </li>
+          <li><a class="menu-link" href="./favorites.html">Favoritos</a></li>
+          <li><a class="menu-link" href="./myGifos.html">Mis GIFOS</a></li>
         </ul>
       </div>
       <nav>
@@ -147,6 +149,7 @@
                       <g id="Clip-3"></g>
                       <text
                         id="GIFOS"
+                        class="logo-svg"
                         mask="url(#mask-2)"
                         font-family="Roboto-Black, Roboto"
                         font-size="18"
@@ -164,13 +167,15 @@
         </a>
         <!-- desktop menu -->
         <ul id="menu-desktop" class="menu-desktop">
-          <li><a href="#">Modo Nocturno</a></li>
           <li>
-            <a href="./favorites.html">Favoritos</a>
+            <span class="menu-link dark-mode-toggler">Modo Nocturno</span>
           </li>
-          <li><a href="./myGifos.html">Mis GIFOS</a></li>
           <li>
-            <a class="create-gifo-link" href="./createGifo.html"> </a>
+            <a class="menu-link" href="./favorites.html">Favoritos</a>
+          </li>
+          <li><a class="menu-link" href="./myGifos.html">Mis GIFOS</a></li>
+          <li>
+            <a class="create-gifo-link menu-link" href="./createGifo.html"> </a>
           </li>
         </ul>
       </nav>
@@ -202,8 +207,26 @@
           >
             <div class="searchbar-input-group">
               <img
-                class="button-icon active-search-show display-none icon-search"
+                class="
+                  button-icon
+                  active-search-show
+                  display-none
+                  icon-search-dark
+                  dark-theme-hide
+                "
                 src="./assets/icon-search.svg"
+                alt="icon search"
+              />
+
+              <img
+                class="
+                  button-icon
+                  active-search-show
+                  display-none
+                  icon-search
+                  dark-theme-show
+                "
+                src="./assets/icon-search-mod-noc.svg"
                 alt="icon search"
               />
 
@@ -215,19 +238,35 @@
                 placeholder="Busca GIFOS y más"
               />
             </div>
-            <button type="submit" class="searchbar-button">
+            <button type="submit" class="searchbar-button active-search-hide">
               <!-- icon search -->
               <img
-                class="button-icon active-search-hide"
+                class="button-icon dark-theme-hide"
                 src="./assets/icon-search.svg"
                 alt="icon search"
               />
 
+              <img
+                class="button-icon dark-theme-show"
+                src="./assets/icon-search-mod-noc.svg"
+                alt="icon search"
+              />
+            </button>
+            <button
+              id="searchbar-button-close"
+              type="submit"
+              class="searchbar-button active-search-show display-none"
+            >
               <!-- icon close -->
               <img
-                id="searchbar-button-close"
-                class="button-icon icon-close active-search-show display-none"
+                class="button-icon icon-close dark-theme-hide"
                 src="./assets/close.svg"
+                alt="icon close"
+              />
+
+              <img
+                class="dark-theme-show button-icon icon-close"
+                src="./assets/close-modo-noct.svg"
                 alt="icon close"
               />
             </button>
@@ -244,9 +283,7 @@
       <div class="trending active-search-hide">
         <h3 class="trending-title">Trending:</h3>
         <!-- el contenido de .trending-topics es un placeholder, luego se llenara con js -->
-        <div id="trending-topics-list" class="trending-topics">
-          Reactions, Entertainment, Sports, Stickers, Artists
-        </div>
+        <div id="trending-topics-list" class="trending-topics"></div>
       </div>
     </section>
 
@@ -267,9 +304,11 @@
       </div>
 
       <!-- view more button -->
-      <button id="view-more-button" class="button button-primary display-none">
-        VER MÁS
-      </button>
+      <div class="button-container">
+        <button id="view-more-button" class="button-pill display-none">
+          VER MÁS
+        </button>
+      </div>
 
       <!-- no content -->
       <div id="no-content" class="no-content display-none">

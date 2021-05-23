@@ -18,7 +18,7 @@
     <div id="modal" class="modal display-none">
       <div class="button-close-wrapper">
         <button id="modal-button-close" class="button-close">
-          <img src="./assets/close.svg" alt="close button" />
+          <!-- added icon with css -->
         </button>
       </div>
 
@@ -94,9 +94,11 @@
 
         <!-- mobile menu -->
         <ul id="menu" class="menu">
-          <li><a href="#darkMode">Modo Nocturno</a></li>
-          <li><a href="./favorites.html">Favoritos</a></li>
-          <li><a href="./myGifos.html">Mis GIFOS</a></li>
+          <li>
+            <span class="menu-link dark-mode-toggler">Modo Nocturno</span>
+          </li>
+          <li><a class="menu-link" href="./favorites.html">Favoritos</a></li>
+          <li><a class="menu-link" href="./myGifos.html">Mis GIFOS</a></li>
         </ul>
       </div>
       <nav>
@@ -147,6 +149,7 @@
                       <g id="Clip-3"></g>
                       <text
                         id="GIFOS"
+                        class="logo-svg"
                         mask="url(#mask-2)"
                         font-family="Roboto-Black, Roboto"
                         font-size="18"
@@ -164,13 +167,17 @@
         </a>
         <!-- desktop menu -->
         <ul id="menu-desktop" class="menu-desktop">
-          <li><a href="#">Modo Nocturno</a></li>
           <li>
-            <a href="./favorites.html">Favoritos</a>
+            <span class="menu-link dark-mode-toggler">Modo Nocturno</span>
           </li>
-          <li><a class="active" href="./myGifos.html">Mis GIFOS</a></li>
           <li>
-            <a class="create-gifo-link" href="./createGifo.html"> </a>
+            <a class="menu-link" href="./favorites.html">Favoritos</a>
+          </li>
+          <li>
+            <a class="active menu-link" href="./myGifos.html">Mis GIFOS</a>
+          </li>
+          <li>
+            <a class="create-gifo-link menu-link" href="./createGifo.html"> </a>
           </li>
         </ul>
       </nav>
@@ -197,9 +204,11 @@
       </div>
 
       <!-- view more button -->
-      <button id="view-more-button" class="button button-primary display-none">
-        VER MÁS
-      </button>
+      <div class="button-container">
+        <button id="view-more-button" class="button-pill display-none">
+          VER MÁS
+        </button>
+      </div>
 
       <!-- no content -->
       <div id="no-content" class="no-content display-none">

@@ -1,0 +1,99 @@
+body {
+  
+  --color-primary: #572ee5;
+  --color-secondary: #50e3c2;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-dark: #000;
+  --color-light: #9cafc3;
+  --color-background-dark-1: #37383c;
+  --color-background-dark-2: #222326;
+  --color-background-light-1: #fff;
+  --color-background-light-2: #F3F5F8;
+  
+  --text-primary: #572ee5;
+  --text-secondary: #50e3c2;
+  --text-blank: #000;
+  --text-contrast: #fff;
+  --text-light: #9cafc3;
+
+
+  --background-primary: #572ee5;
+  --background-overlay: #572ee5;
+  --background-blank: #fff;
+  --background-contrast: #F3F5F8;
+
+
+  // icons & buttons
+  --button-crear-gifo: url(../assets/button-crear-gifo.svg);
+  --button-crear-gifo-hover: url(../assets/CTA-crear-gifo-hover.svg);
+  --button-crear-gifo-active: url(../assets/CTA-crear-gifo-active.svg);
+
+  --button-slider-left: url(../assets/button-slider-left.svg);
+  --button-slider-left-hover: url(../assets/button-slider-left-hover.svg);
+  --button-slider-right: url(../assets/Button-Slider-right.svg);
+  --button-slider-right-hover: url(../assets/Button-Slider-right-hover.svg);
+
+  --button-close: url(../assets/close.svg);
+    
+  --image-camera: url(../assets/camara.svg);
+  --image-camera-light: url(../assets/element-luz-camara.svg);
+  --image-tape: url(../assets/pelicula.svg);
+
+  --icon-facebook: url(../assets/icon_facebook.svg);
+  --icon-facebook-hover: url(../assets/icon_facebook_hover.svg);
+  --icon-twitter: url(../assets/icon-twitter.svg);
+  --icon-twitter-hover: url(../assets/icon-twitter-hover.svg);
+  --icon-instagram: url(../assets/icon_instagram.svg);
+  --icon-instagram-hover: url(../assets/icon_instagram-hover.svg);
+
+
+  .dark-theme-show {
+    display: none;
+  }
+}
+
+body.dark-theme {
+  --text-primary: #fff;
+  --text-secondary: #50e3c2;
+  --text-blank: #fff;
+  --text-contrast: #000;
+
+  --background-primary: #000;
+  --background-overlay: #572ee5;
+  --background-blank: #37383c;
+  --background-contrast: #222326;
+
+  // icons
+  --button-crear-gifo: url(../assets/CTA-crear-gifo-modo-noc.svg);
+  --button-crear-gifo-hover: url(../assets/CTA-crear-gifo-hover-modo-noc.svg);
+  --button-crear-gifo-active: url(../assets/CTA-crear-gifo-active-modo-noc.svg);
+
+  --button-slider-left: url(../assets/button-slider-left-md-noct.svg);
+  --button-slider-left-hover: url(../assets/button-slider-left-hover.svg);
+  --button-slider-right: url(../assets/button-slider-right-md-noct.svg);
+  --button-slider-right-hover: url(../assets/Button-Slider-right-hover.svg);
+
+  --button-close: url(../assets/close-modo-noct.svg);
+
+  --image-camera: url(../assets/camara-modo-noc.svg);
+  --image-camera-light: url(../assets/element-luz-camara.svg);
+  --image-tape: url(../assets/pelicula-modo-noc.svg);
+  
+  --icon-facebook: url(../assets/icon_facebook.svg);
+  --icon-facebook-hover: url(../assets/icon_facebook_noc.svg);
+  --icon-twitter: url(../assets/icon-twitter.svg);
+  --icon-twitter-hover: url(../assets/icon_twitter_noc.svg);
+  --icon-instagram: url(../assets/icon_instagram.svg);
+  --icon-instagram-hover: url(../assets/icon_instagram_noc.svg);
+
+  .dark-theme-hide {
+    display: none;
+  }
+
+  .dark-theme-show {
+    display: initial;
+  }
+  
+}
+

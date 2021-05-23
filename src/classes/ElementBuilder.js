@@ -1,13 +1,20 @@
+import Gifo from "./Gifo.js";
+
 export default class ElementBuilder {
   static buildAutocompletionSearchElement = function (term) {
     return `
       <div class="searchbar-result" data-searchterm="${term}">
         <img
-          class="icon-search-result"
+          class="icon-search-result dark-theme-hide"
           src="./assets/icon-search.svg"
           alt="icon-search"
           />
         
+          <img
+          class="icon-search-result dark-theme-show"
+          src="./assets/icon-search-modo-noct.svg"
+          alt="icon-search"
+          />
   
         <p class="searchbar-result-text">${term}</p>
       </div>
@@ -30,14 +37,14 @@ export default class ElementBuilder {
     return innerHtmlTemp;
   };
 
-  static buildGifo(gifo, classList) {
+  static buildGifo(gifo, classList, uriType) {
     const favoriteClass = gifo.isFavorite() ? "favorite" : "";
     const downloadLink = gifo.getDownloadLink();
     const gifoEl = document.createElement("div");
     gifoEl.classList = classList;
     gifoEl.innerHTML = `
       <video
-        src="${gifo.imgUrl}"
+        src="${gifo.getGifURI(uriType)}"
         autoplay
         loop
       ></video>

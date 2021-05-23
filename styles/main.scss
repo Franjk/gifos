@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap');
+@import 'themes';
 @import 'variables';
 @import 'mixins';
 @import 'utilities';
@@ -22,9 +23,12 @@
   font-family: $font-primary;
 }
 
+body {
+  background-color: var(--background-blank);
+}
 
 .bottom-bar, .top-bar {
-  background-color: $color-primary;
+  background-color: var(--background-primary);
   width: 100%;
   height: 5px;
 }

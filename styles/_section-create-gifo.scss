@@ -12,7 +12,7 @@
     height: 390px;
 
     position: relative;
-    border: 1px solid $color-primary;
+    border: 1px solid var(--text-primary);
 
     .description-container {
       margin-top: 99px;
@@ -23,7 +23,7 @@
       font-weight: bold;
       font-size: 25px;
       line-height: 35px;
-      color: $color-primary;
+      color: var(--text-primary);
       text-align: center;
     }
 
@@ -33,7 +33,7 @@
       font-family: $font-primary;
       font-size: 16px;
       line-height: 29px;
-      color: black;
+      color: var(--text-blank);
       text-align: center;
     }
 
@@ -49,7 +49,7 @@
       height: 320px;
       z-index: 51;
 
-      background-color: $color-primary;
+      background-color: var(--background-overlay);
       opacity: 0.6;
     }
 
@@ -79,7 +79,7 @@
         font-size: 15px;
         line-height: 19px;
         text-align: center;
-        color: $color-white;
+        color: var(--text-blank);
       }
 
       .button-group {
@@ -113,8 +113,8 @@
       top: 24px;
       left: 20px;
 
-      border-top: 1px solid $color-secondary;
-      border-left: 1px solid $color-secondary;
+      border-top: 1px solid var(--text-secondary);
+      border-left: 1px solid var(--text-secondary);
     }
 
     .corner-top-right {
@@ -122,8 +122,8 @@
       top: 24px;
       right: 20px;
 
-      border-top: 1px solid $color-secondary;
-      border-right: 1px solid $color-secondary;
+      border-top: 1px solid var(--text-secondary);
+      border-right: 1px solid var(--text-secondary);
     }
 
     .corner-bottom-left {
@@ -131,8 +131,8 @@
       bottom: 24px;
       left: 20px;
 
-      border-bottom: 1px solid $color-secondary;
-      border-left: 1px solid $color-secondary;
+      border-bottom: 1px solid var(--text-secondary);
+      border-left: 1px solid var(--text-secondary);
     }
 
     .corner-bottom-right {
@@ -140,8 +140,8 @@
       bottom: 24px;
       right: 20px;
 
-      border-bottom: 1px solid $color-secondary;
-      border-right: 1px solid $color-secondary;
+      border-bottom: 1px solid var(--text-secondary);
+      border-right: 1px solid var(--text-secondary);
     }
 
   }
@@ -173,8 +173,8 @@
     }
 
     .active {
-      color: $color-white;
-      background-color: $color-primary;
+      color: var(--text-contrast);
+      background-color: var(--text-primary);
     }
 
     .video-action-container {
@@ -192,7 +192,7 @@
       font-family: $font-secondary;
       font-weight: bold;
       font-size: 15px;
-      color: $color-primary;
+      color: var(--text-primary);
       text-align: center;
       line-height: 22px;
     }
@@ -200,11 +200,11 @@
     .repeat-recording-button {
       font-family: $font-secondary;
       font-weight: bold;
-      color: $color-primary;
+      color: var(--text-primary);
       text-align: center;
       line-height: 16px;
 
-      text-decoration: underline solid $color-secondary 2px;
+      text-decoration: underline solid #50e3c2 2px;
       background-color: transparent;
       border: none;
 
@@ -221,7 +221,7 @@
   .divisor {
     width: 796px;
     height: 7px;
-    background: $color-primary;
+    background: var(--background-primary);
   }
 
   .action-button-container {
@@ -241,6 +241,8 @@
     width: 123px;
     height: 162px;
 
+    background-image: var(--image-camera);
+
   }
 
   .svg-camera-light {
@@ -249,6 +251,10 @@
     left: 241px;
     width: 91px;
     height: 151px;
+    background-image: var(--image-camera-light);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.5;
   }
 
   .svg-tape {
@@ -257,6 +263,7 @@
     right: 97px;
     width: 142px;
     height: 88px;
+    background-image: var(--image-tape);
   }
   
 }
