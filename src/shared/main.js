@@ -3,11 +3,15 @@ import Gifo from "../classes/Gifo.js";
 import Gallery from "../classes/Gallery.js";
 import Giphy from "../classes/Giphy.js";
 import Local from "../classes/Local.js";
-import { initializeDarkMode } from "./darkMode.js";
 
 const API_KEY = "w5DZnpvGHBZdjQuJDW8TfKjyAtngoYnt";
 const DESKTOP_MIN_WIDTH = 768;
 const DEFAULT_GIFOS_DISPLAYED = 12;
+const GIFO_FORMAT = {
+  TRENDING: "TRENDING",
+  SEARCHED: "SEARCHED",
+  MY_GIFOS: "MY_GIFOS",
+};
 
 const giphy = new Giphy(API_KEY);
 
@@ -26,24 +30,36 @@ const testGifo = Gifo.createGifo({
 
 trendingGifos.addGifo(testGifo);
 
-const searchbar = document.querySelector("#searchbar");
-const searchbarInput = document.querySelector("#searchbar-input");
-const searchbarForm = document.querySelector("#searchbar-form");
-const searchbarButtonClose = document.querySelector("#searchbar-button-close");
-const searchbarResultGroup = document.querySelector("#searchbar-result-group");
-const trendingTopicsList = document.querySelector("#trending-topics-list");
+const searchbarEl = document.querySelector("#searchbar");
+const searchbarInputEl = document.querySelector("#searchbar-input");
+const searchbarFormEl = document.querySelector("#searchbar-form");
+const searchbarButtonCloseEl = document.querySelector(
+  "#searchbar-button-close"
+);
+const searchbarResultGroupEl = document.querySelector(
+  "#searchbar-result-group"
+);
+const trendingTopicsListEl = document.querySelector("#trending-topics-list");
 const gifosGalleryEl = document.querySelector("#gifos-gallery");
-const searchTermTitle = document.querySelector("#search-term-title");
-const viewMoreButton = document.querySelector("#view-more-button");
-const noContent = document.querySelector("#no-content");
-const trendingGifosGallery = document.querySelector("#trending-gifos-gallery");
+const searchTermTitleEl = document.querySelector("#search-term-title");
+const viewMoreButtonEl = document.querySelector("#view-more-button");
+const noContentEl = document.querySelector("#no-content");
 const modalButtonCloseEl = document.querySelector("#modal-button-close");
+const trendingGifosGalleryEl = document.querySelector(
+  "#trending-gifos-gallery"
+);
+const trendingGalleryButtonPreviousEl = document.querySelector(
+  "#trending-gallery-button-previous"
+);
+const trendingGalleryButtonNextEl = document.querySelector(
+  "#trending-gallery-button-next"
+);
 
 // DOM MANIPULATION FUNCTIONS
 
 const displayTrendingSearchTerms = async function () {
   const trendingSearchTerms = await giphy.getTrendingSearchTerms(5);
-  trendingTopicsList.innerHTML =
+  trendingTopicsListEl.innerHTML =
     ElementBuilder.buildTrendingTopicsList(trendingSearchTerms);
   document
     .querySelectorAll(".trending-topic")
@@ -56,12 +72,7 @@ const displayTrendingGifos = async function () {
   trendingGifos.addGifos(gifos);
 
   for (let gifo of gifos) {
-    const classList = "gifo trending-gifo";
-    const gifoEl = ElementBuilder.buildGifo(
-      gifo,
-      classList,
-      Gifo.URI_TYPE.ORIGINAL_MP4
-    );
+    const gifoEl = ElementBuilder.buildGifo(gifo, GIFO_FORMAT.TRENDING);
 
     gifoEl.addEventListener("click", buildHandlerGifoTouchEnd(gifo));
 
@@ -70,10 +81,14 @@ const displayTrendingGifos = async function () {
       .addEventListener("click", buildHandlerGifoFavButtonClick(gifo));
 
     gifoEl
+      .querySelector(".button-download")
+      .addEventListener("click", buildHandlerDownloadGifo(gifo));
+
+    gifoEl
       .querySelector(".button-max")
       .addEventListener("click", buildHandlerGifoMaxButtonClick(gifo));
 
-    trendingGifosGallery.appendChild(gifoEl);
+    trendingGifosGalleryEl.appendChild(gifoEl);
   }
 };
 
@@ -85,18 +100,17 @@ const displaySearchedGifos = async function (searchTerm) {
   if (gifos.length > 0) {
     searchedGifos.addGifos(gifos);
     for (let gifo of gifos) {
-      const classList = "gifo searched-gifo";
-      const gifoEl = ElementBuilder.buildGifo(
-        gifo,
-        classList,
-        Gifo.URI_TYPE.ORIGINAL_MP4
-      );
+      const gifoEl = ElementBuilder.buildGifo(gifo, GIFO_FORMAT.SEARCHED);
 
       gifoEl.addEventListener("click", buildHandlerGifoTouchEnd(gifo));
 
       gifoEl
         .querySelector(".button-fav")
         .addEventListener("click", buildHandlerGifoFavButtonClick(gifo));
+
+      gifoEl
+        .querySelector(".button-download")
+        .addEventListener("click", buildHandlerDownloadGifo(gifo));
 
       gifoEl
         .querySelector(".button-max")
@@ -119,18 +133,17 @@ const displayMoreSearchedGifos = async function () {
     searchedGifos.addGifos(gifos);
 
     for (let gifo of gifos) {
-      const classList = "gifo searched-gifo";
-      const gifoEl = ElementBuilder.buildGifo(
-        gifo,
-        classList,
-        Gifo.URI_TYPE.ORIGINAL_MP4
-      );
+      const gifoEl = ElementBuilder.buildGifo(gifo, GIFO_FORMAT.SEARCHED);
 
       gifoEl.addEventListener("click", buildHandlerGifoTouchEnd(gifo));
 
       gifoEl
         .querySelector(".button-fav")
         .addEventListener("click", buildHandlerGifoFavButtonClick(gifo));
+
+      gifoEl
+        .querySelector(".button-download")
+        .addEventListener("click", buildHandlerDownloadGifo(gifo));
 
       gifoEl
         .querySelector(".button-max")
@@ -151,18 +164,17 @@ const displayMoreFavoriteGifos = function () {
     favoriteGifosOnDisplay.addGifos(gifos);
 
     for (let gifo of gifos) {
-      const classList = "gifo searched-gifo";
-      const gifoEl = ElementBuilder.buildGifo(
-        gifo,
-        classList,
-        Gifo.URI_TYPE.ORIGINAL_MP4
-      );
+      const gifoEl = ElementBuilder.buildGifo(gifo, GIFO_FORMAT.SEARCHED);
 
       gifoEl.addEventListener("click", buildHandlerGifoTouchEnd(gifo));
 
       gifoEl
         .querySelector(".button-fav")
         .addEventListener("click", buildHandlerGifoFavButtonClick(gifo));
+
+      gifoEl
+        .querySelector(".button-download")
+        .addEventListener("click", buildHandlerDownloadGifo(gifo));
 
       gifoEl
         .querySelector(".button-max")
@@ -189,18 +201,17 @@ const displayMoreMyGifos = function () {
     myGifosOnDisplay.addGifos(gifos);
 
     for (let gifo of gifos) {
-      const classList = "gifo searched-gifo";
-      const gifoEl = ElementBuilder.buildGifo(
-        gifo,
-        classList,
-        Gifo.URI_TYPE.ORIGINAL_MP4
-      );
+      const gifoEl = ElementBuilder.buildGifo(gifo, GIFO_FORMAT.MY_GIFOS);
 
       gifoEl.addEventListener("click", buildHandlerGifoTouchEnd(gifo));
 
       gifoEl
-        .querySelector(".button-fav")
-        .addEventListener("click", buildHandlerGifoFavButtonClick(gifo));
+        .querySelector(".button-delete")
+        .addEventListener("click", buildHandlerGifoDeleteButtonClick(gifo));
+
+      gifoEl
+        .querySelector(".button-download")
+        .addEventListener("click", buildHandlerDownloadGifo(gifo));
 
       gifoEl
         .querySelector(".button-max")
@@ -228,7 +239,7 @@ const displaySearchAutocompletionResults = async function (searchTerm) {
     innerHtmlTemp += ElementBuilder.buildAutocompletionSearchElement(result);
   }
 
-  searchbarResultGroup.innerHTML = innerHtmlTemp;
+  searchbarResultGroupEl.innerHTML = innerHtmlTemp;
   document
     .querySelectorAll(".searchbar-result")
     .forEach((el) =>
@@ -240,7 +251,7 @@ const displaySearchAutocompletionResults = async function (searchTerm) {
 };
 
 const updateSearchTerm = function (newSearchTerm) {
-  searchTermTitle.innerText = newSearchTerm;
+  searchTermTitleEl.innerText = newSearchTerm;
 };
 
 const removeSearchbarResults = function () {
@@ -260,7 +271,7 @@ const showActiveSearchbarElements = function () {
     .querySelectorAll(".active-search-hide")
     .forEach((el) => el.classList.add("display-none"));
 
-  searchbar.classList.add("searchbar-expanded");
+  searchbarEl.classList.add("searchbar-expanded");
 };
 
 const hideActiveSearchbarElements = function () {
@@ -272,7 +283,7 @@ const hideActiveSearchbarElements = function () {
     .querySelectorAll(".active-search-hide")
     .forEach((el) => el.classList.remove("display-none"));
 
-  searchbar.classList.remove("searchbar-expanded");
+  searchbarEl.classList.remove("searchbar-expanded");
 };
 
 const showOnSearchElements = function () {
@@ -288,19 +299,19 @@ const hideOnSearchElements = function () {
 };
 
 const showNoContentElement = function () {
-  noContent.classList.remove("display-none");
+  noContentEl.classList.remove("display-none");
 };
 
 const hideNoContentElement = function () {
-  noContent.classList.add("display-none");
+  noContentEl.classList.add("display-none");
 };
 
 const showViewMoreButtonElement = function () {
-  viewMoreButton.classList.remove("display-none");
+  viewMoreButtonEl.classList.remove("display-none");
 };
 
 const hideViewMoreButtonElement = function () {
-  viewMoreButton.classList.add("display-none");
+  viewMoreButtonEl.classList.add("display-none");
 };
 
 const showModal = function () {
@@ -326,8 +337,8 @@ const hideElement = function (htmlElement) {
 // GENERAL FUNCTIONS
 
 const executeNewSearch = function (searchTerm) {
-  searchbarInput.value = searchTerm;
-  searchbarInput.blur();
+  searchbarInputEl.value = searchTerm;
+  searchbarInputEl.blur();
 
   removePreviouslyDisplayedGifos();
   hideActiveSearchbarElements();
@@ -431,12 +442,12 @@ const handleSearchbarInput = function (e) {
 
 const handleSearchbarSubmit = function (e) {
   e.preventDefault();
-  executeNewSearch(searchbarInput.value);
+  executeNewSearch(searchbarInputEl.value);
 };
 
 const handleSearchbarButtonCloseClick = function (e) {
   e.preventDefault();
-  searchbarInput.value = "";
+  searchbarInputEl.value = "";
   hideActiveSearchbarElements();
   removeSearchbarResults();
 };
@@ -462,7 +473,21 @@ const handleMyGifosViewMoreButtonClick = function (e) {
 };
 
 const handleSearchbarClick = function (e) {
-  searchbarInput.focus();
+  searchbarInputEl.focus();
+};
+
+const handleTrendingGalleryButtonNextClick = function (e) {
+  trendingGifosGalleryEl.scroll({
+    left: trendingGifosGalleryEl.scrollLeft + window.innerWidth * 0.75,
+    behavior: "smooth",
+  });
+};
+
+const handleTrendingGalleryButtonPreviousClick = function (e) {
+  trendingGifosGalleryEl.scroll({
+    left: trendingGifosGalleryEl.scrollLeft - window.innerWidth * 0.75,
+    behavior: "smooth",
+  });
 };
 
 const buildHandlerSearchbarResultClick = function (searchTerm) {
@@ -474,7 +499,19 @@ const buildHandlerSearchbarResultClick = function (searchTerm) {
   return handleSearchbarResultClick;
 };
 
-const buildHandlerDownloadGifo = function (gifo) {};
+const buildHandlerDownloadGifo = function (gifo) {
+  const handleDownloadGifoButtonClick = function (e) {
+    const a = document.createElement("a");
+
+    a.href = gifo.getDownloadLink();
+    a.target = "_blank";
+    a.download = gifo.title + ".mp4";
+    console.log("a click");
+    a.click();
+  };
+
+  return handleDownloadGifoButtonClick;
+};
 
 const buildHandlerGifoFavButtonClick = function (gifo) {
   const handleFavGifoButtonClick = function (e) {
@@ -493,6 +530,15 @@ const buildHandlerGifoFavButtonClick = function (gifo) {
   };
 
   return handleFavGifoButtonClick;
+};
+
+const buildHandlerGifoDeleteButtonClick = function (gifo) {
+  const handleGifoDeleteButtonClick = function (e) {
+    gifo.removeFromMyGifos();
+    location.reload();
+  };
+
+  return handleGifoDeleteButtonClick;
 };
 
 const buildHandlerGifoTouchEnd = function (gifo) {
@@ -530,19 +576,24 @@ const buildHandlerModalButtonNextClick = function (gifo) {
 
 // MAIN
 const initializeIndexPage = function () {
-  searchbar.addEventListener("click", handleSearchbarClick);
-  searchbarInput.addEventListener("input", handleSearchbarInput);
-  searchbarForm.addEventListener("submit", handleSearchbarSubmit);
-  searchbarButtonClose.addEventListener(
+  searchbarEl.addEventListener("click", handleSearchbarClick);
+  searchbarInputEl.addEventListener("input", handleSearchbarInput);
+  searchbarFormEl.addEventListener("submit", handleSearchbarSubmit);
+  searchbarButtonCloseEl.addEventListener(
     "click",
     handleSearchbarButtonCloseClick
   );
-  viewMoreButton.addEventListener("click", handleIndexViewMoreButtonClick);
+  viewMoreButtonEl.addEventListener("click", handleIndexViewMoreButtonClick);
+  modalButtonCloseEl.addEventListener("click", hideModal);
+  trendingGalleryButtonNextEl.addEventListener(
+    "click",
+    handleTrendingGalleryButtonNextClick
+  );
 
-  // modal config
-  document
-    .querySelector("#modal-button-close")
-    .addEventListener("click", hideModal);
+  trendingGalleryButtonPreviousEl.addEventListener(
+    "click",
+    handleTrendingGalleryButtonPreviousClick
+  );
 
   displayTrendingSearchTerms();
   displayTrendingGifos();
@@ -552,8 +603,20 @@ const initializeIndexPage = function () {
 };
 
 const initializeFavoritesPage = function () {
-  viewMoreButton.addEventListener("click", handleFavoritesViewMoreButtonClick);
+  viewMoreButtonEl.addEventListener(
+    "click",
+    handleFavoritesViewMoreButtonClick
+  );
   modalButtonCloseEl.addEventListener("click", hideModal);
+  trendingGalleryButtonNextEl.addEventListener(
+    "click",
+    handleTrendingGalleryButtonNextClick
+  );
+
+  trendingGalleryButtonPreviousEl.addEventListener(
+    "click",
+    handleTrendingGalleryButtonPreviousClick
+  );
 
   favoriteGifos.addGifos(Local.getFavorites());
   displayMoreFavoriteGifos();
@@ -561,8 +624,17 @@ const initializeFavoritesPage = function () {
 };
 
 const initializeMyGifosPage = function () {
-  viewMoreButton.addEventListener("click", (e) => displayMoreMyGifos());
+  viewMoreButtonEl.addEventListener("click", (e) => displayMoreMyGifos());
   modalButtonCloseEl.addEventListener("click", hideModal);
+  trendingGalleryButtonNextEl.addEventListener(
+    "click",
+    handleTrendingGalleryButtonNextClick
+  );
+
+  trendingGalleryButtonPreviousEl.addEventListener(
+    "click",
+    handleTrendingGalleryButtonPreviousClick
+  );
 
   myGifos.addGifos(Local.getMyGifos());
   displayMoreMyGifos();

@@ -66,7 +66,7 @@ nav {
     z-index: 20;
   }
 
-  span {
+  span.hamburguer-menu {
     display: block;
     width: 18px;
     height: 2px;
@@ -85,25 +85,25 @@ nav {
       background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
   }
 
-  span:first-child {
+  span.hamburguer-menu:first-child {
     transform-origin: 0 0;
   }
 
-  span:nth-last-child(2) {
+  span.hamburguer-menu:nth-last-child(2) {
     transform-origin: 0 100%;
   }
 
-  input:checked ~ span {
+  input:checked ~ span.hamburguer-menu {
     opacity: 1;
     transform: rotate(45deg) translate(6.5px, 3px);
   }
 
-  input:checked ~ span:nth-last-child(3) {
+  input:checked ~ span.hamburguer-menu:nth-last-child(3) {
     opacity: 0;
     transform: rotate(0deg) scale(0.2, 0.2);
   }
 
-  input:checked ~ span:nth-last-child(2) {
+  input:checked ~ span.hamburguer-menu:nth-last-child(2) {
     transform: rotate(-45deg) translate(4px, 4px);
   }
 

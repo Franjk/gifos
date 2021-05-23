@@ -268,7 +268,7 @@ nav .logo-svg {
   z-index: 20;
 }
 
-.menu-toggle span {
+.menu-toggle span.hamburguer-menu {
   display: block;
   width: 18px;
   height: 2px;
@@ -287,29 +287,29 @@ nav .logo-svg {
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease, -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
 
-.menu-toggle span:first-child {
+.menu-toggle span.hamburguer-menu:first-child {
   -webkit-transform-origin: 0 0;
           transform-origin: 0 0;
 }
 
-.menu-toggle span:nth-last-child(2) {
+.menu-toggle span.hamburguer-menu:nth-last-child(2) {
   -webkit-transform-origin: 0 100%;
           transform-origin: 0 100%;
 }
 
-.menu-toggle input:checked ~ span {
+.menu-toggle input:checked ~ span.hamburguer-menu {
   opacity: 1;
   -webkit-transform: rotate(45deg) translate(6.5px, 3px);
           transform: rotate(45deg) translate(6.5px, 3px);
 }
 
-.menu-toggle input:checked ~ span:nth-last-child(3) {
+.menu-toggle input:checked ~ span.hamburguer-menu:nth-last-child(3) {
   opacity: 0;
   -webkit-transform: rotate(0deg) scale(0.2, 0.2);
           transform: rotate(0deg) scale(0.2, 0.2);
 }
 
-.menu-toggle input:checked ~ span:nth-last-child(2) {
+.menu-toggle input:checked ~ span.hamburguer-menu:nth-last-child(2) {
   -webkit-transform: rotate(-45deg) translate(4px, 4px);
           transform: rotate(-45deg) translate(4px, 4px);
 }
@@ -731,6 +731,7 @@ nav .logo-svg {
           align-items: center;
   background-color: var(--background-contrast);
   text-align: center;
+  position: relative;
 }
 
 .section-trending .title {
@@ -764,6 +765,7 @@ nav .logo-svg {
   gap: 22px;
   overflow: auto;
   width: 100%;
+  scroll-behavior: smooth;
   padding-top: 32px;
   padding-bottom: 82px;
   padding-left: 22px;
@@ -776,6 +778,10 @@ nav .logo-svg {
           flex: 0 0 243px;
 }
 
+.section-trending .gallery::-webkit-scrollbar {
+  height: 1px;
+}
+
 @media (min-width: 768px) {
   .section-trending {
     padding-left: 157px;
@@ -786,6 +792,30 @@ nav .logo-svg {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 357px;
             flex: 0 0 357px;
+  }
+  .section-trending .gallery-button {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background-color: green;
+    top: 260px;
+  }
+  .section-trending .gallery-button:hover {
+    cursor: pointer;
+  }
+  .section-trending .gallery-button-previous {
+    background: var(--button-slider-left);
+    left: 5vw;
+  }
+  .section-trending .gallery-button-previous:hover {
+    background: var(--button-slider-left-hover);
+  }
+  .section-trending .gallery-button-next {
+    background: var(--button-slider-right);
+    right: 5vw;
+  }
+  .section-trending .gallery-button-next:hover {
+    background: var(--button-slider-right-hover);
   }
 }
 
@@ -1508,9 +1538,9 @@ nav .logo-svg {
     background: var(--button-slider-right-hover);
   }
   .modal .video {
-    width: auto;
+    width: 695px;
     max-width: none;
-    max-height: 385px;
+    height: auto;
   }
   .modal .footer {
     -webkit-box-align: start;
@@ -1666,6 +1696,10 @@ nav .logo-svg {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
