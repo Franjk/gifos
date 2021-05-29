@@ -100,7 +100,7 @@ const displaySearchedGifos = async function (searchTerm) {
   if (gifos.length > 0) {
     searchedGifos.addGifos(gifos);
     for (let gifo of gifos) {
-      const gifoEl = ElementBuilder.buildGifo(gifo, GIFO_FORMAT.SEARCHED);
+      const gifoEl = ElementBuilder.buildGifo2(gifo, GIFO_FORMAT.SEARCHED);
 
       gifoEl.addEventListener("click", buildHandlerGifoTouchEnd(gifo));
 

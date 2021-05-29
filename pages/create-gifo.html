@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="icon" type="image/svg+xml" href="./assets/logo-mobile.svg" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo-mobile.svg" />
     <title>Gifos - Crear Gifo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
       type="text/css"
       media="screen"
-      href="styles/main.css"
+      href="/styles/main.css"
     />
   </head>
   <body>
@@ -31,12 +31,16 @@
           <li>
             <span class="dark-mode-toggler menu-link">Modo Nocturno</span>
           </li>
-          <li><a class="menu-link" href="./favorites.html">Favoritos</a></li>
-          <li><a class="menu-link" href="./myGifos.html">Mis GIFOS</a></li>
+          <li>
+            <a class="menu-link" href="/pages/favorites.html">Favoritos</a>
+          </li>
+          <li>
+            <a class="menu-link" href="/pages/my-gifos.html">Mis GIFOS</a>
+          </li>
         </ul>
       </div>
       <nav>
-        <a href="./index.html">
+        <a href="/index.html">
           <!-- logo -->
           <svg
             class="logo"
@@ -102,13 +106,15 @@
             <span class="menu-link dark-mode-toggler">Modo Nocturno</span>
           </li>
           <li>
-            <a class="menu-link" href="./favorites.html">Favoritos</a>
+            <a class="menu-link" href="/pages/favorites.html">Favoritos</a>
           </li>
-          <li><a class="menu-link" href="./myGifos.html">Mis GIFOS</a></li>
+          <li>
+            <a class="menu-link" href="/pages/my-gifos.html">Mis GIFOS</a>
+          </li>
           <li>
             <a
               class="create-gifo-link menu-link active"
-              href="./createGifo.html"
+              href="/pages/create-gifo.html"
             >
             </a>
           </li>
@@ -134,7 +140,7 @@
         <div id="video-container" class="video-container display-none">
           <video id="video" class="recorded-screen"></video>
           <img
-            src="./assets/placeholder.gif"
+            src="/assets/placeholder.gif"
             alt="image placeholder"
             id="img-gif"
             class="recorded-screen display-none"
@@ -146,7 +152,7 @@
             <img
               id="video-status-icon"
               class="video-status-icon"
-              src="./assets/loader.svg"
+              src="/assets/loader.svg"
               alt="loader"
             />
             <p id="video-status-description" class="video-status-description">
@@ -160,14 +166,14 @@
               <button id="button-download" class="button-card-overlay">
                 <img
                   class="icon-download"
-                  src="./assets/icon-download-hover.svg"
+                  src="/assets/icon-download-hover.svg"
                   alt="download"
                 />
               </button>
               <button id="button-link" class="button-card-overlay">
                 <img
                   class="icon-hover"
-                  src="./assets/icon-link-hover.svg"
+                  src="/assets/icon-link-hover.svg"
                   alt="link"
                 />
               </button>
@@ -219,17 +225,17 @@
 
       <!-- camera & light -->
       <div class="svg-camera">
-        <!-- <img class="svg-camera" src="./assets/camara.svg" alt="camera" /> -->
+        <!-- <img class="svg-camera" src="/assets/camara.svg" alt="camera" /> -->
       </div>
       <div class="svg-camera-light">
         <!-- <img
           class="svg-camera-light"
-          src="./assets/element-luz-camara.svg"
+          src="/assets/element-luz-camara.svg"
           alt="camera light"
         /> -->
       </div>
       <div class="svg-tape">
-        <!-- <img class="svg-tape" src="./assets/pelicula.svg" alt="tape" /> -->
+        <!-- <img class="svg-tape" src="/assets/pelicula.svg" alt="tape" /> -->
       </div>
     </section>
 
@@ -271,6 +277,6 @@
     <div class="bottom-bar"></div>
 
     <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
-    <script src="src/createGifo.js" type="module"></script>
+    <script src="/src/createGifo.js" type="module"></script>
   </body>
 </html>

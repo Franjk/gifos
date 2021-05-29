@@ -114,4 +114,81 @@ export default class ElementBuilder {
 
     return gifoEl;
   }
+
+  static buildGifo2(gifo, format) {
+    const favoriteClass = gifo.isFavorite() ? "favorite" : "";
+    const downloadLink = gifo.getLink();
+    const gifoEl = document.createElement("div");
+    const uriType = "preview_gif";
+    const gifoUri = gifo.getGifURI(uriType);
+
+    gifoEl.classList.add("gifo");
+    if (format === "TRENDING") gifoEl.classList.add("trending-gifo");
+    if (format === "SEARCHED") gifoEl.classList.add("searched-gifo");
+    if (format === "MY_GIFOS") gifoEl.classList.add("searched-gifo");
+
+    const buttonFavorites = `
+      <button class="gifo-button button-fav ${favoriteClass}">
+        <img
+          class="icon-fav"
+          src="./assets/icon-fav-hover.svg"
+          alt="icon fav"
+          />
+        <img
+          class="icon-fav-active"
+          src="./assets/icon-fav-active.svg"
+          alt="icon fav active"
+          />
+      </button>
+    `;
+
+    const buttonDelete = `
+      <button class="gifo-button button-delete">
+        <img
+          class="icon-fav"
+          src="./assets/icon-trash-hover.svg"
+          alt="icon fav"
+          />
+      </button>
+    `;
+
+    const buttonDownload = `
+      <button
+      class="gifo-button button-download"
+      >
+        <img
+          src="./assets/icon-download-hover.svg"
+          alt="icon download hover"
+          />
+      
+      </button>
+    `;
+
+    const buttonExpand = `
+      <button class="gifo-button button-max">
+        <img
+          src="./assets/icon-max-hover.svg"
+          alt="icon max hover"
+          />
+      </button>
+    `;
+
+    gifoEl.innerHTML = `
+      <img
+        src="${gifoUri}"
+      >
+      <div class="gifo-overlay"></div>
+      <div class="button-group">
+        ${format === "MY_GIFOS" ? buttonDelete : buttonFavorites}
+        ${buttonDownload}
+        ${buttonExpand}
+      </div>
+      <div class="gifo-description">
+        <p class="gifo-username">${gifo.username}</p>
+        <p class="gifo-title">${gifo.title}</p>
+      </div>
+      `;
+
+    return gifoEl;
+  }
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="icon" type="image/svg+xml" href="./assets/logo-mobile.svg" />
+    <link rel="icon" type="image/svg+xml" href="/assets/logo-mobile.svg" />
     <title>Gifos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -18,7 +18,7 @@
     <div id="modal" class="modal display-none">
       <div class="button-close-wrapper">
         <button id="modal-button-close" class="button-close">
-          <!-- <img src="./assets/close.svg" alt="close button" /> -->
+          <!-- <img src="/assets/close.svg" alt="close button" /> -->
         </button>
       </div>
 
@@ -52,14 +52,14 @@
             <!-- icon-fav -->
             <img
               class="icon-fav"
-              src="./assets/icon-fav.svg"
+              src="/assets/icon-fav.svg"
               alt="icon favorites"
             />
 
             <!-- icon-fav-active -->
             <img
               class="icon-fav-active"
-              src="./assets/icon-fav-active.svg"
+              src="/assets/icon-fav-active.svg"
               alt="icon favorites active"
             />
           </button>
@@ -71,7 +71,7 @@
             <!-- icon-delete -->
             <img
               class="icon-delete"
-              src="./assets/icon-trash-hover.svg"
+              src="/assets/icon-trash-hover.svg"
               alt="icon trash"
             />
           </button>
@@ -84,7 +84,7 @@
             download
           >
             <!-- icon-download -->
-            <img src="./assets/icon-download.svg" alt="icon download" />
+            <img src="/assets/icon-download.svg" alt="icon download" />
           </a>
         </div>
       </div>
@@ -110,12 +110,16 @@
           <li>
             <span class="dark-mode-toggler menu-link">Modo Nocturno</span>
           </li>
-          <li><a class="menu-link" href="./favorites.html">Favoritos</a></li>
-          <li><a class="menu-link" href="./myGifos.html">Mis GIFOS</a></li>
+          <li>
+            <a class="menu-link" href="/pages/favorites.html">Favoritos</a>
+          </li>
+          <li>
+            <a class="menu-link" href="/pages/my-gifos.html">Mis GIFOS</a>
+          </li>
         </ul>
       </div>
       <nav>
-        <a href="./index.html">
+        <a href="/index.html">
           <!-- logo -->
           <svg
             class="logo"
@@ -181,11 +185,17 @@
             <span class="menu-link dark-mode-toggler">Modo Nocturno</span>
           </li>
           <li>
-            <a class="menu-link" href="./favorites.html">Favoritos</a>
+            <a class="menu-link" href="/pages/favorites.html">Favoritos</a>
           </li>
-          <li><a class="menu-link" href="./myGifos.html">Mis GIFOS</a></li>
           <li>
-            <a class="create-gifo-link menu-link" href="./createGifo.html"> </a>
+            <a class="menu-link" href="/pages/my-gifos.html">Mis GIFOS</a>
+          </li>
+          <li>
+            <a
+              class="create-gifo-link menu-link"
+              href="/pages/create-gifo.html"
+            >
+            </a>
           </li>
         </ul>
       </nav>
@@ -204,7 +214,7 @@
       <div class="searchblock">
         <img
           class="searchblock-img"
-          src="./assets/ilustra_header.svg"
+          src="/assets/ilustra_header.svg"
           alt="A group of friends hugging each other"
         />
         <div id="searchbar" class="searchbar">
@@ -224,7 +234,7 @@
                   icon-search-dark
                   dark-theme-hide
                 "
-                src="./assets/icon-search.svg"
+                src="/assets/icon-search.svg"
                 alt="icon search"
               />
 
@@ -236,7 +246,7 @@
                   icon-search
                   dark-theme-show
                 "
-                src="./assets/icon-search-mod-noc.svg"
+                src="/assets/icon-search-mod-noc.svg"
                 alt="icon search"
               />
 
@@ -252,13 +262,13 @@
               <!-- icon search -->
               <img
                 class="button-icon dark-theme-hide"
-                src="./assets/icon-search.svg"
+                src="/assets/icon-search.svg"
                 alt="icon search"
               />
 
               <img
                 class="button-icon dark-theme-show"
-                src="./assets/icon-search-mod-noc.svg"
+                src="/assets/icon-search-mod-noc.svg"
                 alt="icon search"
               />
             </button>
@@ -270,13 +280,13 @@
               <!-- icon close -->
               <img
                 class="button-icon icon-close dark-theme-hide"
-                src="./assets/close.svg"
+                src="/assets/close.svg"
                 alt="icon close"
               />
 
               <img
                 class="dark-theme-show button-icon icon-close"
-                src="./assets/close-modo-noct.svg"
+                src="/assets/close-modo-noct.svg"
                 alt="icon close"
               />
             </button>
@@ -324,7 +334,7 @@
       <div id="no-content" class="no-content display-none">
         <img
           class="no-content-icon"
-          src="./assets/icon-busqueda-sin-resultado.svg"
+          src="/assets/icon-busqueda-sin-resultado.svg"
           alt="busqueda sin resultados"
         />
         <p class="no-content-text">Intenta con otra búsqueda.</p>
