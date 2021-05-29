@@ -19,7 +19,7 @@
         color: var(--text-primary);
     }
 
-    .searchblock {
+    .search-block {
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
@@ -37,7 +37,7 @@
 
     }
 
-    .searchbar {
+    .search-bar {
            
         width: 334px;
         padding-top: 15px;
@@ -200,7 +200,7 @@
             max-width: 934px;
         }
 
-        .searchblock {
+        .search-block {
             padding-top: 24px;
     
             &-img {
@@ -211,7 +211,7 @@
         }
 
             
-        .searchbar {
+        .search-bar {
             width: 551px;
 
             padding-top: 15px;

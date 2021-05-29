@@ -13,6 +13,7 @@ export default class Gifo {
     DOWNSIZED_SMALL: "downsized_small", //mp4
     PREVIEW: "preview", // mp4
     PREVIEW_GIF: "preview_gif",
+    PREVIEW_WEBP: "preview_webp",
   };
 
   /**
@@ -20,38 +21,72 @@ export default class Gifo {
    * @param {string} title
    * @param {string} username
    */
-  constructor(id = "", title = "", username = "") {
+  constructor(
+    id = "",
+    title = "",
+    username = "",
+    gifOriginal = "",
+    gifPreview = "",
+    mp4Original = ""
+  ) {
     this.id = id;
     this.title = title;
     this.username = username;
+    this.gifOriginal = gifOriginal;
+    this.gifPreview = gifPreview;
+    this.mp4Original = mp4Original;
 
     this.gallery = null;
   }
 
-  getDownloadLink() {
-    return `https://i.giphy.com/media/${this.id}/giphy.mp4`;
+  getGifOriginal() {
+    return this.gifOriginal || this.getURI(Gifo.URI_TYPE.ORIGINAL);
   }
 
-  getLink() {
-    return `https://media.giphy.com/media/${this.id}/giphy.gif`;
+  getMp4Original() {
+    return this.mp4Original || this.getURI(Gifo.URI_TYPE.ORIGINAL_MP4);
   }
 
-  getGifURI(uriType) {
+  /**
+   *
+   * @returns {string}
+   */
+  getGifPreview() {
+    return this.gifPreview || this.getURI(Gifo.URI_TYPE.ORIGINAL);
+  }
+
+  getTitle() {
+    return this.title;
+  }
+
+  /**
+   *
+   * @param {string} title
+   */
+  setTitle(title) {
+    this.title = title;
+  }
+
+  getId() {
+    return this.id;
+  }
+
+  getURI(uriType) {
     switch (uriType) {
       case Gifo.URI_TYPE.ORIGINAL:
-        return `https://media2.giphy.com/media/${this.id}/giphy.gif`;
+        return `https://media.giphy.com/media/${this.id}/giphy.gif`;
       case Gifo.URI_TYPE.ORIGINAL_MP4:
-        return `https://media2.giphy.com/media/${this.id}/giphy.mp4`;
+        return `https://media.giphy.com/media/${this.id}/giphy.mp4`;
       case Gifo.URI_TYPE.DOWNSIZED:
-        return `https://media2.giphy.com/media/${this.id}/giphy-downsized.gif`;
+        return `https://media.giphy.com/media/${this.id}/giphy-downsized.gif`;
       case Gifo.URI_TYPE.DOWNSIZED_SMALL:
-        return `https://media2.giphy.com/media/${this.id}/giphy-downsized-small.mp4`;
+        return `https://media.giphy.com/media/${this.id}/giphy-downsized-small.mp4`;
       case Gifo.URI_TYPE.PREVIEW_GIF:
-        return `https://media2.giphy.com/media/${this.id}/giphy-preview.gif`;
+        return `https://media.giphy.com/media/${this.id}/giphy-preview.gif`;
       case Gifo.URI_TYPE.PREVIEW:
-        return `https://media2.giphy.com/media/${this.id}/giphy-preview.mp4`;
+        return `https://media.giphy.com/media/${this.id}/giphy-preview.mp4`;
       default:
-        return `https://media2.giphy.com/media/${this.id}/giphy.gif`;
+        return `https://media.giphy.com/media/${this.id}/giphy.gif`;
     }
   }
 
@@ -85,12 +120,14 @@ export default class Gifo {
       title: this.title,
     });
     Local.saveFavorites(favorites);
+    return this;
   }
 
   removeFromFavorites() {
     const favorites = Local.getFavorites();
     const filteredFavorites = favorites.filter((fav) => fav.id !== this.id);
     Local.saveFavorites(filteredFavorites);
+    return this;
   }
 
   isMyGifo() {
@@ -107,11 +144,17 @@ export default class Gifo {
       title: this.title,
     });
     Local.saveMyGifos(myGifos);
+    return this;
   }
 
   removeFromMyGifos() {
     const myGifos = Local.getMyGifos();
     const filteredMyGifos = myGifos.filter((myGifo) => myGifo.id !== this.id);
     Local.saveMyGifos(filteredMyGifos);
+    return this;
+  }
+
+  toString() {
+    return `[Gifo] {id: ${this.id}, title: ${this.title}, username: ${this.username}}`;
   }
 }

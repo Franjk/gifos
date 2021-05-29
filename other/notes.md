@@ -21,7 +21,7 @@ API_KEY_SDK: KbIHd922B2ygt3RMt1GNSfvd2FG8qNNB
 
 ## Todo
 - mejorar layout del modal - esto lo dejo asi
-- que al hacer clic en la searchbar vaya derecho al input ok
+- que al hacer clic en la searchBar vaya derecho al input ok
 - revisar los tamanos de los gifos
 - agregar pagina favoritos y de mis gifos
 - seccion de creacion de gifos

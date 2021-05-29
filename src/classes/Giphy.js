@@ -99,13 +99,14 @@ export default class Giphy {
         .then(({ data, pagination, meta }) => {
           if (meta.status !== 200) throw new Error(meta.msg);
 
-          const gifosArray = data.map((gifo) => {
+          const gifosArray = data.map((gif) => {
             return new Gifo(
-              gifo.id,
-              gifo.title,
-              gifo.username,
-              gifo.images.preview.mp4,
-              gifo.images.original_mp4.mp4
+              gif.id,
+              gif.title,
+              gif.username,
+              gif.images.original.url,
+              gif.images.preview_gif.url,
+              gif.images.original.mp4
             );
           });
 
@@ -119,6 +120,11 @@ export default class Giphy {
     });
   }
 
+  /**
+   * Calls the API to get a gif with specific id.
+   * @param {string} id
+   * @returns {Promise<Gifo>} A `Promise` which resolves to a `Gifo` with the given id.
+   */
   getGifById(id) {
     const url = `https://${Giphy.ENDPOINTS.GET_GIF_BY_ID}/${id}?api_key=${this.apiKey}`;
     return new Promise((resolve, reject) => {
@@ -130,8 +136,9 @@ export default class Giphy {
             data.id,
             data.title,
             data.username,
-            data.images.preview.mp4,
-            data.images.original_mp4.mp4
+            data.images.original.url,
+            data.images.preview_gif.url,
+            data.images.original.mp4
           );
           resolve(gifo);
         })
@@ -178,13 +185,14 @@ export default class Giphy {
             totalCount: pagination.total_count,
           };
 
-          const gifosArray = data.map((gifo) => {
+          const gifosArray = data.map((gif) => {
             return new Gifo(
-              gifo.id,
-              gifo.title,
-              gifo.username,
-              gifo.images.preview.mp4,
-              gifo.images.original_mp4.mp4
+              gif.id,
+              gif.title,
+              gif.username,
+              gif.images.original.url,
+              gif.images.preview_gif.url,
+              gif.images.original.mp4
             );
           });
 
@@ -210,13 +218,14 @@ export default class Giphy {
 
           this.searchMetadata.offset = offset + limit;
 
-          const gifosArray = data.map((gifo) => {
+          const gifosArray = data.map((gif) => {
             return new Gifo(
-              gifo.id,
-              gifo.title,
-              gifo.username,
-              gifo.images.preview.mp4,
-              gifo.images.original_mp4.mp4
+              gif.id,
+              gif.title,
+              gif.username,
+              gif.images.original.url,
+              gif.images.preview_gif.url,
+              gif.images.original.mp4
             );
           });
 
@@ -245,10 +254,20 @@ export default class Giphy {
     };
   }
 
+  /**
+   * Que
+   * @returns `true` if the current search has more results
+   */
   hasMoreResults() {
     return this.searchMetadata.offset < this.searchMetadata.totalCount;
   }
 
+  /**
+   * Uploads a gif to Giphy.
+   * @param {Blob} blob
+   * @returns {Promise<string>} A `Promise` that resolves to the id of the
+   * newly uploaded gif.
+   */
   uploadGif(blob) {
     const url = `https://${Giphy.ENDPOINTS.UPLOAD}`;
 

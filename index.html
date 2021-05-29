@@ -23,19 +23,18 @@
       </div>
 
       <div class="gif-wrapper">
+        <video
+          id="modal-gif"
+          class="gif"
+          src="https://media0.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.mp4"
+          loop
+          autoplay
+        ></video>
+
         <button
           id="modal-button-previous"
           class="gallery-button gallery-button-previous"
         ></button>
-
-        <video
-          id="modal-video"
-          class="video"
-          src="https://media0.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.mp4?cid=e9eef115hrxw8wgy11lfntuldltoergfxn0355ppm60wec4p&rid=giphy.mp4&ct=g"
-          autoplay
-          loop
-        ></video>
-
         <button
           id="modal-button-next"
           class="gallery-button gallery-button-next"
@@ -76,16 +75,10 @@
             />
           </button>
 
-          <a
-            id="modal-button-download"
-            class="button-card"
-            href="#"
-            target="_blank"
-            download
-          >
+          <button id="modal-button-download" class="button-card">
             <!-- icon-download -->
             <img src="/assets/icon-download.svg" alt="icon download" />
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -209,23 +202,23 @@
         <span class="text-secondary">GIFOS</span>
       </h1>
 
-      <!-- searchbar -->
+      <!-- search-bar -->
 
-      <div class="searchblock">
+      <div class="search-block">
         <img
-          class="searchblock-img"
+          class="search-block-img"
           src="/assets/ilustra_header.svg"
           alt="A group of friends hugging each other"
         />
-        <div id="searchbar" class="searchbar">
+        <div id="search-bar" class="search-bar">
           <form
-            id="searchbar-form"
-            class="searchbar-form"
+            id="search-bar-form"
+            class="search-bar-form"
             action="#"
             method="GET"
             autocomplete="off"
           >
-            <div class="searchbar-input-group">
+            <div class="search-bar-input-group">
               <img
                 class="
                   button-icon
@@ -252,13 +245,13 @@
 
               <input
                 type="text"
-                id="searchbar-input"
-                name="searchbar-input"
-                class="searchbar-input"
+                id="search-bar-input"
+                name="search-bar-input"
+                class="search-bar-input"
                 placeholder="Busca GIFOS y más"
               />
             </div>
-            <button type="submit" class="searchbar-button active-search-hide">
+            <button type="submit" class="search-bar-button active-search-hide">
               <!-- icon search -->
               <img
                 class="button-icon dark-theme-hide"
@@ -273,9 +266,9 @@
               />
             </button>
             <button
-              id="searchbar-button-close"
+              id="search-bar-btn-close"
               type="submit"
-              class="searchbar-button active-search-show display-none"
+              class="search-bar-button active-search-show display-none"
             >
               <!-- icon close -->
               <img
@@ -291,10 +284,10 @@
               />
             </button>
           </form>
-          <div class="searchbar-divisor active-search-show display-none"></div>
+          <div class="search-bar-divisor active-search-show display-none"></div>
           <div
-            id="searchbar-result-group"
-            class="searchbar-result-group active-search-show display-none"
+            id="search-bar-result-group"
+            class="search-bar-result-group active-search-show display-none"
           ></div>
         </div>
       </div>
