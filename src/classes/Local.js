@@ -37,7 +37,7 @@ export default class Local {
     localStorage.setItem(Local.MY_GIFOS_KEY, JSON.stringify(myGifos));
   }
 
-  static getDarkMode() {
+  static isDarkMode() {
     const data = JSON.parse(localStorage.getItem(Local.DARK_MODE_KEY));
     return data || false;
   }
@@ -50,6 +50,6 @@ export default class Local {
   }
 
   static toggleDarkMode() {
-    Local.setDarkMode(!Local.getDarkMode());
+    Local.setDarkMode(!Local.isDarkMode());
   }
 }
