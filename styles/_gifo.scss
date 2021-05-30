@@ -58,6 +58,7 @@
       outline: none;
       border: none;
       background-color: $color-white;
+      
       cursor: pointer;
 
       opacity: 0;
@@ -73,25 +74,27 @@
       }
 
       
-  }
+      
+    }
     
-  .favorite {
-    padding-left: 7px;
-    padding-right: 7px;
-  }
-  
-  .favorite .icon-fav {
-    display: none;
+  .icon-max {
+    background-image: var(--icon-max);
   }
 
-  .icon-fav-active {
-    width: 18px;
-    height: 18px;
-    display: none;
+  .icon-download {
+    background-image: var(--icon-download);
   }
 
-  .favorite .icon-fav-active {
-    display: block;
+  .icon-delete {
+    background-image: var(--icon-delete);
+  }
+
+  .icon-fav {
+    background-image: var(--icon-fav);
+  }
+
+  .icon-fav.favorite {
+    background-image: var(--icon-fav-active);
   }
 
 

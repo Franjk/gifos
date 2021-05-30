@@ -36,6 +36,13 @@ body {
   --icon-twitter-hover: url(../assets/icon-twitter-hover.svg);
   --icon-instagram: url(../assets/icon_instagram.svg);
   --icon-instagram-hover: url(../assets/icon_instagram-hover.svg);
+  --icon-search: url(../assets/icon-search.svg);
+  --icon-search-dark-filter: grayscale(100%) opacity(40%);
+  --icon-max: url(../assets/icon-max-hover.svg);
+  --icon-download: url(../assets/icon-download-hover.svg);
+  --icon-delete: url(../assets/icon-trash-hover.svg);
+  --icon-fav: url(../assets/icon-fav-hover.svg);
+  --icon-fav-active: url(../assets/icon-fav-active-edited.svg);
 }
 
 body .dark-theme-show {
@@ -68,6 +75,8 @@ body.dark-theme {
   --icon-twitter-hover: url(../assets/icon_twitter_noc.svg);
   --icon-instagram: url(../assets/icon_instagram.svg);
   --icon-instagram-hover: url(../assets/icon_instagram_noc.svg);
+  --icon-search: url(../assets/icon-search-modo-noct.svg);
+  --icon-search-dark-filter: grayscale(0%) opacity(100%);
 }
 
 body.dark-theme .dark-theme-hide {
@@ -637,9 +646,15 @@ nav .logo-svg {
   height: 24px;
 }
 
-.section-main .icon-search-dark {
-  -webkit-filter: grayscale(100%) opacity(40%);
-          filter: grayscale(100%) opacity(40%);
+.section-main .icon-search {
+  background-image: var(--icon-search);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.section-main .icon-search-dark-filter {
+  -webkit-filter: var(--icon-search-dark-filter);
+          filter: var(--icon-search-dark-filter);
 }
 
 .section-main .icon-close {
@@ -1624,23 +1639,24 @@ nav .logo-svg {
   border: 1px solid #572ee5;
 }
 
-.gifo .favorite {
-  padding-left: 7px;
-  padding-right: 7px;
+.gifo .icon-max {
+  background-image: var(--icon-max);
 }
 
-.gifo .favorite .icon-fav {
-  display: none;
+.gifo .icon-download {
+  background-image: var(--icon-download);
 }
 
-.gifo .icon-fav-active {
-  width: 18px;
-  height: 18px;
-  display: none;
+.gifo .icon-delete {
+  background-image: var(--icon-delete);
 }
 
-.gifo .favorite .icon-fav-active {
-  display: block;
+.gifo .icon-fav {
+  background-image: var(--icon-fav);
+}
+
+.gifo .icon-fav.favorite {
+  background-image: var(--icon-fav-active);
 }
 
 .gifo-description {

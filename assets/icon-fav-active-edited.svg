@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   width="32"
+   height="32"
+   viewBox="0 0 32 32"
+   version="1.1"
+   id="svg15">
+  <metadata
+     id="metadata19">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>icon-fav-active</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+  <title
+     id="title2">icon-fav-active</title>
+  <desc
+     id="desc4">Created with Sketch.</desc>
+  <defs
+     id="defs7">
+    <path
+       d="m 275.32232,427 c 1.50585,0 2.94999,0.60965 4.01454,1.69475 1.06476,1.0843 1.66314,2.55563 1.66314,4.08984 0,1.53421 -0.59838,3.00554 -1.66328,4.08999 l -7.71948,7.86484 c -0.34102,0.34744 -0.89393,0.34744 -1.23495,0 l -7.71947,-7.86484 c -2.21709,-2.25884 -2.21709,-5.92114 0,-8.17998 2.21708,-2.25883 5.8117,-2.25883 8.02878,0 l 0.30817,0.31397 0.30801,-0.31382 C 272.37233,427.60965 273.81647,427 275.32232,427 Z"
+       id="path-1" />
+  </defs>
+  <g
+     id="GIFOS"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd"
+     transform="translate(5.9999987,7)">
+    <g
+       id="24-Mobile-Gifo-Max"
+       transform="translate(-261,-427)">
+      <mask
+         id="mask-2"
+         fill="#ffffff">
+        <use
+           xlink:href="#path-1"
+           id="use9"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </mask>
+      <use
+         id="icon-fav-active"
+         fill="#572ee5"
+         fill-rule="nonzero"
+         xlink:href="#path-1"
+         x="0"
+         y="0"
+         width="100%"
+         height="100%" />
+    </g>
+  </g>
+  <g
+     id="GIFOS-3"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd"
+     transform="translate(-106.11147,-193.43405)">
+    <g
+       id="00-UI-Kit"
+       transform="translate(-858,-2777)">
+      <g
+         id="icon-fav-hover"
+         transform="translate(858,2777)">
+        <rect
+           id="Rectangle-Copy-7"
+           fill="#ffffff"
+           fill-rule="nonzero"
+           x="0"
+           y="0"
+           width="32"
+           height="32"
+           rx="6" />
+        <mask
+           id="mask-2-6"
+           fill="#ffffff">
+          <use
+             xlink:href="#path-1"
+             id="use10"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+        </mask>
+        <use
+           fill="#572ee5"
+           fill-rule="nonzero"
+           xlink:href="#path-1"
+           id="use13"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+    </g>
+  </g>
+</svg>

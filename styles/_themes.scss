@@ -46,6 +46,13 @@ body {
   --icon-twitter-hover: url(../assets/icon-twitter-hover.svg);
   --icon-instagram: url(../assets/icon_instagram.svg);
   --icon-instagram-hover: url(../assets/icon_instagram-hover.svg);
+  --icon-search: url(../assets/icon-search.svg);
+  --icon-search-dark-filter: grayscale(100%) opacity(40%);
+  --icon-max: url(../assets/icon-max-hover.svg);
+  --icon-download: url(../assets/icon-download-hover.svg);
+  --icon-delete: url(../assets/icon-trash-hover.svg);
+  --icon-fav: url(../assets/icon-fav-hover.svg);
+  --icon-fav-active: url(../assets/icon-fav-active-edited.svg);
 
 
   .dark-theme-show {
@@ -86,6 +93,8 @@ body.dark-theme {
   --icon-twitter-hover: url(../assets/icon_twitter_noc.svg);
   --icon-instagram: url(../assets/icon_instagram.svg);
   --icon-instagram-hover: url(../assets/icon_instagram_noc.svg);
+  --icon-search: url(../assets/icon-search-modo-noct.svg);
+  --icon-search-dark-filter: grayscale(0%) opacity(100%);
 
   .dark-theme-hide {
     display: none;

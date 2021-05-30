@@ -9,18 +9,9 @@ export default class ElementBuilder {
   static buildAutocompletionSearchElement = function (term) {
     return `
       <div class="search-bar-result" data-searchterm="${term}">
-        <img
-          class="icon-search-result dark-theme-hide"
-          src="/assets/icon-search.svg"
-          alt="icon-search"
-          />
-        
-          <img
-          class="icon-search-result dark-theme-show"
-          src="/assets/icon-search-modo-noct.svg"
-          alt="icon-search"
-          />
-  
+        <div
+          class="icon-search-result icon-search icon-search-dark-filter"
+          ></div>
         <p class="search-bar-result-text">${term}</p>
       </div>
     `;
@@ -93,48 +84,18 @@ export default class ElementBuilder {
   }
 
   static buttonDelete = `
-    <button class="gifo-button button-delete">
-      <img
-        class="icon-fav"
-        src="/assets/icon-trash-hover.svg"
-        alt="icon fav"
-        />
-    </button>
+    <button class="gifo-button button-delete icon-delete"></button>
   `;
 
   static buttonDownload = `
-    <button
-    class="gifo-button button-download"
-    >
-      <img
-        src="/assets/icon-download-hover.svg"
-        alt="icon download hover"
-        />
-
-    </button>
+    <button class="gifo-button button-download icon-download"></button>
     `;
 
   static buttonExpand = `
-    <button class="gifo-button button-max">
-      <img
-        src="/assets/icon-max-hover.svg"
-        alt="icon max hover"
-        />
-    </button>
+    <button class="gifo-button button-max icon-max"></button>
     `;
 
   static buttonFavorite = `
-    <button class="gifo-button button-fav">
-      <img
-        class="icon-fav"
-        src="/assets/icon-fav-hover.svg"
-        alt="icon fav"
-        />
-      <img
-        class="icon-fav-active"
-        src="/assets/icon-fav-active.svg"
-        alt="icon fav active"
-        />
-    </button>
+    <button class="gifo-button button-fav icon-fav"></button>
   `;
 }

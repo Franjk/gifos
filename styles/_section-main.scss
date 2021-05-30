@@ -128,15 +128,20 @@
             }
         }
     }
-    
+
     .button-icon {
         width: 24px;
         height: 24px;
     }
 
-    .icon-search-dark {
-        filter: grayscale(100%) opacity(40%);
-
+    .icon-search {
+        background-image: var(--icon-search);
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    
+    .icon-search-dark-filter {
+        filter: var(--icon-search-dark-filter);
     }
 
     .icon-close {
