@@ -67,6 +67,14 @@ export default class Gifo {
   }
 
   /**
+   * Gets the link of the gifo to share.
+   * @returns {string} The url to share
+   */
+  getLink() {
+    return this.getURI(Gifo.URI_TYPE.ORIGINAL);
+  }
+
+  /**
    * Sets the title of the gifo.
    * @param {string} title
    */
