@@ -26,8 +26,8 @@ const RECORDER_CONFIG = {
 };
 
 const ICON = {
-  LOADER: "/assets/loader.svg",
-  CHECK: "/assets/check.svg",
+  LOADER: "../assets/loader.svg",
+  CHECK: "../assets/check.svg",
 };
 
 const TEXT = {
