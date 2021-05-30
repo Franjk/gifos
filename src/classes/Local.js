@@ -3,7 +3,9 @@ import Gifo from "./Gifo.js";
 export default class Local {
   static FAVORITES_KEY = "favorites";
   static MY_GIFOS_KEY = "my-gifos";
-  static DARK_MODE = "dark-mode";
+  static DARK_MODE_KEY = "dark-mode";
+  static DEFAULT_LIMIT = 12;
+  static DEFAULT_OFFSET = 0;
 
   static getFavorites() {
     const strFavorites = localStorage.getItem(Local.FAVORITES_KEY);
@@ -36,7 +38,7 @@ export default class Local {
   }
 
   static getDarkMode() {
-    const data = JSON.parse(localStorage.getItem(Local.DARK_MODE));
+    const data = JSON.parse(localStorage.getItem(Local.DARK_MODE_KEY));
     return data || false;
   }
 
@@ -44,12 +46,10 @@ export default class Local {
     if (darkMode !== true) darkMode = false;
 
     const data = darkMode;
-    localStorage.setItem(Local.DARK_MODE, JSON.stringify(data));
+    localStorage.setItem(Local.DARK_MODE_KEY, JSON.stringify(data));
   }
 
   static toggleDarkMode() {
     Local.setDarkMode(!Local.getDarkMode());
   }
-
-  constructor() {}
 }

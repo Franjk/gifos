@@ -369,6 +369,10 @@ nav .logo-svg {
   bottom: 5px;
 }
 
+.menu-link:hover {
+  cursor: pointer;
+}
+
 .menu-desktop {
   display: none;
 }
@@ -1265,7 +1269,7 @@ nav .logo-svg {
   line-height: 22px;
 }
 
-.section-create-gifo .footer .repeat-recording-button {
+.section-create-gifo .footer .repeat-recording-btn {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   color: var(--text-primary);
@@ -1277,11 +1281,11 @@ nav .logo-svg {
   border: none;
 }
 
-.section-create-gifo .footer .repeat-recording-button:hover {
+.section-create-gifo .footer .repeat-recording-btn:hover {
   cursor: pointer;
 }
 
-.section-create-gifo .footer .repeat-recording-button:active {
+.section-create-gifo .footer .repeat-recording-btn:active {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
 }
@@ -1363,6 +1367,7 @@ nav .logo-svg {
 .modal .button-close-wrapper {
   margin-top: 59px;
   margin-right: 5px;
+  margin-bottom: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1491,6 +1496,7 @@ nav .logo-svg {
             align-items: center;
   }
   .modal .button-close-wrapper {
+    margin-bottom: 0;
     position: absolute;
     top: 67px;
     right: 10vw;

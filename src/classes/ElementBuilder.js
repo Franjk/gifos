@@ -1,6 +1,11 @@
 import Gifo from "./Gifo.js";
 
 export default class ElementBuilder {
+  /**
+   * Builds the inner html of a search term.
+   * @param {string} term The searched term
+   * @returns A `string` representing the inner html of an element.
+   */
   static buildAutocompletionSearchElement = function (term) {
     return `
       <div class="search-bar-result" data-searchterm="${term}">
@@ -21,6 +26,11 @@ export default class ElementBuilder {
     `;
   };
 
+  /**
+   * Build an HTMLElement containing all the given trending topics
+   * @param {Array<string>} trendingTopics
+   * @returns {HTMLElement} `trendingListEl`
+   */
   static buildTrendingTopicsList = function (trendingTopics) {
     let innerHtmlTemp = "";
 
@@ -40,92 +50,23 @@ export default class ElementBuilder {
     return trendingListEl;
   };
 
-  static buildTrendingTopicsList2 = function (trendingTopics) {
-    let innerHtmlTemp = "";
-
-    for (let i = 0; i < trendingTopics.length; i++) {
-      const topic = trendingTopics[i];
-      innerHtmlTemp += `<span class="trending-topic">${topic}</span>`;
-
-      // at the last element of the list we do not add the comma
-      if (i < trendingTopics.length - 1) {
-        innerHtmlTemp += `<span>, </span>`;
-      }
-    }
-
-    return innerHtmlTemp;
-  };
-
   /**
-   *
+   * Build a HTMLElement of a given Gifo according to its type.
    * @param {Gifo} gifo
-   * @param {string} format
-   * @returns
+   * @param {Gifo.TYPE} type
+   * @returns {HTMLElement} `gifoEl`
    */
-  static buildGifo(gifo, format) {
-    const favoriteClass = gifo.isFavorite() ? "favorite" : "";
+  static buildGifo(gifo, type) {
     const gifoEl = document.createElement("div");
     const src = gifo.getGifPreview();
     gifoEl.dataset.gifoId = gifo.getId();
 
     gifoEl.classList.add("gifo");
-    if (format === "TRENDING") gifoEl.classList.add("trending-gifo");
-    if (format === "SEARCHED") gifoEl.classList.add("searched-gifo");
-    if (format === "MY_GIFOS") gifoEl.classList.add("searched-gifo");
-
-    const buttonFavorites = `
-      <button class="gifo-button button-fav ${favoriteClass}">
-        <img
-          class="icon-fav"
-          src="/assets/icon-fav-hover.svg"
-          alt="icon fav"
-          />
-        <img
-          class="icon-fav-active"
-          src="/assets/icon-fav-active.svg"
-          alt="icon fav active"
-          />
-      </button>
-    `;
-
-    const buttonDelete = `
-      <button class="gifo-button button-delete">
-        <img
-          class="icon-fav"
-          src="/assets/icon-trash-hover.svg"
-          alt="icon fav"
-          />
-      </button>
-    `;
-
-    const buttonDownload = `
-      <button
-      class="gifo-button button-download"
-      >
-        <img
-          src="/assets/icon-download-hover.svg"
-          alt="icon download hover"
-          />
-      
-      </button>
-    `;
-
-    const buttonExpand = `
-      <button class="gifo-button button-max">
-        <img
-          src="/assets/icon-max-hover.svg"
-          alt="icon max hover"
-          />
-      </button>
-    `;
-
-    const as = `
-    <video
-    src="${src}"
-    autoplay
-    loop
-  ></video>
-  `;
+    if (type === Gifo.TYPE.TRENDING) {
+      gifoEl.classList.add("trending-gifo");
+    } else {
+      gifoEl.classList.add("searched-gifo");
+    }
 
     gifoEl.innerHTML = `
       <img
@@ -134,9 +75,9 @@ export default class ElementBuilder {
       >
       <div class="gifo-overlay"></div>
       <div class="button-group">
-        ${format === "MY_GIFOS" ? buttonDelete : buttonFavorites}
-        ${buttonDownload}
-        ${buttonExpand}
+        ${type === Gifo.TYPE.MY_GIFOS ? ElementBuilder.buttonDelete : ElementBuilder.buttonFavorite}
+        ${ElementBuilder.buttonDownload}
+        ${ElementBuilder.buttonExpand}
       </div>
       <div class="gifo-description">
         <p class="gifo-username">${gifo.username}</p>
@@ -144,37 +85,56 @@ export default class ElementBuilder {
       </div>
       `;
 
+    if (gifo.isFavorite()) {
+      gifoEl.querySelector(".button-fav")?.classList.add("favorite");
+    }
+
     return gifoEl;
   }
 
   static buttonDelete = `
-  <button class="gifo-button button-delete">
-    <img
-      class="icon-fav"
-      src="/assets/icon-trash-hover.svg"
-      alt="icon fav"
-      />
-  </button>
-`;
+    <button class="gifo-button button-delete">
+      <img
+        class="icon-fav"
+        src="/assets/icon-trash-hover.svg"
+        alt="icon fav"
+        />
+    </button>
+  `;
 
   static buttonDownload = `
-<button
-class="gifo-button button-download"
->
-  <img
-    src="/assets/icon-download-hover.svg"
-    alt="icon download hover"
-    />
+    <button
+    class="gifo-button button-download"
+    >
+      <img
+        src="/assets/icon-download-hover.svg"
+        alt="icon download hover"
+        />
 
-</button>
-`;
+    </button>
+    `;
 
   static buttonExpand = `
-<button class="gifo-button button-max">
-  <img
-    src="/assets/icon-max-hover.svg"
-    alt="icon max hover"
-    />
-</button>
-`;
+    <button class="gifo-button button-max">
+      <img
+        src="/assets/icon-max-hover.svg"
+        alt="icon max hover"
+        />
+    </button>
+    `;
+
+  static buttonFavorite = `
+    <button class="gifo-button button-fav">
+      <img
+        class="icon-fav"
+        src="/assets/icon-fav-hover.svg"
+        alt="icon fav"
+        />
+      <img
+        class="icon-fav-active"
+        src="/assets/icon-fav-active.svg"
+        alt="icon fav active"
+        />
+    </button>
+  `;
 }

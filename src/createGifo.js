@@ -26,8 +26,8 @@ const RECORDER_CONFIG = {
 };
 
 const ICON = {
-  LOADER: "./assets/loader.svg",
-  CHECK: "./assets/check.svg",
+  LOADER: "/assets/loader.svg",
+  CHECK: "/assets/check.svg",
 };
 
 const TEXT = {
@@ -48,22 +48,14 @@ const videoContainerEl = document.querySelector("#video-container");
 const videoEl = document.querySelector("#video");
 const imgGifEl = document.querySelector("#img-gif");
 const timerEl = document.querySelector("#timer");
-const repeatRecordingButtonEl = document.querySelector(
-  "#repeat-recording-button"
-);
+const repeatRecordingBtnEl = document.querySelector("#repeat-recording-btn");
 const videoOverlayEl = document.querySelector("#video-overlay");
-const videoStatusContainerEl = document.querySelector(
-  "#video-status-container"
-);
+const videoStatusContainerEl = document.querySelector("#video-status-container");
 const videoStatusIconEl = document.querySelector("#video-status-icon");
-const videoStatusDescriptionEl = document.querySelector(
-  "#video-status-description"
-);
+const videoStatusDescriptionEl = document.querySelector("#video-status-description");
 const buttonDownloadEl = document.querySelector("#button-download");
 const buttonLinkEl = document.querySelector("#button-link");
-const videoStatusButtonGroupEl = document.querySelector(
-  "#video-status-button-group"
-);
+const videoStatusBtnGroupEl = document.querySelector("#video-status-btn-group");
 
 const giphy = new Giphy(API_KEY);
 
@@ -82,9 +74,7 @@ let uploadedGifo = null;
  * @param {HTMLElement} stepEl
  */
 const activateStepEl = function (stepEl = null) {
-  document
-    .querySelectorAll(".pagination-button")
-    .forEach((el) => el.classList.remove("active"));
+  document.querySelectorAll(".pagination-button").forEach((el) => el.classList.remove("active"));
 
   if (stepEl) stepEl.classList.add("active");
 };
@@ -152,7 +142,7 @@ const parseTime = function (time) {
 
 //  STAGES
 
-//    INITIAL
+//  STAGE.INITIAL
 const startInitialStage = function () {
   stage = STAGE.INITIAL;
   stream = null;
@@ -174,7 +164,7 @@ const startInitialStage = function () {
   sólo necesitas una cámara para grabar un video`;
 };
 
-//    GETTING_PERMISSIONS
+//  STAGE.GETTING_PERMISSIONS
 const startGettingPermissionsStage = async function () {
   stage = STAGE.GETTING_PERMISSION;
   activateStepEl(step1El);
@@ -191,14 +181,12 @@ const startGettingPermissionsStage = async function () {
     startBeforeRecordingStage();
   } catch (err) {
     console.warn(err);
-    alert(
-      "La aplicacion necesita obtener permisos de la cámara para poder grabar el gifo."
-    );
+    alert("La aplicacion necesita obtener permisos de la cámara para poder grabar el gifo.");
     startInitialStage();
   }
 };
 
-//    BEFORE_RECORDING
+//  STAGE.BEFORE_RECORDING
 const startBeforeRecordingStage = function () {
   stage = STAGE.BEFORE_RECORDING;
   activateStepEl(step2El);
@@ -208,7 +196,7 @@ const startBeforeRecordingStage = function () {
   hideElement(descriptionContainerEl);
   showElement(videoContainerEl);
   hideElement(timerEl);
-  hideElement(repeatRecordingButtonEl);
+  hideElement(repeatRecordingBtnEl);
 
   hideElement(imgGifEl);
   showElement(videoEl);
@@ -217,7 +205,7 @@ const startBeforeRecordingStage = function () {
   videoEl.play();
 };
 
-//    RECORDING
+//  STAGE.RECORDING
 const startRecordingStage = function () {
   stage = STAGE.RECORDING;
   activateStepEl(step2El);
@@ -233,7 +221,7 @@ const startRecordingStage = function () {
   startTimer();
 };
 
-//    FINISHED RECORDING
+//  STAGE.FINISHED RECORDING
 const startFinishedRecordingStage = function () {
   stage = STAGE.FINISHED_RECORDING;
   activateStepEl(step2El);
@@ -245,7 +233,7 @@ const startFinishedRecordingStage = function () {
   hideElement(descriptionContainerEl);
   showElement(videoContainerEl);
   hideElement(timerEl);
-  showElement(repeatRecordingButtonEl);
+  showElement(repeatRecordingBtnEl);
 
   recorder.stopRecording(() => {
     stopTimer();
@@ -258,7 +246,7 @@ const startFinishedRecordingStage = function () {
   });
 };
 
-//    UPLOADING
+//  STAGE.UPLOADING
 const startUploadingStage = async function () {
   stage = STAGE.UPLOADING;
   activateStepEl(step3El);
@@ -268,7 +256,7 @@ const startUploadingStage = async function () {
   showElement(videoOverlayEl);
   showElement(videoStatusContainerEl);
   hideVisibilityElement(actionButtonEl);
-  hideElement(repeatRecordingButtonEl);
+  hideElement(repeatRecordingBtnEl);
 
   const id = await giphy.uploadGif(blob);
   uploadedGifo = new Gifo(id);
@@ -276,12 +264,12 @@ const startUploadingStage = async function () {
   startFinishedUploadingStage();
 };
 
-//    FINISHED UPLOADING
+//  STAGE.FINISHED UPLOADING
 const startFinishedUploadingStage = function () {
   stage = STAGE.FINISHED_UPLOADING;
   videoStatusIconEl.setAttribute("src", ICON.CHECK);
   videoStatusDescriptionEl.textContent = TEXT.UPLOADING_SUCCESS;
-  showElement(videoStatusButtonGroupEl);
+  showElement(videoStatusBtnGroupEl);
 };
 
 // HANDLERS
@@ -308,9 +296,7 @@ const handleRepeatRecordingButtonClick = async function () {
     startBeforeRecordingStage();
   } catch (err) {
     console.warn(err);
-    alert(
-      "La aplicacion necesita obtener permisos de la cámara para poder grabar el gifo."
-    );
+    alert("La aplicacion necesita obtener permisos de la cámara para poder grabar el gifo.");
     startInitialStage();
   }
 };
@@ -327,15 +313,9 @@ const handleButtonLinkClick = function () {
 
 const initializeCreateGifoPage = function () {
   actionButtonEl.addEventListener("click", handleActionButtonClick);
-  repeatRecordingButtonEl.addEventListener(
-    "click",
-    handleRepeatRecordingButtonClick
-  );
+  repeatRecordingBtnEl.addEventListener("click", handleRepeatRecordingButtonClick);
   buttonDownloadEl.addEventListener("click", handleButtonDownloadClick);
   buttonLinkEl.addEventListener("click", handleButtonLinkClick);
-  // startBeforeRecordingStage();
-  giphy.getGifById("Rlxfht52POeHMUrner");
-  giphy.getGifById("cE8GxM2AxzTfh1DnsO");
 };
 
 initializeDarkMode();

@@ -160,6 +160,12 @@ nav {
   }
 }
 
+.menu-link {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .menu-desktop {
   display: none;
 }

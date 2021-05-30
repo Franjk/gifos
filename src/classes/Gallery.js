@@ -18,8 +18,17 @@ export default class Gallery {
     gifos.forEach((gifo) => gifo.setGallery(this));
   }
 
+  removeGifo(gifo) {
+    if (this.getGifoIndex(gifo) >= this.gifos.length - 1) this.index -= 1;
+    this.gifos = this.gifos.filter((g) => g.id !== gifo.id);
+  }
+
   getCurrentGifo() {
     return this.gifos[this.index];
+  }
+
+  getGifoIndex(gifo) {
+    return this.gifos.map((el) => el.id).indexOf(gifo.id);
   }
 
   getGifo(index) {

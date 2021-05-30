@@ -16,10 +16,21 @@ export default class Gifo {
     PREVIEW_WEBP: "preview_webp",
   };
 
+  static TYPE = {
+    SEARCHED: "SEARCHED",
+    TRENDING: "TRENDING",
+    FAVORITE: "FAVORITE",
+    MY_GIFOS: "MY-GIFOS",
+  };
+
   /**
-   *
+   * Construct an instance of the Gifo object
+   * @param {string} id
    * @param {string} title
    * @param {string} username
+   * @param {string} gifOriginal The url of the gif original format
+   * @param {string} gifPreview The url of the gif preview format
+   * @param {string} mp4Original The url of the mp4 original format
    */
   constructor(
     id = "",
@@ -47,10 +58,6 @@ export default class Gifo {
     return this.mp4Original || this.getURI(Gifo.URI_TYPE.ORIGINAL_MP4);
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   getGifPreview() {
     return this.gifPreview || this.getURI(Gifo.URI_TYPE.ORIGINAL);
   }
@@ -60,7 +67,7 @@ export default class Gifo {
   }
 
   /**
-   *
+   * Sets the title of the gifo.
    * @param {string} title
    */
   setTitle(title) {
@@ -71,6 +78,12 @@ export default class Gifo {
     return this.id;
   }
 
+  /**
+   * Takes the URI_TYPE definition and build a link to the page where the
+   * media is located. To be used when the gifo does not have an assigned link.
+   * @param {(Gifo.URI_TYPE)} uriType
+   * @returns The url of the media.
+   */
   getURI(uriType) {
     switch (uriType) {
       case Gifo.URI_TYPE.ORIGINAL:
@@ -91,7 +104,7 @@ export default class Gifo {
   }
 
   /**
-   *src="https://media2.giphy.com/media/Rlxfht52POeHMUrner/giphy-downsized.gif"
+   * Sets the gallery reference of the gifo.
    * @param {Gallery} gifoGallery
    */
   setGallery(gallery) {
@@ -99,19 +112,27 @@ export default class Gifo {
   }
 
   /**
-   *
+   * Sets the gallery reference of the gifo.
    * @returns {Gallery} GifoGallery
    */
   getGallery() {
     return this.gallery;
   }
 
+  /**
+   * Consults if the gifo is saved as a favorite.
+   * @returns {boolean} `true` if the gifos is currently in favorites.
+   */
   isFavorite() {
     const favorites = Local.getFavorites();
 
     return favorites.map((fav) => fav.id).includes(this.id);
   }
 
+  /**
+   * Add the gifo to favorites in the local storage.
+   * @returns `this`
+   */
   addToFavorites() {
     const favorites = Local.getFavorites();
     favorites.push({
@@ -123,6 +144,10 @@ export default class Gifo {
     return this;
   }
 
+  /**
+   * Remove the gifo from favorites in the local storage.
+   * @returns `this`
+   */
   removeFromFavorites() {
     const favorites = Local.getFavorites();
     const filteredFavorites = favorites.filter((fav) => fav.id !== this.id);
@@ -130,12 +155,20 @@ export default class Gifo {
     return this;
   }
 
+  /**
+   * Consults if the gifo is in the my-gifos section in the local storage.
+   * @returns {boolean} `true` if the gifo is in my-gifos.
+   */
   isMyGifo() {
     const myGifos = Local.getMyGifos();
 
     return myGifos.map((myGifo) => myGifo.id).includes(this.id);
   }
 
+  /**
+   * Add the gifo to the my-gifos sectino in the local storage.
+   * @returns `this`
+   */
   addToMyGifos() {
     const myGifos = Local.getMyGifos();
     myGifos.push({
@@ -147,6 +180,10 @@ export default class Gifo {
     return this;
   }
 
+  /**
+   * Removes the gifo from the my-gifos sectino in the local storage.
+   * @returns `this`
+   */
   removeFromMyGifos() {
     const myGifos = Local.getMyGifos();
     const filteredMyGifos = myGifos.filter((myGifo) => myGifo.id !== this.id);
