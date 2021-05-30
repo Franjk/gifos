@@ -123,11 +123,14 @@ const displayMoreFavoriteGifos = function (n = DEFAULT_GIFOS_DISPLAYED) {
       addListenersToGifo(gifoEl, gifo);
       gifosGalleryEl.appendChild(gifoEl);
     }
+
     if (localGifos.hasNext()) {
       showElement(viewMoreButtonEl);
     } else {
       hideElement(viewMoreButtonEl);
     }
+
+    hideElement(noContentEl);
   } else {
     hideElement(viewMoreButtonEl);
     showElement(noContentEl);
@@ -471,8 +474,11 @@ const buildHandlerGifoFavButtonClick = function (gifo) {
       if (page === PAGES.FAVORITES) {
         // removes the element from the DOM
         sectionGalleryEl.querySelector(`[data-gifo-id="${gifo.getId()}"]`).remove();
-
         gallery.removeGifo(gifo);
+        if (gallery.getLength() === 0) {
+          hideElement(viewMoreButtonEl);
+          showElement(noContentEl);
+        }
       }
     } else {
       // changes the favorite button of all elemements with the same id as
@@ -502,6 +508,11 @@ const buildHandlerGifoDeleteButtonClick = function (gifo) {
     gifo.removeFromMyGifos();
 
     gallery.removeGifo(gifo);
+
+    if (gallery.getLength() === 0) {
+      hideElement(viewMoreButtonEl);
+      showElement(noContentEl);
+    }
   };
 
   return handleGifoDeleteButtonClick;
