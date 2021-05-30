@@ -1548,9 +1548,11 @@ nav .logo-svg {
   }
   .modal .gif {
     width: 695px;
-    max-width: none;
+    max-width: 695px;
     max-height: 500px;
     height: auto;
+    -o-object-fit: fill;
+       object-fit: fill;
   }
   .modal .footer {
     -webkit-box-align: start;

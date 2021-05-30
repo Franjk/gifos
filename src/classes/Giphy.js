@@ -32,7 +32,8 @@ export default class Giphy {
   }
 
   /**
-   *
+   * Gets a partial search term and returns an array with all posible autocomplete values
+   * for that search term.
    * @param {String} partialSearchTerm
    * @return {Promise<Array<string>>} Completed search terms
    */
@@ -80,9 +81,9 @@ export default class Giphy {
   }
 
   /**
-   *
-   * @param {numner} limit
-   * @param {number} offset
+   * Gets an array of trending gifs.
+   * @param {numner} limit The amount of Gifos to receive.
+   * @param {number} offset The starting index.
    * @param {string} rating
    * @returns {Promise<Array<Gifo>>}
    */
@@ -150,7 +151,7 @@ export default class Giphy {
   }
 
   /**
-   *
+   * Gets an array of `Gifos` given a search query.
    * @param {string} query
    * @param {number} limit
    * @param {number} offset
@@ -203,6 +204,11 @@ export default class Giphy {
     });
   }
 
+  /**
+   * Gets the next search result given a previous search. The method `searchGifs`
+   * must be called before.
+   * @returns {Promise<Array<Gifo>>} An array of gifos for the next search results.
+   */
   nextSearchResults() {
     const { query, limit, offset, rating, lang } = this.searchMetadata;
     const url = `https://${Giphy.ENDPOINTS.SEARCH}?api_key=${this.apiKey}&q=${query}&limit=${limit}&offset=${offset}&rating=${rating}&lang=${lang}`;
@@ -236,10 +242,17 @@ export default class Giphy {
     });
   }
 
+  /**
+   * Gets the current metadata of the search.
+   * @returns {{}}
+   */
   getSearchMetadata() {
     return this.searchMetadata;
   }
 
+  /**
+   * Resets the search metadata to the default values.
+   */
   resetSearchMetadata() {
     this.searchMetadata = {
       query: "",
@@ -252,7 +265,7 @@ export default class Giphy {
   }
 
   /**
-   * Que
+   * Consults if the current search has more results to be returned.
    * @returns `true` if the current search has more results
    */
   hasMoreResults() {

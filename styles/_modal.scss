@@ -168,9 +168,10 @@
 
     .gif {
       width: 695px;
-      max-width: none;
+      max-width: 695px;
       max-height: 500px;
       height: auto;
+      object-fit: fill;
     }
 
     .footer {

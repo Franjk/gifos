@@ -18,6 +18,9 @@ const gallery = new Gallery();
 const trendingGifos = new Gallery();
 const localGifos = new Gallery();
 
+// since the index, favorites and myGifos pages share this same script, the
+// page variable stores the page where this script is executed to perform
+// page-specific functionality.
 let page;
 
 // section-main
